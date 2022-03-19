@@ -7,7 +7,7 @@ class Welcome extends CI_Controller {
 
     public function index() {
         //$this->load->view('table');
-        $this->template->load('template', 'welcome');
+        $this->template->load('template', '_partials/content');
     }
 
     public function form() {

@@ -11,7 +11,7 @@ class User extends CI_Controller
         is_login();
         $this->load->model('User_model');
         $this->load->library('form_validation');        
-	$this->load->library('datatables');
+	    $this->load->library('datatables');
     }
 
     public function index()

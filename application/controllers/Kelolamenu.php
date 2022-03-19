@@ -10,7 +10,7 @@ class Kelolamenu extends CI_Controller
         parent::__construct();
         $this->load->model('Menu_model');
         $this->load->library('form_validation');        
-	$this->load->library('datatables');
+	    $this->load->library('datatables');
     }
 
     public function index()
