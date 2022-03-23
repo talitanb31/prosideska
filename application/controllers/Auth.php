@@ -1,24 +1,21 @@
 <?php
 Class Auth extends CI_Controller{
-    
-    
-    
     function index(){
         $this->load->view('auth/login');
     }
     
     function cheklogin(){
-        $email      = $this->input->post('email');
-        //$password   = $this->input->post('password');
+        $username = $this->input->post('username');
         $password = $this->input->post('password',TRUE);
         $hashPass = password_hash($password,PASSWORD_DEFAULT);
         $test     = password_verify($password, $hashPass);
         // query chek users
-        $this->db->where('email',$email);
+        $this->db->where('username',$username);
         //$this->db->where('password',  $test);
-        $users       = $this->db->get('tbl_user');
+        $users = $this->db->get('akun');
         if($users->num_rows()>0){
             $user = $users->row_array();
+            echo($user['password']);
             if(password_verify($password,$user['password'])){
                 // retrive user data to session
                 $this->session->set_userdata($user);
@@ -27,7 +24,7 @@ Class Auth extends CI_Controller{
                 redirect('auth');
             }
         }else{
-            $this->session->set_flashdata('status_login','email atau password yang anda input salah');
+            $this->session->set_flashdata('status_login','username atau password yang anda input salah');
             redirect('auth');
         }
     }

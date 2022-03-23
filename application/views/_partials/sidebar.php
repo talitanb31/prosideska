@@ -36,7 +36,7 @@
             <li class="<?=$this->uri->segment(1) == 'penduduk' ? 'active' : '' ?>">
             <a href="<?= site_url('penduduk/index') ?>">
                 <i class="nc-icon nc-circle-10"></i>
-                <p>Penduduk</p>
+                <p>Penduduk/Warga</p>
             </a>
             </li>
             <li class="<?=$this->uri->segment(1) == 'listpermintaan' ? 'active' : '' ?>">
@@ -49,12 +49,6 @@
             <a href="<?= site_url('kartukeluarga/index') ?>">
                 <i class="nc-icon nc-badge"></i>
                 <p>Kartu Keluarga</p>
-            </a>
-            </li>
-            <li class="<?=$this->uri->segment(1) == 'warga' ? 'active' : '' ?>">
-            <a href="<?= site_url('warga/index') ?>">
-                <i class="nc-icon nc-badge"></i>
-                <p>Warga</p>
             </a>
             </li>
             <li class="<?=$this->uri->segment(1) == 'berita' ? 'active' : '' ?>">

@@ -1,21 +1,6 @@
 <?php
 defined('BASEPATH') OR exit('No direct script access allowed');
 
-/**
- *
- * Model Akun_model
- *
- * This Model for ...
- * 
- * @package		CodeIgniter
- * @category	Model
- * @author    Setiawan Jodi <jodisetiawan@fisip-untirta.ac.id>
- * @link      https://github.com/setdjod/myci-extension/
- * @param     ...
- * @return    ...
- *
- */
-
 class Akun_model extends CI_Model {
 
   // ------------------------------------------------------------------------
@@ -36,7 +21,7 @@ class Akun_model extends CI_Model {
 
   public function insertData()
   {
-    $password = password_hash($this->input->post('password'),PASSWORD_BCRYPT);
+    $password = password_hash($this->input->post('password'),PASSWORD_DEFAULT);
     $data = array(
       'nama' => $this->input->post('name'),
       'username' => $this->input->post('username'),
