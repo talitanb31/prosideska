@@ -40,3 +40,10 @@
 
       });
   </script>
+  <script src="<?php echo base_url() ?>assets/demo/demo.js"></script>
+  <script>
+    $(document).ready(function() {
+      // Javascript method's body can be found in assets/assets-for-demo/js/demo.js
+      demo.initChartsPages();
+    });
+  </script>

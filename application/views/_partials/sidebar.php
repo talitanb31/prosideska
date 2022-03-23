@@ -1,13 +1,13 @@
 <div class="sidebar" data-color="white" data-active-color="danger">
     <div class="logo">
-        <a href="https://www.creative-tim.com" class="simple-text logo-mini">
+        <a href="<?=site_url("welcome/index")?>" class="simple-text logo-mini">
             <!-- <div class="logo-image-small">
             <img src="<?php echo base_url() ?>assets/img/logo-small.png">
             </div> -->
             <!-- <p>CT</p> -->
             
         </a>
-        <a href="https://www.creative-tim.com" class="simple-text logo-normal">
+        <a href="<?=site_url("welcome/index")?>" class="simple-text logo-normal">
             PROSIDESKA
             <!-- <div class="logo-image-big">
             <img src=".<?php echo base_url() ?>assets/img/logo-big.png">

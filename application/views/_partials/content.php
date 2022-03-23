@@ -11,8 +11,8 @@
                 </div>
                 <div class="col-7 col-md-8">
                 <div class="numbers">
-                    <p class="card-category">Capacity</p>
-                    <p class="card-title">150GB<p>
+                    <p class="card-category">Jenis Surat</p>
+                    <p class="card-title">7<p>
                 </div>
                 </div>
             </div>
@@ -21,7 +21,7 @@
             <hr>
             <div class="stats">
                 <i class="fa fa-refresh"></i>
-                Update Now
+                Total saat ini
             </div>
             </div>
         </div>
@@ -37,8 +37,8 @@
                 </div>
                 <div class="col-7 col-md-8">
                 <div class="numbers">
-                    <p class="card-category">Revenue</p>
-                    <p class="card-title">$ 1,345<p>
+                    <p class="card-category">Kartu Keluarga</p>
+                    <p class="card-title">345<p>
                 </div>
                 </div>
             </div>
@@ -47,7 +47,7 @@
             <hr>
             <div class="stats">
                 <i class="fa fa-calendar-o"></i>
-                Last day
+                Total saat ini
             </div>
             </div>
         </div>
@@ -63,8 +63,8 @@
                 </div>
                 <div class="col-7 col-md-8">
                 <div class="numbers">
-                    <p class="card-category">Errors</p>
-                    <p class="card-title">23<p>
+                    <p class="card-category">Penduduk</p>
+                    <p class="card-title">450<p>
                 </div>
                 </div>
             </div>
@@ -73,7 +73,7 @@
             <hr>
             <div class="stats">
                 <i class="fa fa-clock-o"></i>
-                In the last hour
+                Total saat ini
             </div>
             </div>
         </div>
@@ -89,8 +89,8 @@
                 </div>
                 <div class="col-7 col-md-8">
                 <div class="numbers">
-                    <p class="card-category">Followers</p>
-                    <p class="card-title">+45K<p>
+                    <p class="card-category">Admin</p>
+                    <p class="card-title">4<p>
                 </div>
                 </div>
             </div>
@@ -99,10 +99,53 @@
             <hr>
             <div class="stats">
                 <i class="fa fa-refresh"></i>
-                Update now
+                Total saat ini
             </div>
             </div>
         </div>
         </div>
     </div>
+    <div class="row">
+        <div class="col-md-4">
+            <div class="card ">
+                <div class="card-header ">
+                <h5 class="card-title">Statistik Surat</h5>
+                <p class="card-category">Statistik pengajuan surat</p>
+                </div>
+                <div class="card-body ">
+                <canvas id="chartEmail"></canvas>
+                </div>
+                <div class="card-footer ">
+                <div class="legend">
+                    <i class="fa fa-circle text-gray"></i> Pending
+                    <i class="fa fa-circle text-primary"></i> Diproses
+                    <i class="fa fa-circle text-danger"></i> Ditolak
+                    <i class="fa fa-circle text-success"></i> Selesai
+                </div>
+                <hr>
+                <div class="stats">
+                    <i class="fa fa-calendar"></i> Total pengajuan surat
+                </div>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-8">
+            <div class="card ">
+                <div class="card-header ">
+                <h5 class="card-title">Pengajuan Surat</h5>
+                <p class="card-category">24 Hours performance</p>
+                </div>
+                <div class="card-body ">
+                <canvas id=chartHours width="400" height="100"></canvas>
+                </div>
+                <div class="card-footer ">
+                <hr>
+                <div class="stats">
+                    <i class="fa fa-history"></i> Tahun ini
+                </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
 </div>

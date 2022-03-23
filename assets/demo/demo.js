@@ -185,10 +185,10 @@ demo = {
           pointRadius: 0,
           pointHoverRadius: 0,
           backgroundColor: [
-            '#e3e3e3',
-            '#4acccd',
-            '#fcc468',
-            '#ef8157'
+            '#E3E3E3',
+            '#51cbce',
+            '#ef8157',
+            '#6bd098'
           ],
           borderWidth: 0,
           data: [342, 480, 530, 120]

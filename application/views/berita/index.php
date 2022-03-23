@@ -22,17 +22,25 @@
                             <thead>
                                 <tr>
                                     <th>#</th>
-                                    <th>Nama</th>
-                                    <th>Alamat</th>
+                                    <th>Judul</th>
+                                    <th>Deskripsi</th>
+                                    <th>Waktu dibuat</th>
                                     <th>Action</th>
                                 </tr>
                             </thead>
                             <tbody>
                                 <tr>
                                     <td>1</td>
-                                    <td>2</td>
-                                    <td>4</td>
-                                    <td>edit | hapus</td>
+                                    <td>
+                                        <img src="<?php echo base_url() ?>assets/img/mike.jpg" class="user-image" alt="User Image" width="100" height="100">
+                                        Dummy Berita
+                                    </td>
+                                    <td>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Sit officia ducimus et sed molestiae modi tenetur cum consequatur, aliquam enim incidunt architecto aspernatur temporibus. Eligendi accusantium eveniet neque expedita quo?</td>
+                                    <td>2022-03-22 20:10</td>
+                                    <td>
+                                        <a href="#" class="btn btn-warning"><i class="fa fa-edit"></i></a>
+                                        <a href="#" onclick="return confirm('Apakah anda yakin ingin menghapus data ?')" class="btn btn-danger"><i class="fa fa-trash"></i></a>
+                                    </td>
                                 </tr>
                             </tbody>
                         </table>
