@@ -7,6 +7,7 @@ class Penduduk extends CI_Controller {
     public function __construct()
     {
         parent::__construct();
+        is_login();
         $this->load->model('Penduduk_model');
         $this->load->model('Pendidikan_model');
         $this->load->model('Pekerjaan_model');

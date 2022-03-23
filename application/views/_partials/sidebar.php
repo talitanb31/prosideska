@@ -8,7 +8,7 @@
             
         </a>
         <a href="https://www.creative-tim.com" class="simple-text logo-normal">
-            Your Logo
+            PROSIDESKA
             <!-- <div class="logo-image-big">
             <img src=".<?php echo base_url() ?>assets/img/logo-big.png">
             </div> -->
@@ -17,9 +17,6 @@
     <div class="sidebar-wrapper">
         
         <ul class="nav">
-              
-        
-            
             <li class="<?=$this->uri->segment(1) == 'welcome' ? 'active' : '' ?>">
             <a href="<?=site_url("welcome/index")?>">
                 <i class="nc-icon nc-bank"></i>
@@ -39,16 +36,16 @@
                 <p>Penduduk/Warga</p>
             </a>
             </li>
-            <li class="<?=$this->uri->segment(1) == 'listpermintaan' ? 'active' : '' ?>">
-            <a href="<?= site_url('listpermintaan/index') ?>">
-                <i class="nc-icon nc-email-85"></i>
-                <p>List Permintaan Surat</p>
-            </a>
-            </li>
             <li class="<?=$this->uri->segment(1) == 'kartukeluarga' ? 'active' : '' ?>">
             <a href="<?= site_url('kartukeluarga/index') ?>">
                 <i class="nc-icon nc-badge"></i>
                 <p>Kartu Keluarga</p>
+            </a>
+            </li>
+            <li class="<?=$this->uri->segment(1) == 'listpermintaan' ? 'active' : '' ?>">
+            <a href="<?= site_url('listpermintaan/index') ?>">
+                <i class="nc-icon nc-email-85"></i>
+                <p>List Permintaan Surat</p>
             </a>
             </li>
             <li class="<?=$this->uri->segment(1) == 'berita' ? 'active' : '' ?>">
