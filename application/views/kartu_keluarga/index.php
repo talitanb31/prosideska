@@ -18,11 +18,11 @@
         <div class="col-lg-12">
             <div class="card">
                 <div class="card-body">
-                <div class="d-flex justify-content-start mb-4">
-                    <a href="<?=site_url('kartukeluarga/create')?>" class="btn btn-primary p-3">Tambah Data</a>
-                </div>
+                    <div class="d-flex justify-content-start mb-4">
+                        <a href="<?=site_url('kartukeluarga/create')?>" class="btn btn-primary p-3">Tambah Data</a>
+                    </div>
                     <div class="table-responsive">
-                        <table class="table">
+                        <table class="table" id="example">
                             <thead>
                                 <tr>
                                     <th>#</th>
@@ -44,7 +44,7 @@
                                     <td><?= $item['rt'].'/'.$item['rw'] ?></td>
                                     <td><?= $item['ekonomi'] ?></td>
                                     <td>
-                                        <a href="#" target="_blank">Lihat</a>
+                                        <a href="<?=base_url().'assets/scan_kk/'.$item['file_kk']?>" target="_blank">Lihat</a>
                                     </td>
                                     <td>
                                         <a href="<?=base_url('kartukeluarga/edit/')?><?=$item['id']?>" class="btn btn-warning"><i class="fa fa-edit"></i></a>

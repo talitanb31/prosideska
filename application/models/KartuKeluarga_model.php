@@ -39,7 +39,7 @@ class KartuKeluarga_model extends CI_Model
         return $this->db->get_where($this->table, ['id' => $id])->row_array();
     }
 
-    public function updateData($id)
+    public function updateData($id, $filename)
     {
         $data = array(
             'alamat' => $this->input->post('alamat'),
@@ -51,7 +51,12 @@ class KartuKeluarga_model extends CI_Model
             'updated_at' => date('Y-m-d H:i:s'),
         );
 
+        if($filename != '') {
+            $this->db->where('id', $id);
+            $this->db->update($this->table, array('file_kk' => $filename));
+        }
         $this->db->where('id', $id);
+        
         return $this->db->update($this->table, $data);
     }
 

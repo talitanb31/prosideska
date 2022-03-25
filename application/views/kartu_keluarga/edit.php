@@ -57,7 +57,8 @@
                                 </div>
                             </div>
                             <div class="col-lg-6">
-                                <label for="">File Kartu Keluarga</label>
+                                <label for="">File Kartu Keluarga</label><br>
+                                <img src="<?=base_url().'assets/scan_kk/'.$data['file_kk']?>" width="150" height="150">
                                 <input type="file" name="file_kk" class="form-control <?=form_error('file_kk') != null ? 'is-invalid' : ''; ?>">
                                 <?php echo form_error('file_kk', '<small class="text-danger">', '</small>'); ?>
                             </div>

@@ -23,11 +23,12 @@ class KartuKeluarga extends CI_Controller {
     }
 
     function upload_foto(){
-        $config['upload_path']          = './assets/scan_kk';
+        $config['upload_path']          = './assets/scan_kk/';
         $config['allowed_types']        = 'jpg|png';
         //$config['max_size']             = 100;
         //$config['max_width']            = 1024;
         //$config['max_height']           = 768;
+        $config['file_name'] = $_FILES['file_kk']['name']; 
         $this->load->library('upload', $config);
         $this->upload->do_upload('file_kk');
         return $this->upload->data();
@@ -60,13 +61,12 @@ class KartuKeluarga extends CI_Controller {
     public function store()
     {
         $this->_rules();
-        // $this->form_validation->set_rules('file_kk','Warga Negara', 'required',
-        //                         array(
-        //                         'required' => 'Data harus terisi.'
-        //                         ));
+        $this->form_validation->set_rules('file_kk','Warga Negara', 'required',
+                                array(
+                                'required' => 'Data harus terisi.'
+                                ));
         $scanKK = $this->upload_foto();
         if ($this->form_validation->run() == TRUE) {
-            var_dump($scanKK);
             if ($this->KartuKeluarga_model->insertData($scanKK['file_name'])) {
                 $this->session->set_flashdata('pesan','data berhasil disimpan');
                 redirect('kartukeluarga/index');
@@ -85,14 +85,14 @@ class KartuKeluarga extends CI_Controller {
     public function update($id)
     {
         $this->_rules();
-        // $this->form_validation->set_rules('file_kk','Warga Negara', 'required',
-        //                         array(
-        //                         'required' => 'Data harus terisi.'
-        //                         ));
-        $scanKK = $this->upload_foto();
+        $filename = '';
+        if($this->input->post('file_kk') == null) {
+            $scanKK = $this->upload_foto();
+            $filename = $scanKK['file_name'];
+        }
+
         if ($this->form_validation->run() == TRUE) {
-            var_dump($scanKK);
-            if ($this->KartuKeluarga_model->updateData($id)) {
+            if ($this->KartuKeluarga_model->updateData($id, $filename)) {
                 $this->session->set_flashdata('pesan','data berhasil disimpan');
                 redirect('kartukeluarga/index');
             }
