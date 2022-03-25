@@ -20,7 +20,10 @@
   <!-- <script src="https://cdn.datatables.net/1.11.5/js/jquery.dataTables.min.js"></script> -->
   <script>
       $(document).ready(function() {
-        $('#example').DataTable();
+        $('#example').DataTable({
+          "pageLength": 5,
+          "bLengthChange" : false,
+        });
 	     
         $("#show_hide_password a").on('click', function(event) {
             event.preventDefault();

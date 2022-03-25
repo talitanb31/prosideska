@@ -21,7 +21,7 @@ Coded by www.creative-tim.com
   <div class="wrapper ">
     <!-- sidebar -->
     <?php $this->load->view("_partials/sidebar.php") ?>
-    <div class="main-panel" style="height: 100vh;">
+    <div class="main-panel">
       <!-- Navbar -->
       <?php $this->load->view("_partials/navbar.php") ?>
       <!-- End Navbar -->

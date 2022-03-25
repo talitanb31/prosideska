@@ -29,6 +29,7 @@
             <ul class="sub-menu collapse " id="products">
                 <li class="<?=$this->uri->segment(1) == 'akun' ? 'active' : ''?>"><a href="<?= site_url('akun/index') ?>">Akun</a></li>
                 <li class="<?=$this->uri->segment(1) == 'jenissurat' ? 'active' : ''?>"><a href="<?= site_url('jenissurat/index') ?>">Jenis Surat</a></li>
+                <li class="<?=$this->uri->segment(1) == 'syaratsurat' ? 'active' : ''?>"><a href="<?= site_url('syaratsurat/index') ?>">Syarat Surat</a></li>
             </ul>
             <li class="<?=$this->uri->segment(1) == 'penduduk' ? 'active' : '' ?>">
             <a href="<?= site_url('penduduk/index') ?>">

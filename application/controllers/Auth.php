@@ -4,13 +4,13 @@ Class Auth extends CI_Controller{
     public function __construct()
     {
         parent::__construct();
-        $ci = get_instance();
-        if(!$ci->session->userdata('id')){
-            redirect('auth');
-        }else{
-            $modul = $ci->uri->segment(1);
-        redirect('welcome/index');
-        }
+        // $ci = get_instance();
+        // if(!$ci->session->userdata('id')){
+        //     redirect('auth');
+        // }else{
+        //     $modul = $ci->uri->segment(1);
+        // redirect('welcome/index');
+        // }
     }
 
     function index(){
