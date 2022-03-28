@@ -3,20 +3,20 @@
         <div class="col-lg-12 ">
             <nav aria-label="breadcrumb">
                 <ol class="breadcrumb">
-                    <li class="breadcrumb-item active" aria-current="page"><?=ucwords($this->uri->segment(1))?></li>
-                    <li class="breadcrumb-item " aria-current="page"><a href="<?=site_url("welcome/index")?>">Dashboard</a></li>
+                    <li class="breadcrumb-item active" aria-current="page"><?= ucwords($this->uri->segment(1)) ?></li>
+                    <li class="breadcrumb-item " aria-current="page"><a href="<?= site_url("welcome/index") ?>">Dashboard</a></li>
                 </ol>
             </nav>
-         
+
         </div>
     </div>
     <div class="row">
         <div class="col-lg-12">
             <div class="card">
                 <div class="card-body">
-                <div class="d-flex justify-content-start mb-4">
-                    <a href="" class="btn btn-primary p-3">Tambah Data</a>
-                </div>
+                    <div class="d-flex justify-content-start mb-4">
+                        <a href="<?=site_url('berita/create')?>" class="btn btn-primary p-3">Tambah Data</a>
+                    </div>
                     <div class="table-responsive">
                         <table class="table">
                             <thead>
@@ -29,19 +29,22 @@
                                 </tr>
                             </thead>
                             <tbody>
+                                <?php $no = 1; ?>
+                                <?php foreach($data as $item) { ?>
                                 <tr>
-                                    <td>1</td>
+                                    <td><?= $no++ ?></td>
                                     <td>
-                                        <img src="<?php echo base_url() ?>assets/img/mike.jpg" class="user-image" alt="User Image" width="100" height="100">
-                                        Dummy Berita
+                                        <img src="<?=base_url().'assets/berita/'.$item['cover']?>" class="user-image" alt="Cover Image" width="100" height="100">
+                                        <?= $item['title'] ?>
                                     </td>
-                                    <td>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Sit officia ducimus et sed molestiae modi tenetur cum consequatur, aliquam enim incidunt architecto aspernatur temporibus. Eligendi accusantium eveniet neque expedita quo?</td>
-                                    <td>2022-03-22 20:10</td>
+                                    <td><?= $item['deskripsi'] ?></td>
+                                    <td><?= $item['created_at'] ?></td>
                                     <td>
-                                        <a href="#" class="btn btn-warning"><i class="fa fa-edit"></i></a>
-                                        <a href="#" onclick="return confirm('Apakah anda yakin ingin menghapus data ?')" class="btn btn-danger"><i class="fa fa-trash"></i></a>
+                                        <a href="<?=base_url('berita/edit/')?><?=$item['id']?>" class="btn btn-warning"><i class="fa fa-edit"></i></a>
+                                        <a href="<?=base_url('berita/delete/')?><?=$item['id']?>" onclick="return confirm('Apakah anda yakin ingin menghapus data ?')" class="btn btn-danger"><i class="fa fa-trash"></i></a>
                                     </td>
                                 </tr>
+                                <?php } ?>
                             </tbody>
                         </table>
                     </div>
