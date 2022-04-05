@@ -26,19 +26,19 @@ class PermintaanSurat_model extends CI_Model {
     $data = array('status' => 'diproses' );
     $this->db->where('id',$id);
 
-    $this->storeNotification($nik, 'Permintaan surat anda sudah diterima.');
-
-    return $this->db->update($this->_table, $data);
+    $this->db->update($this->_table, $data);
+    
+    return $this->storeNotification($nik, 'Permintaan surat anda sudah diterima.');
   }
 
   public function storeNotification($nik, $pesan)
   {
-      $data = array(
-          'nik' => $nik,
-          'pesan' => $pesan,
-      );
+    $data = array(
+      'nik' => $nik,
+      'pesan' => $pesan,
+    );
 
-      return $this->db->insert("notifikasi", $data);
+    return $this->db->insert("notifikasi", $data);
   }
 
 }

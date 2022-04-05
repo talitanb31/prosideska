@@ -8,7 +8,9 @@ class ListPermintaan extends CI_Controller {
     {
         parent::__construct();
         is_login();
+        $this->load->library('Pdf');
         $this->load->model('PermintaanSurat_model');
+        $this->load->model('CetakSurat_model');
     }
 
     public function index() {
@@ -27,4 +29,17 @@ class ListPermintaan extends CI_Controller {
         }
 
     }
+
+    public function printPdf($id, $jenisSurat)
+    {
+        $jenisSurat = str_replace('-', ' ', $jenisSurat);
+        
+        if($jenisSurat == 'surat pindah')
+            $this->CetakSurat_model->suratPindah($jenisSurat);
+        elseif($jenisSurat == 'surat tidak mampu')
+            $this->CetakSurat_model->suratTidakMampu($jenisSurat);
+        
+    }
+
+
 }
