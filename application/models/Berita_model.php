@@ -24,6 +24,7 @@ class Berita_model extends CI_Model
             'id_admin' => $_SESSION['id'],
             'cover' => $file,
             'title' => $this->input->post('title'),
+            'slug' => strtolower(str_replace(' ', '-', $this->input->post('title'))),
             'deskripsi' => $this->input->post('deskripsi'),
             'created_at' => date('Y-m-d H:i:s'),
             'updated_at' => date('Y-m-d H:i:s'),
@@ -41,6 +42,7 @@ class Berita_model extends CI_Model
         $data = array(
             'id_admin' => $_SESSION['id'],
             'title' => $this->input->post('title'),
+            'slug' => strtolower(str_replace(' ', '-', $this->input->post('title'))),
             'deskripsi' => $this->input->post('deskripsi'),
             'updated_at' => date('Y-m-d H:i:s'),
         );

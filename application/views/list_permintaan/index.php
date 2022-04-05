@@ -30,47 +30,26 @@
                                 </tr>
                             </thead>
                             <tbody>
-                                <tr>
-                                    <td>1</td>
-                                    <td>Surat Nikah</td>
-                                    <td>Muhammad Khalil Z.</td>
-                                    <td>Admin Desa</td>
-                                    <td>Pending</td>
-                                    <td>
-                                        <a href="#" class="btn btn-success"><i class="fa fa-check"></i></a>
-                                        <a href="#" onclick="return confirm('Apakah anda yakin ingin menolak ?')" class="btn btn-danger"><i class="fa fa-close"></i></a>
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <td>2</td>
-                                    <td>Surat Nikah</td>
-                                    <td>Abdul Rasyid</td>
-                                    <td>Admin Desa</td>
-                                    <td>Diproses</td>
-                                    <td>
-                                        <a href="#" onclick="return confirm('Apakah anda yakin ingin mencetak surat ini ?')" class="btn btn-primary"><i class="fa fa-print"></i></a>
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <td>3</td>
-                                    <td>Surat Nikah</td>
-                                    <td>Ahmad Jamil</td>
-                                    <td>Admin Desa</td>
-                                    <td>Selesai</td>
-                                    <td>
-                                        <a href="#" onclick="return confirm('Apakah anda yakin ingin mencetak surat ini ?')" class="btn btn-primary"><i class="fa fa-print"></i></a>
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <td>4</td>
-                                    <td>Surat Nikah</td>
-                                    <td>Rika Suryani</td>
-                                    <td>Admin Desa</td>
-                                    <td>Ditolak</td>
-                                    <td>
-                                        -
-                                    </td>
-                                </tr>
+                                <?php $no = 1; ?>
+                                <?php foreach($data as $item) : ?>
+                                    <tr>
+                                        <td><?= $no++ ?></td>
+                                        <td><?= ucwords($item['jenis']) ?></td>
+                                        <td><?= $item['penduduk'] ?></td>
+                                        <td><?= $item['admin'] !== null ? $item['admin'] : '-' ?></td>
+                                        <td><?= $item['status'] ?></td>
+                                        <td>
+                                            <?php if($item['status'] == 'pending'): ?>
+                                            <a href="<?= site_url("listpermintaan/terima/") ?><?= $item['id'].'/'.$item['nik'] ?>" onclick="return confirm('Apakah anda yakin ingin menerima ?')" class="btn btn-success"><i class="fa fa-check"></i></a>
+                                            <a href="<?= site_url("listpermintaan/tolak/") ?><?= $item['id'].'/'.$item['nik'] ?>" onclick="return confirm('Apakah anda yakin ingin menolak ?')" class="btn btn-danger"><i class="fa fa-close"></i></a>
+                                            <?php elseif($item['status'] == 'diproses' || $item['status'] == 'selesai'): ?>
+                                            <a href="<?= site_url("listpermintaan/cetak/") ?><?= $item['id'].'/'.$item['nik'] ?>" onclick="return confirm('Apakah anda yakin ingin mencetak surat ?')" class="btn btn-primary"><i class="fa fa-print"></i></a>
+                                            <?php else: ?>
+                                                -
+                                            <?php endif; ?>
+                                        </td>
+                                    </tr>
+                                <?php endforeach?>
                             </tbody>
                         </table>
                     </div>
