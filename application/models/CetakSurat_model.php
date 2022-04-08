@@ -2227,16 +2227,19 @@ class CetakSurat_model extends CI_Model
 
         /* Start Row */
         $this->pdf->SetFont('Arial', '', 10);
-        $this->pdf->Cell(
-            30,
-            8,
-            '14. Status Perkawinan',
-            0,
-            0,
-            'L'
-        );
+        $this->pdf->Cell(30, 8, '14. Status Perkawinan', 0, 0, 'L');
         $this->pdf->Cell(30);
         $this->pdf->Cell(0, 8, 'BELUM KAWIN', 1, 0, 'L');
+        /* End Row */
+
+        $this->pdf->Ln(10);
+
+        /* Start Row */
+        $this->pdf->SetFont('Arial', '', 9);
+        $this->pdf->Cell(30, 8, '15. Nomor Akta Perkawinan/Buku Nikah', 0, 0, 'L');
+        // $this->pdf->MultiCell(30, 8, '15. Nomor Akta Perkawinan/Buku Nikah', 0, 'L', '');
+        $this->pdf->Cell(30);
+        $this->pdf->Cell(0, 8, '-', 1, 0, 'L');
         /* End Row */
 
         $this->pdf->Ln(10);
