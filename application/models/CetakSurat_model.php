@@ -1797,7 +1797,6 @@ class CetakSurat_model extends CI_Model
         $this->pdf->Cell(90);
         $this->pdf->Cell(20, 10, 'F. 1-06', 1, 0, 'C');
         $this->pdf->Ln(10);
-        // $this->pdf->Cell(0, 10, 'FORMULIR BIODATA PENDUDUK UNTUK PERUBAHAN DATA WARGA NEGARA IDONESIA', 0, 0, 'C');
         $this->pdf->MultiCell(0, 15, 'FORMULIR BIODATA PENDUDUK UNTUK PERUBAHAN DATA WARGA NEGARA IDONESIA', 0, 'C', '');
         /* End Header */
 
@@ -2173,6 +2172,71 @@ class CetakSurat_model extends CI_Model
         $this->pdf->Cell(30);
         $this->pdf->Cell(8, 8, '22', 1, 0, 'C');
         $this->pdf->Cell(0, 8, 'Tahun', 0, 0, 'L');
+        /* End Row */
+
+        $this->pdf->Ln(10);
+
+        /* Start Row */
+        $this->pdf->SetFont('Arial', '', 9);
+        $this->pdf->Cell(
+            30,
+            8,
+            '11. Nomor Akte Kelahiran/Surat Kenal',
+            0,
+            0,
+            'L'
+        );
+        // $this->pdf->MultiCell(0, 15, '', 0, 'C', '');
+        $this->pdf->Cell(30);
+        $this->pdf->Cell(0, 8, '02047/UM / 41 / 1998', 1, 0, 'L');
+        /* End Row */
+
+        $this->pdf->Ln(10);
+
+        /* Start Row */
+        $this->pdf->SetFont('Arial', '', 10);
+        $this->pdf->Cell(
+            30,
+            8,
+            '12. Golongan Darah',
+            0,
+            0,
+            'L'
+        );
+        $this->pdf->Cell(30);
+        $this->pdf->Cell(0, 8, 'A', 1, 0, 'L');
+        /* End Row */
+
+        $this->pdf->Ln(10);
+
+        /* Start Row */
+        $this->pdf->SetFont('Arial', '', 10);
+        $this->pdf->Cell(
+            30,
+            8,
+            '13. Agama/Kepercayaan',
+            0,
+            0,
+            'L'
+        );
+        $this->pdf->Cell(30);
+        $this->pdf->Cell(0, 8, 'Islam', 1, 0, 'L');
+        /* End Row */
+
+        $this->pdf->Ln(10);
+
+        /* Start Row */
+        $this->pdf->SetFont('Arial', '', 10);
+        $this->pdf->Cell(
+            30,
+            8,
+            '14. Status Perkawinan',
+            0,
+            0,
+            'L'
+        );
+        $this->pdf->Cell(30);
+        $this->pdf->Cell(0, 8, 'BELUM KAWIN', 1, 0, 'L');
         /* End Row */
 
         $this->pdf->Ln(10);
