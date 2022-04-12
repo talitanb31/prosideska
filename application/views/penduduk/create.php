@@ -140,6 +140,13 @@
                                         <?php echo form_error('status_pernikahan', '<small class="text-danger">', '</small>'); ?>
                                 </div>
                             </div>
+                            <div class="col-lg-6">
+                                <div class="form-group">
+                                    <label for="">Alamat</label>
+                                    <textarea name="alamat" id="alamat" cols="30" rows="5" class="form-control <?=form_error('alamat') != null ? 'is-invalid' : ''; ?>" required></textarea>
+                                    <?php echo form_error('alamat', '<small class="text-danger">', '</small>'); ?>
+                                </div>
+                            </div>
                         </div>
                         <div class="d-flex justify-content-end mt-4">
                             <button type="reset" class="btn btn-danger">Batal</button>

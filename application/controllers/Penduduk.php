@@ -48,10 +48,13 @@ class Penduduk extends CI_Controller {
                                 array(
                                 'required' => 'Data harus terisi.'
                                 ));
-                                
         $validation->set_rules('jenis_kelamin','Jenis Kelamin', 'required',
                                 array(
                                 'required' => 'Data harus dipilih.'
+                                ));
+        $validation->set_rules('alamat','Alamat', 'required',
+                                array(
+                                'required' => 'Data harus diisi.'
                                 ));
         $validation->set_rules('gol_darah','Gol. Darah', 'required',
                                 array(
@@ -81,6 +84,15 @@ class Penduduk extends CI_Controller {
         }else{
             $this->template->load('template','penduduk/create');
         }
+    }
+
+    public function detail($id)
+    {
+        $data['data'] = $this->Penduduk_model->editData($id);
+        $data['pendidikan'] = $this->Pendidikan_model->getAllData();
+        $data['pekerjaan'] = $this->Pekerjaan_model->getAllData();
+        $data['negara'] = $this->Negara_model->getAllData();
+        $this->template->load('template', 'penduduk/detail',$data);
     }
 
     public function edit($id)

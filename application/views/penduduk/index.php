@@ -28,13 +28,13 @@
                                     <th>#</th>
                                     <th>Nik</th>
                                     <th>Nama</th>
-                                    <th>Agama</th>
+                                    <!-- <th>Agama</th>
                                     <th>Tmp. Lahir</th>
-                                    <th>Tgl. Lahir</th>
+                                    <th>Tgl. Lahir</th> -->
                                     <th>Jenis Kelamin</th>
-                                    <th>Gol. Darah</th>
+                                    <!-- <th>Gol. Darah</th>
                                     <th>Warga Negara</th>
-                                    <th>Pendidikan</th>
+                                    <th>Pendidikan</th> -->
                                     <th>Pekerjaan</th>
                                     <th>Status Pernikahan</th>
                                     <th>Action</th>
@@ -47,16 +47,17 @@
                                     <td><?=$no++?></td>
                                     <td><?= $item['nik'] ?></td>
                                     <td><?= $item['nama'] ?></td>
-                                    <td><?= $item['agama'] ?></td>
+                                    <!-- <td><?= $item['agama'] ?></td>
                                     <td><?= $item['tempat_lahir'] ?></td>
-                                    <td><?= $item['tanggal_lahir'] ?></td>
+                                    <td><?= $item['tanggal_lahir'] ?></td> -->
                                     <td><?= $item['jenis_kelamin'] ?></td>
-                                    <td><?= $item['gol_darah'] ?></td>
+                                    <!-- <td><?= $item['gol_darah'] ?></td>
                                     <td><?= $item['country_name'] ?></td>
-                                    <td><?= $item['pendidikan'] ?></td>
+                                    <td><?= $item['pendidikan'] ?></td> -->
                                     <td><?= $item['pekerjaan'] ?></td>
                                     <td><?= $item['status_pernikahan'] ?></td>
                                     <td>
+                                        <a href="<?=base_url('penduduk/detail/')?><?=$item['nik']?>" class="btn btn-info"><i class="fa fa-eye"></i></a>
                                         <a href="<?=base_url('penduduk/edit/')?><?=$item['nik']?>" class="btn btn-warning"><i class="fa fa-edit"></i></a>
                                         <a href="<?=base_url('penduduk/delete/')?><?=$item['nik']?>" onclick="return confirm('Apakah anda yakin ingin menghapus data ?')" class="btn btn-danger"><i class="fa fa-trash"></i></a>
                                     </td>

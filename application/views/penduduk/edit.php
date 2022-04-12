@@ -60,7 +60,7 @@
                             <div class="col-lg-6">
                                 <div class="form-group">
                                     <label for="tgl_lahir">Tanggal Lahir</label>
-                                    <input type="date" name="tanggal_lahir" class="form-control <?=form_error('tanggal_lahir') != null ? 'is-invalid' : ''; ?>" placeholder="Masukkan tanggal lahir" id="tgl_lahir" value="<?= $data['nama'] ?>" required>
+                                    <input type="date" name="tanggal_lahir" class="form-control <?=form_error('tanggal_lahir') != null ? 'is-invalid' : ''; ?>" placeholder="Masukkan tanggal lahir" id="tgl_lahir" value="<?= $data['nama'] ?>">
                                     <?php echo form_error('tanggal_lahir', '<small class="text-danger">', '</small>'); ?>
                                 </div>
                             </div>
@@ -138,6 +138,13 @@
                                             <option value="CERAI MATI" <?= $data['status_pernikahan'] == 'CERAI MATI' ? 'selected' : '' ?> >CERAI MATI</option>
                                         </select>
                                         <?php echo form_error('status_pernikahan', '<small class="text-danger">', '</small>'); ?>
+                                </div>
+                            </div>                            
+                            <div class="col-lg-6">
+                                <div class="form-group">
+                                    <label for="">Alamat</label>
+                                    <textarea name="alamat" id="alamat" cols="30" rows="5" class="form-control <?=form_error('alamat') != null ? 'is-invalid' : ''; ?>" required><?= $data['alamat'] ?></textarea>
+                                    <?php echo form_error('alamat', '<small class="text-danger">', '</small>'); ?>
                                 </div>
                             </div>
                         </div>
