@@ -24,6 +24,16 @@ class Penduduk_model extends CI_Model
         return $query->result_array();
     }
 
+    public function getPenduduk($nik)
+    {
+        $this->db->select('penduduk.*,negara.country_name,pendidikan.pendidikan,pekerjaan.pekerjaan');
+        $this->db->join('negara', 'negara.id = penduduk.id_negara');
+        $this->db->join('pendidikan', 'pendidikan.id = penduduk.id_pendidikan');
+        $this->db->join('pekerjaan', 'pekerjaan.id = penduduk.id_pekerjaan');
+
+        return $this->db->get_where($this->table, ['penduduk.nik' => $nik])->row_array();
+    }
+
     public function insertData()
     {
         $data = array(
@@ -70,7 +80,7 @@ class Penduduk_model extends CI_Model
 
     public function deleteData($nik)
     {
-        $this->db->where('nik',$nik);
+        $this->db->where('nik', $nik);
         $this->db->delete($this->table);
     }
 }

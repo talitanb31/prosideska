@@ -64,7 +64,7 @@ class Pendidikan_model extends CI_Model
 
     public function deleteData($id)
     {
-        $this->db->where('id',$id);
+        $this->db->where('id', $id);
         $this->db->delete($this->table);
     }
 }

@@ -12,6 +12,7 @@ class ListPermintaan extends CI_Controller
         $this->load->library('Pdf');
         $this->load->model('PermintaanSurat_model');
         $this->load->model('CetakSurat_model');
+        $this->load->model('Penduduk_model');
     }
 
     public function index()
@@ -31,8 +32,10 @@ class ListPermintaan extends CI_Controller
         }
     }
 
-    public function printPdf($id, $jenisSurat)
+    public function printPdf($id, $jenisSurat, $nik)
     {
+        $penduduk = $this->Penduduk_model->getPenduduk($nik);
+
         $jenisSurat = str_replace('-', ' ', $jenisSurat);
 
         if ($jenisSurat == 'surat pindah')
@@ -42,7 +45,7 @@ class ListPermintaan extends CI_Controller
         elseif ($jenisSurat == 'surat kuasa')
             $this->CetakSurat_model->suratKuasa($jenisSurat);
         elseif ($jenisSurat == 'surat usaha')
-            $this->CetakSurat_model->suratUsaha($jenisSurat);
+            $this->CetakSurat_model->suratUsaha($id, $penduduk);
         elseif ($jenisSurat == 'surat kelahiran') {
             $page1 = $this->load->view('cetak/surat-kelahiran', '', true);
             $html = [$page1];

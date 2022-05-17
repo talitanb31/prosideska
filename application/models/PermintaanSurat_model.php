@@ -1,14 +1,15 @@
 <?php
-defined('BASEPATH') OR exit('No direct script access allowed');
+defined('BASEPATH') or exit('No direct script access allowed');
 
-class PermintaanSurat_model extends CI_Model {
+class PermintaanSurat_model extends CI_Model
+{
 
   private $_table = "permintaan_surat";
   public function __construct()
   {
     parent::__construct();
   }
-  
+
   public function getAllData()
   {
     $this->db->select('permintaan_surat.*, jenis_surat.jenis, penduduk.nama as penduduk, penduduk.nik, akun.nama as admin');
@@ -23,11 +24,11 @@ class PermintaanSurat_model extends CI_Model {
 
   public function terima($id, $nik)
   {
-    $data = array('status' => 'diproses' );
-    $this->db->where('id',$id);
+    $data = array('status' => 'diproses', 'id_admin' => $_SESSION['id']);
+    $this->db->where('id', $id);
 
     $this->db->update($this->_table, $data);
-    
+
     return $this->storeNotification($nik, 'Permintaan surat anda sudah diterima.');
   }
 
@@ -40,5 +41,4 @@ class PermintaanSurat_model extends CI_Model {
 
     return $this->db->insert("notifikasi", $data);
   }
-
 }
