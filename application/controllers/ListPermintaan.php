@@ -32,6 +32,16 @@ class ListPermintaan extends CI_Controller
         }
     }
 
+    public function done($id, $nik)
+    {
+        if ($this->PermintaanSurat_model->done($id, $nik)) {
+            $this->session->set_flashdata('pesan', 'surat berhasil diterima');
+            redirect('listpermintaan/index');
+        } else {
+            $this->template->load('template', 'listpermintaan/index');
+        }
+    }
+
     public function printPdf($id, $jenisSurat, $nik)
     {
         $penduduk = $this->Penduduk_model->getPenduduk($nik);

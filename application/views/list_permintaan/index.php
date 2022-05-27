@@ -42,7 +42,10 @@
                                             <?php if ($item['status'] == 'pending') : ?>
                                                 <a href="<?= site_url("listpermintaan/terima/") ?><?= $item['id'] . '/' . $item['nik'] ?>" onclick="return confirm('Apakah anda yakin ingin menerima ?')" class="btn btn-success"><i class="fa fa-check"></i></a>
                                                 <a href="<?= site_url("listpermintaan/tolak/") ?><?= $item['id'] . '/' . $item['nik'] ?>" onclick="return confirm('Apakah anda yakin ingin menolak ?')" class="btn btn-danger"><i class="fa fa-close"></i></a>
-                                            <?php elseif ($item['status'] == 'diproses' || $item['status'] == 'selesai') : ?>
+                                            <?php elseif ($item['status'] == 'diproses') : ?>
+                                                <a href="<?= site_url("listpermintaan/printPdf/") ?><?= $item['id'] . '/' . strtolower(str_replace(' ', '-', $item['jenis']) . '/' . $item['nik']) ?>" target="_blank" onclick="return confirm('Apakah anda yakin ingin mencetak surat ?')" class="btn btn-primary"><i class="fa fa-print"></i></a>
+                                                <a href="<?= site_url("listpermintaan/done/") ?><?= $item['id'] . '/' . $item['nik'] ?>" target="_blank" onclick="return confirm('Konfirmasi selesai?')" class="btn btn-warning"><i class="fa fa-check-square"></i></a>
+                                            <?php elseif ($item['status'] == 'selesai') : ?>
                                                 <a href="<?= site_url("listpermintaan/printPdf/") ?><?= $item['id'] . '/' . strtolower(str_replace(' ', '-', $item['jenis']) . '/' . $item['nik']) ?>" target="_blank" onclick="return confirm('Apakah anda yakin ingin mencetak surat ?')" class="btn btn-primary"><i class="fa fa-print"></i></a>
                                             <?php else : ?>
                                                 -

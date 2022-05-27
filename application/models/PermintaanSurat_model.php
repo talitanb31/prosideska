@@ -17,6 +17,7 @@ class PermintaanSurat_model extends CI_Model
     $this->db->join('jenis_surat', 'jenis_surat.id = permintaan_surat.id_jenis_surat');
     $this->db->join('penduduk', 'penduduk.nik = permintaan_surat.nik');
     $this->db->join('akun', 'akun.id = permintaan_surat.id_admin', 'left');
+    $this->db->order_by("FIELD(permintaan_surat.status, 'pending', 'diproses', 'selesai', 'ditolak')");
     $query = $this->db->get();
 
     return $query->result_array();
@@ -25,6 +26,16 @@ class PermintaanSurat_model extends CI_Model
   public function terima($id, $nik)
   {
     $data = array('status' => 'diproses', 'id_admin' => $_SESSION['id']);
+    $this->db->where('id', $id);
+
+    $this->db->update($this->_table, $data);
+
+    return $this->storeNotification($nik, 'Permintaan surat anda sudah diterima.');
+  }
+
+  public function done($id, $nik)
+  {
+    $data = array('status' => 'selesai', 'id_admin' => $_SESSION['id']);
     $this->db->where('id', $id);
 
     $this->db->update($this->_table, $data);
