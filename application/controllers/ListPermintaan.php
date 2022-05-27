@@ -47,9 +47,10 @@ class ListPermintaan extends CI_Controller
         elseif ($jenisSurat == 'surat usaha')
             $this->CetakSurat_model->suratUsaha($id, $penduduk);
         elseif ($jenisSurat == 'surat kelahiran') {
-            $page1 = $this->load->view('cetak/surat-kelahiran', '', true);
-            $html = [$page1];
-            $this->CetakSurat_model->printFromView($html, count($html));
+            // $page1 = $this->load->view('cetak/surat-kelahiran', '', true);
+            // $html = [$page1];
+            // $this->CetakSurat_model->printFromView($html, count($html));
+            $this->CetakSurat_model->suratKelahiran($id, $penduduk);
         } elseif ($jenisSurat == 'surat kematian') {
             $page1 = $this->load->view('cetak/surat-kematian', '', true);
             $page2 = $this->load->view('cetak/surat-kematian2', '', true);

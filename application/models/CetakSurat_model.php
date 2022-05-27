@@ -37,24 +37,31 @@ class CetakSurat_model extends CI_Model
         $this->pdf->Cell(80);
         // Title
         $this->pdf->SetFont('Arial', '', 10);
-        $this->pdf->Cell(30, 10, 'PEMERINTAH KABUPATEN MADIUN', 0, 0, 'C');
+        $this->pdf->Cell(30, 10, 'PEMERINTAH KABUPATEN MAGETAN', 0, 0, 'C');
         // Line break
         $this->pdf->Ln(6);
         $this->pdf->Cell(80);
-        $this->pdf->Cell(30, 10, 'KECAMATAN KEBONSARI', 0, 0, 'C');
+        $this->pdf->Cell(30, 10, 'KECAMATAN MAGETAN', 0, 0, 'C');
         $this->pdf->Ln(6);
         $this->pdf->Cell(80);
         $this->pdf->SetFont('Arial', 'B', 15);
-        $this->pdf->Cell(30, 10, 'DESA SIDOREJO', 0, 0, 'C');
+        $this->pdf->Cell(30, 10, 'KELURAHAN SUKOWINANGUN', 0, 0, 'C');
         $this->pdf->Ln(6);
         $this->pdf->Cell(80);
         $this->pdf->SetFont('Arial', '', 10);
-        $this->pdf->Cell(30, 10, 'Jl. Dr. Soetomo RT. 017 RW. 008', 0, 0, 'C');
+        $this->pdf->Cell(30, 10, 'Jalan Kunti Nomor 03 Telp. (0351) 893440', 0, 0, 'C');
         $this->pdf->Ln(6);
-        $this->pdf->Cell(80);
+        $this->pdf->Cell(60);
+        $this->pdf->SetFont('Arial', '', 10);
+        $this->pdf->Cell(15, 10, 'e-mail : ');
         $this->pdf->SetFont('Arial', 'UB', 10);
-        $this->pdf->Cell(30, 10, 'SIDOREJO 63173', 0, 0, 'C');
-        $this->pdf->Ln(20);
+        $this->pdf->Cell(17);
+        $this->pdf->Cell(30, 10, 'magetankelsukowinangun@gmail.com', 0, 0, 'C');
+        $this->pdf->Ln(10);
+        $this->pdf->SetFont('Arial', 'B', 14);
+        $this->pdf->Cell(85);
+        $this->pdf->Cell(20, 10, 'MAGETAN', 0, 0, 'C');
+        $this->pdf->Ln(10);
     }
 
     public function printFromView($html, $totalPage)
@@ -277,6 +284,334 @@ class CetakSurat_model extends CI_Model
         $this->pdf->Cell(40, 10, 'Penata Tk.l', 0, 0);
         $this->pdf->Ln(6);
         $this->pdf->Cell(110);
+        $this->pdf->Cell(40, 10, 'NIP.19680423 199602 1 001', 0, 0);
+        $this->pdf->SetFont('Arial', '', 10);
+        /* End Row */
+
+        $this->pdf->Output();
+    }
+
+    public function suratKelahiran($idSurat, $data)
+    {
+        $detailSurat = $this->getDetailSurat($idSurat);
+        $detailSurat = json_decode($detailSurat['form_data']);
+
+        // var_dump($detailSurat);
+
+        // Header
+        $this->header($this->pdf);
+
+        $this->pdf->Cell(190, 0.5, '', 10, 0, '', true);
+        $this->pdf->Ln(1);
+        $this->pdf->Cell(190, 1.5, '', 10, 0, '', true);
+        $this->pdf->Ln(6);
+
+        $this->pdf->SetFont('Arial', 'UB', 14);
+        $this->pdf->Cell(80);
+        $this->pdf->Cell(30, 10, 'SURAT KETERANGAN KELAHIRAN', 0, 0, 'C');
+
+        $this->pdf->Ln(6); // new line
+
+        $this->pdf->SetFont('Arial', '', 12);
+        $this->pdf->Cell(80);
+        $this->pdf->Cell(30, 10, 'Nomor : 474 /       / 403.406.07 / 2022', 0, 0, 'C');
+
+        $this->pdf->Ln(15); // new line
+
+        /* Start Row */
+        $this->pdf->SetFont('Arial', '', 10);
+        $this->pdf->Cell(20);
+        $this->pdf->Cell(60, 10, 'Yang bertanda tangan di bawah ini Lurah Sukowinangun Kecamatan Magetan Kabupaten Magetan', 0, 0, '');
+        $this->pdf->Ln(4);
+        $this->pdf->Cell(10);
+        $this->pdf->Cell(40, 10, 'menerangkan dengan sebenarnya bahwa :', 0, 0, '');
+
+        $this->pdf->Ln(8); // new line
+
+        /* Start Row */
+        /* Start Child Row */
+        $this->pdf->Cell(10);
+        $this->pdf->SetFont('Arial', '', 10);
+        $this->pdf->Cell(60, 10, 'Nama', 0, 0, '');
+        $this->pdf->Cell(10, 10, ':', 0, 0, 'C');
+        $this->pdf->SetFont('Arial', '', 10);
+        $this->pdf->Cell(30, 10, $detailSurat->nama_anak, 0, 0, '');
+        /* End Child Row */
+
+        $this->pdf->Ln(6);
+        /* Start Child Row */
+        $this->pdf->Cell(10);
+        $this->pdf->SetFont('Arial', '', 10);
+        $this->pdf->Cell(60, 10, 'Tempat, Tanggal Lahir', 0, 0, '');
+        $this->pdf->Cell(10, 10, ':', 0, 0, 'C');
+        $this->pdf->SetFont('Arial', '', 10);
+        $this->pdf->Cell(30, 10, $detailSurat->tempat_dilahirkan . ', ' . $detailSurat->tanggal_lahir, 0, 0, '');
+        /* End Child Row */
+
+        $this->pdf->Ln(6);
+        /* Start Child Row */
+        $this->pdf->Cell(10);
+        $this->pdf->SetFont('Arial', '', 10);
+        $this->pdf->Cell(60, 10, 'Jenis Kelamin', 0, 0, '');
+        $this->pdf->Cell(10, 10, ':', 0, 0, 'C');
+        $this->pdf->SetFont('Arial', '', 10);
+        $this->pdf->Cell(30, 10, $detailSurat->jenis_kelamin, 0, 0, '');
+        /* End Child Row */
+
+        $this->pdf->Ln(6);
+        /* Start Child Row */
+        $this->pdf->Cell(10);
+        $this->pdf->SetFont('Arial', '', 10);
+        $this->pdf->Cell(60, 10, 'Agama', 0, 0, '');
+        $this->pdf->Cell(10, 10, ':', 0, 0, 'C');
+        $this->pdf->SetFont('Arial', '', 10);
+        $this->pdf->Cell(30, 10, $detailSurat->agama_anak, 0, 0, '');
+        /* End Child Row */
+
+        $this->pdf->Ln(6);
+        /* Start Child Row */
+        $this->pdf->Cell(10);
+        $this->pdf->SetFont('Arial', '', 10);
+        $this->pdf->Cell(60, 10, 'Pekerjaan', 0, 0, '');
+        $this->pdf->Cell(10, 10, ':', 0, 0, 'C');
+        $this->pdf->SetFont('Arial', '', 10);
+        $this->pdf->Cell(30, 10, isset($detailSurat->pekejaan_anak) ? $detailSurat->pekejaan_anak : '-', 0, 0, '');
+        /* End Child Row */
+
+        $this->pdf->Ln(6);
+        /* Start Child Row */
+        $this->pdf->Cell(10);
+        $this->pdf->SetFont('Arial', '', 10);
+        $this->pdf->Cell(60, 10, 'NIK', 0, 0, '');
+        $this->pdf->Cell(10, 10, ':', 0, 0, 'C');
+        $this->pdf->SetFont('Arial', '', 10);
+        $this->pdf->Cell(30, 10, $detailSurat->nik_anak, 0, 0, '');
+        /* End Child Row */
+
+        $this->pdf->Ln(6);
+        /* Start Child Row */
+        $this->pdf->Cell(10);
+        $this->pdf->SetFont('Arial', '', 10);
+        $this->pdf->Cell(60, 10, 'Alamat', 0, 0, '');
+        $this->pdf->Cell(10, 10, ':', 0, 0, 'C');
+        $this->pdf->SetFont('Arial', '', 10);
+        $this->pdf->Cell(0, 10, $detailSurat->alamat_anak, 0, 0, '');
+        /* End Child Row */
+
+        /* End Row */
+
+        $this->pdf->Ln(10);
+        $this->pdf->Cell(10);
+        $this->pdf->SetFont('Arial', '', 10);
+        $this->pdf->Cell(60, 10, 'Tersebut diatas adalah Anak dari Suami / Istri yang syah');
+        $this->pdf->Ln(6);
+
+        /* Start Row */
+        /* Start Child Row */
+        $this->pdf->Cell(10);
+        $this->pdf->SetFont('Arial', '', 10);
+        $this->pdf->Cell(60, 10, 'Nama Ayah', 0, 0, '');
+        $this->pdf->Cell(10, 10, ':', 0, 0, 'C');
+        $this->pdf->SetFont('Arial', '', 10);
+        $this->pdf->Cell(30, 10, $detailSurat->nama_ayah, 0, 0, '');
+        /* End Child Row */
+
+        $this->pdf->Ln(6);
+        /* Start Child Row */
+        $this->pdf->Cell(10);
+        $this->pdf->SetFont('Arial', '', 10);
+        $this->pdf->Cell(60, 10, 'Tempat, Tanggal Lahir', 0, 0, '');
+        $this->pdf->Cell(10, 10, ':', 0, 0, 'C');
+        $this->pdf->SetFont('Arial', '', 10);
+        $this->pdf->Cell(30, 10, $detailSurat->tempat_lahir_ayah . ', ' . $detailSurat->tanggal_lahir_ayah, 0, 0, '');
+        /* End Child Row */
+
+        $this->pdf->Ln(6);
+        /* Start Child Row */
+        $this->pdf->Cell(10);
+        $this->pdf->SetFont('Arial', '', 10);
+        $this->pdf->Cell(60, 10, 'Jenis Kelamin', 0, 0, '');
+        $this->pdf->Cell(10, 10, ':', 0, 0, 'C');
+        $this->pdf->SetFont('Arial', '', 10);
+        $this->pdf->Cell(30, 10, $detailSurat->jenis_kelamin_ayah, 0, 0, '');
+        /* End Child Row */
+
+        $this->pdf->Ln(6);
+        /* Start Child Row */
+        $this->pdf->Cell(10);
+        $this->pdf->SetFont('Arial', '', 10);
+        $this->pdf->Cell(60, 10, 'Agama', 0, 0, '');
+        $this->pdf->Cell(10, 10, ':', 0, 0, 'C');
+        $this->pdf->SetFont('Arial', '', 10);
+        $this->pdf->Cell(30, 10, $detailSurat->agama_ayah, 0, 0, '');
+        /* End Child Row */
+
+        $this->pdf->Ln(6);
+        /* Start Child Row */
+        $this->pdf->Cell(10);
+        $this->pdf->SetFont('Arial', '', 10);
+        $this->pdf->Cell(60, 10, 'Pekerjaan', 0, 0, '');
+        $this->pdf->Cell(10, 10, ':', 0, 0, 'C');
+        $this->pdf->SetFont('Arial', '', 10);
+        $this->pdf->Cell(30, 10, isset($detailSurat->pekejaan_ayah) ? $detailSurat->pekejaan_ayah : '-', 0, 0, '');
+        /* End Child Row */
+
+        $this->pdf->Ln(6);
+        /* Start Child Row */
+        $this->pdf->Cell(10);
+        $this->pdf->SetFont('Arial', '', 10);
+        $this->pdf->Cell(60, 10, 'NIK', 0, 0, '');
+        $this->pdf->Cell(10, 10, ':', 0, 0, 'C');
+        $this->pdf->SetFont('Arial', '', 10);
+        $this->pdf->Cell(30, 10, $detailSurat->nik_ayah, 0, 0, '');
+        /* End Child Row */
+
+        $this->pdf->Ln(6);
+        /* Start Child Row */
+        $this->pdf->Cell(10);
+        $this->pdf->SetFont('Arial', '', 10);
+        $this->pdf->Cell(60, 10, 'Alamat', 0, 0, '');
+        $this->pdf->Cell(10, 10, ':', 0, 0, 'C');
+        $this->pdf->SetFont('Arial', '', 10);
+        $this->pdf->Cell(0, 10, 'RT ' . $detailSurat->rt_ayah . ' RW ' . $detailSurat->rw_ayah . ' Kel/Desa ' . $detailSurat->desa_ayah . ' Kec ' . $detailSurat->kecamatan_ayah . ' Kab ' . $detailSurat->kab_ayah, 0, 0, '');
+        /* End Child Row */
+
+        /* End Row */
+
+        $this->pdf->Ln(10);
+
+        /* Start Row */
+        /* Start Child Row */
+        $this->pdf->Cell(10);
+        $this->pdf->SetFont('Arial', '', 10);
+        $this->pdf->Cell(60, 10, 'Nama Ibu', 0, 0, '');
+        $this->pdf->Cell(10, 10, ':', 0, 0, 'C');
+        $this->pdf->SetFont('Arial', '', 10);
+        $this->pdf->Cell(30, 10, $detailSurat->nama_ibu, 0, 0, '');
+        /* End Child Row */
+
+        $this->pdf->Ln(6);
+        /* Start Child Row */
+        $this->pdf->Cell(10);
+        $this->pdf->SetFont('Arial', '', 10);
+        $this->pdf->Cell(60, 10, 'Tempat, Tanggal Lahir', 0, 0, '');
+        $this->pdf->Cell(10, 10, ':', 0, 0, 'C');
+        $this->pdf->SetFont('Arial', '', 10);
+        $this->pdf->Cell(30, 10, $detailSurat->tempat_lahir_ibu . ', ' . $detailSurat->tanggal_lahir_ibu, 0, 0, '');
+        /* End Child Row */
+
+        $this->pdf->Ln(6);
+        /* Start Child Row */
+        $this->pdf->Cell(10);
+        $this->pdf->SetFont('Arial', '', 10);
+        $this->pdf->Cell(60, 10, 'Jenis Kelamin', 0, 0, '');
+        $this->pdf->Cell(10, 10, ':', 0, 0, 'C');
+        $this->pdf->SetFont('Arial', '', 10);
+        $this->pdf->Cell(30, 10, $detailSurat->jenis_kelamin_ibu, 0, 0, '');
+        /* End Child Row */
+
+        $this->pdf->Ln(6);
+        /* Start Child Row */
+        $this->pdf->Cell(10);
+        $this->pdf->SetFont('Arial', '', 10);
+        $this->pdf->Cell(60, 10, 'Agama', 0, 0, '');
+        $this->pdf->Cell(10, 10, ':', 0, 0, 'C');
+        $this->pdf->SetFont('Arial', '', 10);
+        $this->pdf->Cell(30, 10, $detailSurat->agama_ibu, 0, 0, '');
+        /* End Child Row */
+
+        $this->pdf->Ln(6);
+        /* Start Child Row */
+        $this->pdf->Cell(10);
+        $this->pdf->SetFont('Arial', '', 10);
+        $this->pdf->Cell(60, 10, 'Pekerjaan', 0, 0, '');
+        $this->pdf->Cell(10, 10, ':', 0, 0, 'C');
+        $this->pdf->SetFont('Arial', '', 10);
+        $this->pdf->Cell(30, 10, isset($detailSurat->pekejaan_ibu) ? $detailSurat->pekejaan_ibu : '-', 0, 0, '');
+        /* End Child Row */
+
+        $this->pdf->Ln(6);
+        /* Start Child Row */
+        $this->pdf->Cell(10);
+        $this->pdf->SetFont('Arial', '', 10);
+        $this->pdf->Cell(60, 10, 'NIK', 0, 0, '');
+        $this->pdf->Cell(10, 10, ':', 0, 0, 'C');
+        $this->pdf->SetFont('Arial', '', 10);
+        $this->pdf->Cell(30, 10, $detailSurat->nik_ibu, 0, 0, '');
+        /* End Child Row */
+
+        $this->pdf->Ln(6);
+        /* Start Child Row */
+        $this->pdf->Cell(10);
+        $this->pdf->SetFont('Arial', '', 10);
+        $this->pdf->Cell(60, 10, 'Alamat', 0, 0, '');
+        $this->pdf->Cell(10, 10, ':', 0, 0, 'C');
+        $this->pdf->SetFont('Arial', '', 10);
+        $this->pdf->Cell(0, 10, 'RT ' . $detailSurat->rt_ibu . ' RW ' . $detailSurat->rw_ibu . ' Kel/Desa ' . $detailSurat->desa_ibu . ' Kec ' . $detailSurat->kecamatan_ibu . ' Kab ' . $detailSurat->kab_ibu, 0, 0, '');
+        /* End Child Row */
+
+        $this->pdf->Ln(6);
+
+        /* Start Child Row */
+        $this->pdf->Cell(10);
+        $this->pdf->SetFont('Arial', '', 10);
+        $this->pdf->Cell(60, 10, 'Keterangan', 0, 0, '');
+        $this->pdf->Cell(10, 10, ':', 0, 0, 'C');
+        $this->pdf->SetFont('Arial', '', 10);
+        $this->pdf->MultiCell(0, 6, 'Dipergunakan untuk Persyaratan membuat akta kelahiran', 0, ['L', 'B'], '');
+        /* End Child Row */
+
+        /* End Row *
+
+        /* Start Row */
+        // $this->pdf->SetFont('Arial', '', 10);
+        // $this->pdf->Cell(10, 10, 'II. ', 0, 0, 'L');
+        // $this->pdf->Ln(2.6);
+        // $this->pdf->Cell(5);
+        // $this->pdf->MultiCell(0, 5, 'Orang tersebut di atas benar-benar penduduk Desa Sidorejo Kecamatan Kebonsari Kabupaten Madiun dan benar-benar memiliki usaha dibidang ' . $detailSurat->bidang_usaha, 0, 'L', '');
+        // $this->pdf->Ln(4);
+        /* End Row */
+
+        $this->pdf->Ln(10);
+
+        /* Start Row */
+        $this->pdf->SetFont('Arial', '', 10);
+        $this->pdf->Cell(25, 10);
+        $this->pdf->Cell(0, 10, 'Demikian Surat Keterangan Kelahiran ini kami buat. Mohon dapatnya dipergunakan', 0, 'L', '');
+        $this->pdf->Ln(8);
+        $this->pdf->Cell(20);
+        $this->pdf->Cell(0, 5, 'sebagaimana mestinya.', 0, 'L', '');
+        $this->pdf->Ln(6);
+        /* End Row */
+
+
+        $this->pdf->Ln(8); // new line
+        /* Start Row */
+        $this->pdf->SetFont('Arial', '', 10);
+        $this->pdf->Cell(20);
+        $this->pdf->Cell(30, 10, '', 0, 0, 'C');
+        $this->pdf->Cell(73);
+        $this->pdf->Cell(30, 10, 'Magetan, ' . date('d M yyyy'), 0, 0, 'C');
+        $this->pdf->Ln(4); // new line
+        $this->pdf->Cell(20);
+        $this->pdf->Cell(50, 10, '', 0, 0, 'L');
+        $this->pdf->Cell(45);
+        $this->pdf->AddFont('Times New Roman', '', 'times.php'); //Regular
+        $this->pdf->SetFont('Times New Roman', '', 12);
+        $this->pdf->Cell(30, 10, 'LURAH SUKOWINANGUN', 0, 0, 'L');
+        $this->pdf->Ln(30); // new line
+        $this->pdf->SetFont('Arial', 'UB', 10);
+        $this->pdf->Cell(20);
+        $this->pdf->Cell(50, 10, '', 0, 0, 'L');
+        $this->pdf->Cell(51);
+        $this->pdf->SetFont('Arial', 'UB', 10);
+        $this->pdf->Cell(40, 10, 'SUCIPTO, S.Sos', 0, 0, 'C');
+        $this->pdf->Ln(4); // new line
+        $this->pdf->SetFont('Arial', '', 9);
+        $this->pdf->Cell(132);
+        $this->pdf->Cell(40, 10, 'Penata Tk.l', 0, 0);
+        $this->pdf->Ln(6);
+        $this->pdf->Cell(120);
         $this->pdf->Cell(40, 10, 'NIP.19680423 199602 1 001', 0, 0);
         $this->pdf->SetFont('Arial', '', 10);
         /* End Row */
@@ -801,7 +1136,7 @@ class CetakSurat_model extends CI_Model
         $this->pdf->Ln(6); // new line
 
         /* Start Row */
-        $this->pdf->Cell(70,);
+        $this->pdf->Cell(70);
         $this->pdf->SetFont('Arial', '', 12);
         $this->pdf->Cell(30, 10, 'Kecamatan', 0, 0, '');
         $this->pdf->Cell(10, 10, ':', 0, 0, 'C');
@@ -811,7 +1146,7 @@ class CetakSurat_model extends CI_Model
         $this->pdf->Ln(6); // new line
 
         /* Start Row */
-        $this->pdf->Cell(70,);
+        $this->pdf->Cell(70);
         $this->pdf->SetFont('Arial', '', 12);
         $this->pdf->Cell(30, 10, 'Kabupaten/Kota', 0, 0, '');
         $this->pdf->Cell(10, 10, ':', 0, 0, 'C');
@@ -821,7 +1156,7 @@ class CetakSurat_model extends CI_Model
         $this->pdf->Ln(6); // new line
 
         /* Start Row */
-        $this->pdf->Cell(70,);
+        $this->pdf->Cell(70);
         $this->pdf->SetFont('Arial', '', 12);
         $this->pdf->Cell(30, 10, 'Provinsi', 0, 0, '');
         $this->pdf->Cell(10, 10, ':', 0, 0, 'C');
@@ -831,7 +1166,7 @@ class CetakSurat_model extends CI_Model
         $this->pdf->Ln(6); // new line
 
         /* Start Row */
-        $this->pdf->Cell(70,);
+        $this->pdf->Cell(70);
         $this->pdf->SetFont('Arial', '', 12);
         $this->pdf->Cell(30, 10, 'Pada Tanggal', 0, 0, '');
         $this->pdf->Cell(10, 10, ':', 0, 0, 'C');
