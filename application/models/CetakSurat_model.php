@@ -1994,6 +1994,7 @@ class CetakSurat_model extends CI_Model
 
         $this->pdf->Output();
     }
+
     public function skck($idSurat, $nik, $penduduk)
     {
         $detailSurat = $this->getDetailSurat($idSurat);
@@ -2848,6 +2849,600 @@ class CetakSurat_model extends CI_Model
         // $this->pdf->Cell(0, 10);                                                                            ', 0, 0, 'C');
 
         /* End Halaman 2 */
+
+        $this->pdf->Output();
+    }
+
+    public function suketPerjalanan($idSurat, $nik, $penduduk)
+    {
+        $detailSurat = $this->getDetailSurat($idSurat);
+        $detailSurat = json_decode($detailSurat['form_data']);
+        // var_dump($penduduk);
+        // var_dump($detailSurat);
+        /* Halaman 1 */
+        // Header
+        $this->header2($this->pdf);
+
+        $this->pdf->Cell(190, 0.5, '', 10, 0, '', true);
+        $this->pdf->Ln(1);
+        $this->pdf->Cell(190, 1.5, '', 10, 0, '', true);
+        $this->pdf->Ln(6);
+
+        $this->pdf->SetFont('Arial', 'U', 14);
+        $this->pdf->Cell(80);
+        $this->pdf->Cell(30, 10, 'SURAT PENGANTAR SKCK', 0, 0, 'C');
+
+        $this->pdf->Ln(6); // new line
+
+        $this->pdf->SetFont('Arial', '', 12);
+        $this->pdf->Cell(80);
+        $this->pdf->Cell(30, 10, 'Nomor : 474/   /403.406.07/2022', 0, 0, 'C');
+
+        $this->pdf->Ln(10); // new line
+
+        /* Start Row */
+        $this->pdf->SetFont('Arial', '', 12);
+        $this->pdf->Cell(20);
+        $this->pdf->MultiCell(0, 5, 'Yang bertanda tangan dibawah ini Lurah Sukowinangun Kecamatan Magetan', 0, 'L', '');
+        $this->pdf->Ln(4);
+        $this->pdf->Cell(60, 0, 'Kabupaten Magetan menerangkan dengan sebenarnya bahwa :', 0, 'L', '');
+        /* End Row */
+
+        $this->pdf->Ln(4); // new line
+
+        /* Start Row */
+        $this->pdf->SetFont('Arial', '', 12);
+        $this->pdf->Cell(10, 10);
+        $this->pdf->Cell(60, 10, 'Nama', 0, 0, '');
+        $this->pdf->Cell(10, 10, ':', 0, 0, 'C');
+        $this->pdf->SetFont('Arial', '', 12);
+        $this->pdf->Cell(30, 10, $penduduk['nama'], 0, 0, '');
+        /* End Row */
+
+        $this->pdf->Ln(8); // new line
+
+        /* Start Row */
+        $this->pdf->SetFont('Arial', '', 12);
+        $this->pdf->Cell(10, 10);
+        $this->pdf->Cell(60, 10, 'Tempat, Tgl. Lahir', 0, 0, '');
+        $this->pdf->Cell(10, 10, ':', 0, 0, 'C');
+        $this->pdf->SetFont('Arial', '', 12);
+        $this->pdf->Cell(30, 10, $penduduk['tempat_lahir'] . ', ' . $penduduk['tanggal_lahir'], 0, 0, '');
+        /* End Row */
+
+        $this->pdf->Ln(8); // new line
+
+        /* Start Row */
+        $this->pdf->SetFont('Arial', '', 12);
+        $this->pdf->Cell(10, 10);
+        $this->pdf->Cell(60, 10, 'Jenis Kelamin', 0, 0, '');
+        $this->pdf->Cell(10, 10, ':', 0, 0, 'C');
+        $this->pdf->SetFont('Arial', '', 12);
+        $this->pdf->Cell(30, 10, $penduduk['jenis_kelamin'], 0, 0, '');
+        /* End Row */
+
+        $this->pdf->Ln(8); // new line
+
+        /* Start Row */
+        $this->pdf->SetFont('Arial', '', 12);
+        $this->pdf->Cell(10, 10);
+        $this->pdf->Cell(60, 10, 'Agama', 0, 0, '');
+        $this->pdf->Cell(10, 10, ':', 0, 0, 'C');
+        $this->pdf->SetFont('Arial', '', 12);
+        $this->pdf->Cell(30, 10, $penduduk['agama'], 0, 0, '');
+        /* End Row */
+
+        $this->pdf->Ln(8); // new line
+
+        /* Start Row */
+        $this->pdf->SetFont('Arial', '', 12);
+        $this->pdf->Cell(10, 10);
+        $this->pdf->Cell(60, 10, 'Status Perkawinan', 0, 0, '');
+        $this->pdf->Cell(10, 10, ':', 0, 0, 'C');
+        $this->pdf->SetFont('Arial', '', 12);
+        $this->pdf->Cell(30, 10, $penduduk['status_pernikahan'], 0, 0, '');
+        /* End Row */
+
+        $this->pdf->Ln(8); // new line
+
+        /* Start Row */
+        $this->pdf->SetFont('Arial', '', 12);
+        $this->pdf->Cell(10, 10);
+        $this->pdf->Cell(60, 10, 'Kewarganegaraan', 0, 0, '');
+        $this->pdf->Cell(10, 10, ':', 0, 0, 'C');
+        $this->pdf->SetFont('Arial', '', 12);
+        $this->pdf->Cell(30, 10, $penduduk['country_name'], 0, 0, '');
+        /* End Row */
+
+        $this->pdf->Ln(8); // new line
+
+        /* Start Row */
+        $this->pdf->SetFont('Arial', '', 12);
+        $this->pdf->Cell(10, 10);
+        $this->pdf->Cell(60, 10, 'Pekerjaan', 0, 0, '');
+        $this->pdf->Cell(10, 10, ':', 0, 0, 'C');
+        $this->pdf->SetFont('Arial', '', 12);
+        $this->pdf->Cell(30, 10, $penduduk['pekerjaan'], 0, 0, '');
+        /* End Row */
+
+        $this->pdf->Ln(8); // new line
+
+        /* Start Row */
+        $this->pdf->SetFont('Arial', '', 12);
+        $this->pdf->Cell(10, 10);
+        $this->pdf->Cell(60, 10, 'NIK', 0, 0, '');
+        $this->pdf->Cell(10, 10, ':', 0, 0, 'C');
+        $this->pdf->SetFont('Arial', '', 12);
+        $this->pdf->Cell(30, 10, $penduduk['nik'], 0, 0, '');
+        /* End Row */
+
+        $this->pdf->Ln(8); // new line
+
+        /* Start Row */
+        $this->pdf->SetFont('Arial', '', 12);
+        $this->pdf->Cell(10, 10);
+        $this->pdf->Cell(60, 10, 'Alamat', 0, 0, '');
+        $this->pdf->Cell(10, 10, ':', 0, 0, 'C');
+        $this->pdf->SetFont('Arial', '', 12);
+        $this->pdf->MultiCell(0, 5, $penduduk['alamat'], 0, 'L', '');
+        /* End Row */
+
+        $this->pdf->Ln(8); // new line
+
+        /* Start Row */
+        $this->pdf->SetFont('Arial', '', 12);
+        $this->pdf->Cell(10, 15);
+        $this->pdf->MultiCell(0, 10, 'Bahwa orang tersebut diatas benar-benar, berkelakuan baik dan belum pernah', 0, 'L', '');
+        $this->pdf->Ln(1);
+        $this->pdf->Cell(50, 0, 'terkena Tindak Pidana Apapun.', 0, 0, '');
+        $this->pdf->SetFont('Arial', '', 12);
+        $this->pdf->Cell(10, 15);
+        $this->pdf->Ln(1);
+        $this->pdf->Cell(10, 15);
+        $this->pdf->Cell(50, 10, 'Surat keterangan ini akan dipergunakan untuk persyaratan Membuat SKCK di Polsek', 0, 'L', '');
+        $this->pdf->SetFont('Arial', '', 12);
+        $this->pdf->Ln(5);
+        $this->pdf->Cell(20, 10, 'Magetan.', 0, 0, '');
+        $this->pdf->SetFont('Arial', '', 12);
+        $this->pdf->Cell(10, 15);
+        $this->pdf->Ln(8);
+        $this->pdf->Cell(10, 15);
+        $this->pdf->MultiCell(0, 10, 'Demikian surat keterangan ini dibuat dengan sebanar-benarnya dan mohon dapat', 0, 'L', '');
+        $this->pdf->Ln(1);
+        $this->pdf->SetFont('Arial', '', 12);
+        $this->pdf->Cell(20, 0, 'dipergunakan sebagaimana mestinya.', 0, 0, '');
+        /* End Row */
+
+        $this->pdf->Ln(32); // new line
+        /* Start Row */
+        $this->pdf->SetFont('Arial', '', 12);
+        $this->pdf->Cell(20);
+        $this->pdf->Cell(30, 10, '', 0, 0, 'C');
+        $this->pdf->Cell(70);
+        $this->pdf->Cell(45, 10, 'Magetan, ' . date('d M y'), 0, 0, 'C');
+        $this->pdf->Ln(8); // new line
+        $this->pdf->Cell(20);
+        $this->pdf->Cell(50, 10, '', 0, 0, 'L');
+        $this->pdf->Cell(47);
+        $this->pdf->AddFont('Times New Roman', '', 'times.php'); //Regular
+        $this->pdf->SetFont('Times New Roman', '', 12);
+        $this->pdf->Cell(30, 10, 'LURAH SUKOWINANGUN', 0, 0, 'L');
+        $this->pdf->Ln(30); // new line
+        $this->pdf->SetFont('Arial', 'UB', 10);
+        $this->pdf->Cell(20);
+        $this->pdf->Cell(50, 10, '', 0, 0, 'L');
+        $this->pdf->Cell(45);
+        $this->pdf->SetFont('Arial', 'UB', 10);
+        $this->pdf->Cell(50, 10, 'SUCIPTO, S.Sos', 0, 0, 'C');
+        $this->pdf->Ln(6); // new line
+        $this->pdf->SetFont('Arial', '', 12);
+        $this->pdf->Cell(128);
+        $this->pdf->Cell(40, 10, 'Penata Tk.l', 0, 0);
+        $this->pdf->Ln(6);
+        $this->pdf->Cell(112);
+        $this->pdf->Cell(40, 10, 'NIP.19680423 199602 1 001', 0, 0);
+        $this->pdf->SetFont('Arial', '', 10);
+        /* End Row */
+
+        $this->pdf->Output();
+
+        /* End Halaman 1 */
+
+        $this->pdf->Output();
+    }
+
+    public function suketBelumMenikah($idSurat, $nik, $penduduk)
+    {
+        $detailSurat = $this->getDetailSurat($idSurat);
+        $detailSurat = json_decode($detailSurat['form_data']);
+        // var_dump($penduduk);
+        // var_dump($detailSurat);
+        /* Halaman 1 */
+        // Header
+        $this->header2($this->pdf);
+
+        $this->pdf->Cell(190, 0.5, '', 10, 0, '', true);
+        $this->pdf->Ln(1);
+        $this->pdf->Cell(190, 1.5, '', 10, 0, '', true);
+        $this->pdf->Ln(6);
+
+        $this->pdf->SetFont('Arial', 'U', 14);
+        $this->pdf->Cell(80);
+        $this->pdf->Cell(30, 10, 'SURAT PENGANTAR SKCK', 0, 0, 'C');
+
+        $this->pdf->Ln(6); // new line
+
+        $this->pdf->SetFont('Arial', '', 12);
+        $this->pdf->Cell(80);
+        $this->pdf->Cell(30, 10, 'Nomor : 474/   /403.406.07/2022', 0, 0, 'C');
+
+        $this->pdf->Ln(10); // new line
+
+        /* Start Row */
+        $this->pdf->SetFont('Arial', '', 12);
+        $this->pdf->Cell(20);
+        $this->pdf->MultiCell(0, 5, 'Yang bertanda tangan dibawah ini Lurah Sukowinangun Kecamatan Magetan', 0, 'L', '');
+        $this->pdf->Ln(4);
+        $this->pdf->Cell(60, 0, 'Kabupaten Magetan menerangkan dengan sebenarnya bahwa :', 0, 'L', '');
+        /* End Row */
+
+        $this->pdf->Ln(4); // new line
+
+        /* Start Row */
+        $this->pdf->SetFont('Arial', '', 12);
+        $this->pdf->Cell(10, 10);
+        $this->pdf->Cell(60, 10, 'Nama', 0, 0, '');
+        $this->pdf->Cell(10, 10, ':', 0, 0, 'C');
+        $this->pdf->SetFont('Arial', '', 12);
+        $this->pdf->Cell(30, 10, $penduduk['nama'], 0, 0, '');
+        /* End Row */
+
+        $this->pdf->Ln(8); // new line
+
+        /* Start Row */
+        $this->pdf->SetFont('Arial', '', 12);
+        $this->pdf->Cell(10, 10);
+        $this->pdf->Cell(60, 10, 'Tempat, Tgl. Lahir', 0, 0, '');
+        $this->pdf->Cell(10, 10, ':', 0, 0, 'C');
+        $this->pdf->SetFont('Arial', '', 12);
+        $this->pdf->Cell(30, 10, $penduduk['tempat_lahir'] . ', ' . $penduduk['tanggal_lahir'], 0, 0, '');
+        /* End Row */
+
+        $this->pdf->Ln(8); // new line
+
+        /* Start Row */
+        $this->pdf->SetFont('Arial', '', 12);
+        $this->pdf->Cell(10, 10);
+        $this->pdf->Cell(60, 10, 'Jenis Kelamin', 0, 0, '');
+        $this->pdf->Cell(10, 10, ':', 0, 0, 'C');
+        $this->pdf->SetFont('Arial', '', 12);
+        $this->pdf->Cell(30, 10, $penduduk['jenis_kelamin'], 0, 0, '');
+        /* End Row */
+
+        $this->pdf->Ln(8); // new line
+
+        /* Start Row */
+        $this->pdf->SetFont('Arial', '', 12);
+        $this->pdf->Cell(10, 10);
+        $this->pdf->Cell(60, 10, 'Agama', 0, 0, '');
+        $this->pdf->Cell(10, 10, ':', 0, 0, 'C');
+        $this->pdf->SetFont('Arial', '', 12);
+        $this->pdf->Cell(30, 10, $penduduk['agama'], 0, 0, '');
+        /* End Row */
+
+        $this->pdf->Ln(8); // new line
+
+        /* Start Row */
+        $this->pdf->SetFont('Arial', '', 12);
+        $this->pdf->Cell(10, 10);
+        $this->pdf->Cell(60, 10, 'Status Perkawinan', 0, 0, '');
+        $this->pdf->Cell(10, 10, ':', 0, 0, 'C');
+        $this->pdf->SetFont('Arial', '', 12);
+        $this->pdf->Cell(30, 10, $penduduk['status_pernikahan'], 0, 0, '');
+        /* End Row */
+
+        $this->pdf->Ln(8); // new line
+
+        /* Start Row */
+        $this->pdf->SetFont('Arial', '', 12);
+        $this->pdf->Cell(10, 10);
+        $this->pdf->Cell(60, 10, 'Kewarganegaraan', 0, 0, '');
+        $this->pdf->Cell(10, 10, ':', 0, 0, 'C');
+        $this->pdf->SetFont('Arial', '', 12);
+        $this->pdf->Cell(30, 10, $penduduk['country_name'], 0, 0, '');
+        /* End Row */
+
+        $this->pdf->Ln(8); // new line
+
+        /* Start Row */
+        $this->pdf->SetFont('Arial', '', 12);
+        $this->pdf->Cell(10, 10);
+        $this->pdf->Cell(60, 10, 'Pekerjaan', 0, 0, '');
+        $this->pdf->Cell(10, 10, ':', 0, 0, 'C');
+        $this->pdf->SetFont('Arial', '', 12);
+        $this->pdf->Cell(30, 10, $penduduk['pekerjaan'], 0, 0, '');
+        /* End Row */
+
+        $this->pdf->Ln(8); // new line
+
+        /* Start Row */
+        $this->pdf->SetFont('Arial', '', 12);
+        $this->pdf->Cell(10, 10);
+        $this->pdf->Cell(60, 10, 'NIK', 0, 0, '');
+        $this->pdf->Cell(10, 10, ':', 0, 0, 'C');
+        $this->pdf->SetFont('Arial', '', 12);
+        $this->pdf->Cell(30, 10, $penduduk['nik'], 0, 0, '');
+        /* End Row */
+
+        $this->pdf->Ln(8); // new line
+
+        /* Start Row */
+        $this->pdf->SetFont('Arial', '', 12);
+        $this->pdf->Cell(10, 10);
+        $this->pdf->Cell(60, 10, 'Alamat', 0, 0, '');
+        $this->pdf->Cell(10, 10, ':', 0, 0, 'C');
+        $this->pdf->SetFont('Arial', '', 12);
+        $this->pdf->MultiCell(0, 5, $penduduk['alamat'], 0, 'L', '');
+        /* End Row */
+
+        $this->pdf->Ln(8); // new line
+
+        /* Start Row */
+        $this->pdf->SetFont('Arial', '', 12);
+        $this->pdf->Cell(10, 15);
+        $this->pdf->MultiCell(0, 10, 'Bahwa orang tersebut diatas benar-benar, berkelakuan baik dan belum pernah', 0, 'L', '');
+        $this->pdf->Ln(1);
+        $this->pdf->Cell(50, 0, 'terkena Tindak Pidana Apapun.', 0, 0, '');
+        $this->pdf->SetFont('Arial', '', 12);
+        $this->pdf->Cell(10, 15);
+        $this->pdf->Ln(1);
+        $this->pdf->Cell(10, 15);
+        $this->pdf->Cell(50, 10, 'Surat keterangan ini akan dipergunakan untuk persyaratan Membuat SKCK di Polsek', 0, 'L', '');
+        $this->pdf->SetFont('Arial', '', 12);
+        $this->pdf->Ln(5);
+        $this->pdf->Cell(20, 10, 'Magetan.', 0, 0, '');
+        $this->pdf->SetFont('Arial', '', 12);
+        $this->pdf->Cell(10, 15);
+        $this->pdf->Ln(8);
+        $this->pdf->Cell(10, 15);
+        $this->pdf->MultiCell(0, 10, 'Demikian surat keterangan ini dibuat dengan sebanar-benarnya dan mohon dapat', 0, 'L', '');
+        $this->pdf->Ln(1);
+        $this->pdf->SetFont('Arial', '', 12);
+        $this->pdf->Cell(20, 0, 'dipergunakan sebagaimana mestinya.', 0, 0, '');
+        /* End Row */
+
+        $this->pdf->Ln(32); // new line
+        /* Start Row */
+        $this->pdf->SetFont('Arial', '', 12);
+        $this->pdf->Cell(20);
+        $this->pdf->Cell(30, 10, '', 0, 0, 'C');
+        $this->pdf->Cell(70);
+        $this->pdf->Cell(45, 10, 'Magetan, ' . date('d M y'), 0, 0, 'C');
+        $this->pdf->Ln(8); // new line
+        $this->pdf->Cell(20);
+        $this->pdf->Cell(50, 10, '', 0, 0, 'L');
+        $this->pdf->Cell(47);
+        $this->pdf->AddFont('Times New Roman', '', 'times.php'); //Regular
+        $this->pdf->SetFont('Times New Roman', '', 12);
+        $this->pdf->Cell(30, 10, 'LURAH SUKOWINANGUN', 0, 0, 'L');
+        $this->pdf->Ln(30); // new line
+        $this->pdf->SetFont('Arial', 'UB', 10);
+        $this->pdf->Cell(20);
+        $this->pdf->Cell(50, 10, '', 0, 0, 'L');
+        $this->pdf->Cell(45);
+        $this->pdf->SetFont('Arial', 'UB', 10);
+        $this->pdf->Cell(50, 10, 'SUCIPTO, S.Sos', 0, 0, 'C');
+        $this->pdf->Ln(6); // new line
+        $this->pdf->SetFont('Arial', '', 12);
+        $this->pdf->Cell(128);
+        $this->pdf->Cell(40, 10, 'Penata Tk.l', 0, 0);
+        $this->pdf->Ln(6);
+        $this->pdf->Cell(112);
+        $this->pdf->Cell(40, 10, 'NIP.19680423 199602 1 001', 0, 0);
+        $this->pdf->SetFont('Arial', '', 10);
+        /* End Row */
+
+        $this->pdf->Output();
+
+        /* End Halaman 1 */
+
+        $this->pdf->Output();
+    }
+
+    public function suketPengantarKehilangan($idSurat, $nik, $penduduk)
+    {
+        $detailSurat = $this->getDetailSurat($idSurat);
+        $detailSurat = json_decode($detailSurat['form_data']);
+        // var_dump($penduduk);
+        // var_dump($detailSurat);
+        /* Halaman 1 */
+        // Header
+        $this->header2($this->pdf);
+
+        $this->pdf->Cell(190, 0.5, '', 10, 0, '', true);
+        $this->pdf->Ln(1);
+        $this->pdf->Cell(190, 1.5, '', 10, 0, '', true);
+        $this->pdf->Ln(6);
+
+        $this->pdf->SetFont('Arial', 'U', 14);
+        $this->pdf->Cell(80);
+        $this->pdf->Cell(30, 10, 'SURAT PENGANTAR SKCK', 0, 0, 'C');
+
+        $this->pdf->Ln(6); // new line
+
+        $this->pdf->SetFont('Arial', '', 12);
+        $this->pdf->Cell(80);
+        $this->pdf->Cell(30, 10, 'Nomor : 474/   /403.406.07/2022', 0, 0, 'C');
+
+        $this->pdf->Ln(10); // new line
+
+        /* Start Row */
+        $this->pdf->SetFont('Arial', '', 12);
+        $this->pdf->Cell(20);
+        $this->pdf->MultiCell(0, 5, 'Yang bertanda tangan dibawah ini Lurah Sukowinangun Kecamatan Magetan', 0, 'L', '');
+        $this->pdf->Ln(4);
+        $this->pdf->Cell(60, 0, 'Kabupaten Magetan menerangkan dengan sebenarnya bahwa :', 0, 'L', '');
+        /* End Row */
+
+        $this->pdf->Ln(4); // new line
+
+        /* Start Row */
+        $this->pdf->SetFont('Arial', '', 12);
+        $this->pdf->Cell(10, 10);
+        $this->pdf->Cell(60, 10, 'Nama', 0, 0, '');
+        $this->pdf->Cell(10, 10, ':', 0, 0, 'C');
+        $this->pdf->SetFont('Arial', '', 12);
+        $this->pdf->Cell(30, 10, $penduduk['nama'], 0, 0, '');
+        /* End Row */
+
+        $this->pdf->Ln(8); // new line
+
+        /* Start Row */
+        $this->pdf->SetFont('Arial', '', 12);
+        $this->pdf->Cell(10, 10);
+        $this->pdf->Cell(60, 10, 'Tempat, Tgl. Lahir', 0, 0, '');
+        $this->pdf->Cell(10, 10, ':', 0, 0, 'C');
+        $this->pdf->SetFont('Arial', '', 12);
+        $this->pdf->Cell(30, 10, $penduduk['tempat_lahir'] . ', ' . $penduduk['tanggal_lahir'], 0, 0, '');
+        /* End Row */
+
+        $this->pdf->Ln(8); // new line
+
+        /* Start Row */
+        $this->pdf->SetFont('Arial', '', 12);
+        $this->pdf->Cell(10, 10);
+        $this->pdf->Cell(60, 10, 'Jenis Kelamin', 0, 0, '');
+        $this->pdf->Cell(10, 10, ':', 0, 0, 'C');
+        $this->pdf->SetFont('Arial', '', 12);
+        $this->pdf->Cell(30, 10, $penduduk['jenis_kelamin'], 0, 0, '');
+        /* End Row */
+
+        $this->pdf->Ln(8); // new line
+
+        /* Start Row */
+        $this->pdf->SetFont('Arial', '', 12);
+        $this->pdf->Cell(10, 10);
+        $this->pdf->Cell(60, 10, 'Agama', 0, 0, '');
+        $this->pdf->Cell(10, 10, ':', 0, 0, 'C');
+        $this->pdf->SetFont('Arial', '', 12);
+        $this->pdf->Cell(30, 10, $penduduk['agama'], 0, 0, '');
+        /* End Row */
+
+        $this->pdf->Ln(8); // new line
+
+        /* Start Row */
+        $this->pdf->SetFont('Arial', '', 12);
+        $this->pdf->Cell(10, 10);
+        $this->pdf->Cell(60, 10, 'Status Perkawinan', 0, 0, '');
+        $this->pdf->Cell(10, 10, ':', 0, 0, 'C');
+        $this->pdf->SetFont('Arial', '', 12);
+        $this->pdf->Cell(30, 10, $penduduk['status_pernikahan'], 0, 0, '');
+        /* End Row */
+
+        $this->pdf->Ln(8); // new line
+
+        /* Start Row */
+        $this->pdf->SetFont('Arial', '', 12);
+        $this->pdf->Cell(10, 10);
+        $this->pdf->Cell(60, 10, 'Kewarganegaraan', 0, 0, '');
+        $this->pdf->Cell(10, 10, ':', 0, 0, 'C');
+        $this->pdf->SetFont('Arial', '', 12);
+        $this->pdf->Cell(30, 10, $penduduk['country_name'], 0, 0, '');
+        /* End Row */
+
+        $this->pdf->Ln(8); // new line
+
+        /* Start Row */
+        $this->pdf->SetFont('Arial', '', 12);
+        $this->pdf->Cell(10, 10);
+        $this->pdf->Cell(60, 10, 'Pekerjaan', 0, 0, '');
+        $this->pdf->Cell(10, 10, ':', 0, 0, 'C');
+        $this->pdf->SetFont('Arial', '', 12);
+        $this->pdf->Cell(30, 10, $penduduk['pekerjaan'], 0, 0, '');
+        /* End Row */
+
+        $this->pdf->Ln(8); // new line
+
+        /* Start Row */
+        $this->pdf->SetFont('Arial', '', 12);
+        $this->pdf->Cell(10, 10);
+        $this->pdf->Cell(60, 10, 'NIK', 0, 0, '');
+        $this->pdf->Cell(10, 10, ':', 0, 0, 'C');
+        $this->pdf->SetFont('Arial', '', 12);
+        $this->pdf->Cell(30, 10, $penduduk['nik'], 0, 0, '');
+        /* End Row */
+
+        $this->pdf->Ln(8); // new line
+
+        /* Start Row */
+        $this->pdf->SetFont('Arial', '', 12);
+        $this->pdf->Cell(10, 10);
+        $this->pdf->Cell(60, 10, 'Alamat', 0, 0, '');
+        $this->pdf->Cell(10, 10, ':', 0, 0, 'C');
+        $this->pdf->SetFont('Arial', '', 12);
+        $this->pdf->MultiCell(0, 5, $penduduk['alamat'], 0, 'L', '');
+        /* End Row */
+
+        $this->pdf->Ln(8); // new line
+
+        /* Start Row */
+        $this->pdf->SetFont('Arial', '', 12);
+        $this->pdf->Cell(10, 15);
+        $this->pdf->MultiCell(0, 10, 'Bahwa orang tersebut diatas benar-benar, berkelakuan baik dan belum pernah', 0, 'L', '');
+        $this->pdf->Ln(1);
+        $this->pdf->Cell(50, 0, 'terkena Tindak Pidana Apapun.', 0, 0, '');
+        $this->pdf->SetFont('Arial', '', 12);
+        $this->pdf->Cell(10, 15);
+        $this->pdf->Ln(1);
+        $this->pdf->Cell(10, 15);
+        $this->pdf->Cell(50, 10, 'Surat keterangan ini akan dipergunakan untuk persyaratan Membuat SKCK di Polsek', 0, 'L', '');
+        $this->pdf->SetFont('Arial', '', 12);
+        $this->pdf->Ln(5);
+        $this->pdf->Cell(20, 10, 'Magetan.', 0, 0, '');
+        $this->pdf->SetFont('Arial', '', 12);
+        $this->pdf->Cell(10, 15);
+        $this->pdf->Ln(8);
+        $this->pdf->Cell(10, 15);
+        $this->pdf->MultiCell(0, 10, 'Demikian surat keterangan ini dibuat dengan sebanar-benarnya dan mohon dapat', 0, 'L', '');
+        $this->pdf->Ln(1);
+        $this->pdf->SetFont('Arial', '', 12);
+        $this->pdf->Cell(20, 0, 'dipergunakan sebagaimana mestinya.', 0, 0, '');
+        /* End Row */
+
+        $this->pdf->Ln(32); // new line
+        /* Start Row */
+        $this->pdf->SetFont('Arial', '', 12);
+        $this->pdf->Cell(20);
+        $this->pdf->Cell(30, 10, '', 0, 0, 'C');
+        $this->pdf->Cell(70);
+        $this->pdf->Cell(45, 10, 'Magetan, ' . date('d M y'), 0, 0, 'C');
+        $this->pdf->Ln(8); // new line
+        $this->pdf->Cell(20);
+        $this->pdf->Cell(50, 10, '', 0, 0, 'L');
+        $this->pdf->Cell(47);
+        $this->pdf->AddFont('Times New Roman', '', 'times.php'); //Regular
+        $this->pdf->SetFont('Times New Roman', '', 12);
+        $this->pdf->Cell(30, 10, 'LURAH SUKOWINANGUN', 0, 0, 'L');
+        $this->pdf->Ln(30); // new line
+        $this->pdf->SetFont('Arial', 'UB', 10);
+        $this->pdf->Cell(20);
+        $this->pdf->Cell(50, 10, '', 0, 0, 'L');
+        $this->pdf->Cell(45);
+        $this->pdf->SetFont('Arial', 'UB', 10);
+        $this->pdf->Cell(50, 10, 'SUCIPTO, S.Sos', 0, 0, 'C');
+        $this->pdf->Ln(6); // new line
+        $this->pdf->SetFont('Arial', '', 12);
+        $this->pdf->Cell(128);
+        $this->pdf->Cell(40, 10, 'Penata Tk.l', 0, 0);
+        $this->pdf->Ln(6);
+        $this->pdf->Cell(112);
+        $this->pdf->Cell(40, 10, 'NIP.19680423 199602 1 001', 0, 0);
+        $this->pdf->SetFont('Arial', '', 10);
+        /* End Row */
+
+        $this->pdf->Output();
+
+        /* End Halaman 1 */
 
         $this->pdf->Output();
     }

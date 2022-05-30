@@ -67,7 +67,7 @@ class ListPermintaan extends CI_Controller
             $html = [$page1, $page2];
 
             $this->CetakSurat_model->printFromView($html, count($html));
-        } elseif ($jenisSurat == 'skck') {
+        } elseif ($jenisSurat == 'surat keterangan cacatan kepolisian') {
             // $page1 = $this->load->view('cetak/surat-skck', '', true);
             // $page2 = $this->load->view('cetak/surat-skck2', '', true);
             // $page3 = $this->load->view('cetak/surat-skck3', '', true);
@@ -75,6 +75,12 @@ class ListPermintaan extends CI_Controller
 
             // $this->CetakSurat_model->printFromView($html, count($html));
             $this->CetakSurat_model->skck($id, $nik, $penduduk);
+        } elseif ($jenisSurat == 'surat keterangan perjalanan') {
+            $this->CetakSurat_model->suketPerjalanan($id, $nik, $penduduk);
+        } elseif ($jenisSurat == 'surat keterangan belum menikah') {
+            $this->CetakSurat_model->suketBelumMenikah($id, $nik, $penduduk);
+        } elseif ($jenisSurat == 'surat keterangan kehilangan') {
+            $this->CetakSurat_model->suketBelumMenikah($id, $nik, $penduduk);
         }
     }
 }
