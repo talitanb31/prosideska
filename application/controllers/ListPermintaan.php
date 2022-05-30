@@ -53,7 +53,7 @@ class ListPermintaan extends CI_Controller
         elseif ($jenisSurat == 'surat tidak mampu')
             $this->CetakSurat_model->suratTidakMampu($jenisSurat);
         elseif ($jenisSurat == 'surat kuasa')
-            $this->CetakSurat_model->suratKuasa($jenisSurat);
+            $this->CetakSurat_model->suratKuasa($id, $penduduk);
         elseif ($jenisSurat == 'surat usaha')
             $this->CetakSurat_model->suratUsaha($id, $penduduk);
         elseif ($jenisSurat == 'surat kelahiran') {
