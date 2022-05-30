@@ -74,7 +74,7 @@ class ListPermintaan extends CI_Controller
             // $html = [$page1, $page2, $page3];
 
             // $this->CetakSurat_model->printFromView($html, count($html));
-            $this->CetakSurat_model->skck($jenisSurat);
+            $this->CetakSurat_model->skck($id, $nik, $penduduk);
         }
     }
 }
