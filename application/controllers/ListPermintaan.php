@@ -24,7 +24,56 @@ class ListPermintaan extends CI_Controller
 
     public function terima($id, $nik)
     {
-        if ($this->PermintaanSurat_model->terima($id, $nik)) {
+        $this->db->select('permintaan_surat.*, jenis_surat.jenis');
+        $this->db->join('jenis_surat', 'jenis_surat.id = permintaan_surat.id_jenis_surat');
+        $jenisSurat = $this->db->get_where('permintaan_surat', array('permintaan_surat.id' => $id))->row_array();
+
+        if ($jenisSurat['jenis'] == 'Surat Keterangan Perjalanan') {
+            $data['id'] = $id;
+            $data['jenis'] = $jenisSurat['jenis'];
+            $data['nik'] = $nik;
+
+            $this->template->load('template', 'list_permintaan/form-surat', $data);
+        } else {
+            if ($this->PermintaanSurat_model->terima($id, $nik)) {
+                $this->session->set_flashdata('pesan', 'surat berhasil diterima');
+                redirect('listpermintaan/index');
+            } else {
+                $this->template->load('template', 'list_permintaan/index');
+            }
+        }
+    }
+
+    public function submitSuratBepergian($id)
+    {
+        $this->db->select('permintaan_surat.form_data');
+        $surat = $this->db->get_where('permintaan_surat', array('id' => $id))->row_array();
+        // var_dump($surat);
+        $formData = json_decode($surat['form_data']);
+        $formData->berlaku_hingga = $this->input->post('berlaku_hingga');
+
+        $formData = json_encode($formData);
+        $data = array(
+            'status' => 'diproses',
+            'id_admin' => $_SESSION['id'],
+            'form_data' => $formData,
+        );
+
+        $this->db->where('id', $id);
+
+        $this->db->update('permintaan_surat', $data);
+
+        if ($this->PermintaanSurat_model->storeNotification($this->input->post('nik'), 'Permintaan surat anda sudah diterima.')) {
+            $this->session->set_flashdata('pesan', 'surat berhasil diterima');
+            redirect('listpermintaan/index');
+        } else {
+            $this->template->load('template', 'list_permintaan/index');
+        }
+    }
+
+    public function tolak($id, $nik)
+    {
+        if ($this->PermintaanSurat_model->tolak($id, $nik)) {
             $this->session->set_flashdata('pesan', 'surat berhasil diterima');
             redirect('listpermintaan/index');
         } else {

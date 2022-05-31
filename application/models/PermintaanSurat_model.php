@@ -33,6 +33,16 @@ class PermintaanSurat_model extends CI_Model
     return $this->storeNotification($nik, 'Permintaan surat anda sudah diterima.');
   }
 
+  public function tolak($id, $nik)
+  {
+    $data = array('status' => 'ditolak', 'id_admin' => $_SESSION['id']);
+    $this->db->where('id', $id);
+
+    $this->db->update($this->_table, $data);
+
+    return $this->storeNotification($nik, 'Permintaan surat ditolak.');
+  }
+
   public function done($id, $nik)
   {
     $data = array('status' => 'selesai', 'id_admin' => $_SESSION['id']);
