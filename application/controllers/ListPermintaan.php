@@ -129,7 +129,9 @@ class ListPermintaan extends CI_Controller
         } elseif ($jenisSurat == 'surat keterangan belum menikah') {
             $this->CetakSurat_model->suketBelumMenikah($id, $nik, $penduduk);
         } elseif ($jenisSurat == 'surat keterangan kehilangan') {
-            $this->CetakSurat_model->suketBelumMenikah($id, $nik, $penduduk);
+            $this->CetakSurat_model->suketPengantarKehilangan($id, $nik, $penduduk);
+        } elseif ($jenisSurat == 'surat perwalian') {
+            $this->CetakSurat_model->suketPerwalian($id, $nik, $penduduk);
         }
     }
 }
