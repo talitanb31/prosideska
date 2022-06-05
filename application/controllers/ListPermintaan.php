@@ -101,6 +101,8 @@ class ListPermintaan extends CI_Controller
             $this->CetakSurat_model->suratPindah($jenisSurat);
         elseif ($jenisSurat == 'surat tidak mampu')
             $this->CetakSurat_model->suratTidakMampu($jenisSurat);
+        elseif ($jenisSurat == 'surat kematian')
+            $this->CetakSurat_model->suratKematian($jenisSurat);
         elseif ($jenisSurat == 'surat kuasa')
             $this->CetakSurat_model->suratKuasa($id, $penduduk);
         elseif ($jenisSurat == 'surat usaha')
@@ -110,12 +112,12 @@ class ListPermintaan extends CI_Controller
             // $html = [$page1];
             // $this->CetakSurat_model->printFromView($html, count($html));
             $this->CetakSurat_model->suratKelahiran($id, $penduduk);
-        } elseif ($jenisSurat == 'surat kematian') {
-            $page1 = $this->load->view('cetak/surat-kematian', '', true);
-            $page2 = $this->load->view('cetak/surat-kematian2', '', true);
-            $html = [$page1, $page2];
+        // } elseif ($jenisSurat == 'surat kematian') {
+        //     $page1 = $this->load->view('cetak/surat-kematian', '', true);
+        //     $page2 = $this->load->view('cetak/surat-kematian2', '', true);
+        //     $html = [$page1, $page2];
 
-            $this->CetakSurat_model->printFromView($html, count($html));
+        //     $this->CetakSurat_model->printFromView($html, count($html));
         } elseif ($jenisSurat == 'surat keterangan cacatan kepolisian') {
             // $page1 = $this->load->view('cetak/surat-skck', '', true);
             // $page2 = $this->load->view('cetak/surat-skck2', '', true);
