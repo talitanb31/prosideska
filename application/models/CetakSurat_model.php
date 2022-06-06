@@ -832,8 +832,20 @@ class CetakSurat_model extends CI_Model
 
     public function suratTidakMampu($data)
     {
+        $detailSurat = $this->getDetailSurat($idSurat);
+        $detailSurat = json_decode($detailSurat['form_data']);
+        // var_dump($penduduk);
+        // var_dump($detailSurat);
+        /* Halaman 1 */
         // Header
-        $this->header($this->pdf);
+        $this->header2($this->pdf);
+
+        $this->pdf->Cell(190, 0.5, '', 10, 0, '', true);
+        $this->pdf->Ln(1);
+        $this->pdf->Cell(190, 1.5, '', 10, 0, '', true);
+        $this->pdf->Ln(6);
+        // Header
+        
 
         $this->pdf->SetFont('Arial', 'U', 14);
         $this->pdf->Cell(80);
