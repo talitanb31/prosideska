@@ -830,7 +830,7 @@ class CetakSurat_model extends CI_Model
         $this->pdf->Output();
     }
 
-    public function suratTidakMampu($data)
+    public function suratTidakMampu($idSurat, $penduduk)
     {
         $detailSurat = $this->getDetailSurat($idSurat);
         $detailSurat = json_decode($detailSurat['form_data']);
@@ -845,7 +845,7 @@ class CetakSurat_model extends CI_Model
         $this->pdf->Cell(190, 1.5, '', 10, 0, '', true);
         $this->pdf->Ln(6);
         // Header
-        
+
 
         $this->pdf->SetFont('Arial', 'U', 14);
         $this->pdf->Cell(80);
@@ -861,7 +861,7 @@ class CetakSurat_model extends CI_Model
 
         /* Start Row */
         $this->pdf->SetFont('Arial', '', 12);
-        $this->pdf->Cell(10,10);
+        $this->pdf->Cell(10, 10);
         $this->pdf->MultiCell(0, 5, 'Yang bertanda tangan dibawah ini Lurah Sukowinangun Kecamatan Magetan', 0, 'L', '');
         $this->pdf->Ln(4);
         $this->pdf->Cell(60, 0, 'Kabupaten Magetan menerangkan dengan sebenarnya bahwa :', 0, 'L', '');
@@ -960,11 +960,11 @@ class CetakSurat_model extends CI_Model
         $this->pdf->Cell(10);
         $this->pdf->MultiCell(0, 5, 'Berdasarkan surat pengantar RT 005 RW 002 No.01/RT.05/RW.02/SKW/2022.', 0, 'L', '');
         $this->pdf->Ln(1);
-        $this->pdf->Cell(0,10, 'Tangggal 14 Maret 2022 bahwa yang bersangkutan di atas benar-benar Keluarga Tidak Mampu',0,'');   
+        $this->pdf->Cell(0, 10, 'Tangggal 14 Maret 2022 bahwa yang bersangkutan di atas benar-benar Keluarga Tidak Mampu', 0, '');
         $this->pdf->Ln(8);
-        $this->pdf->Cell(10,10);
-        $this->pdf->Cell(0,10, 'Surat keterangan ini untuk Persyaratan Beasiswa PIP atas nama :',0,'L','');
-         /* End Row */
+        $this->pdf->Cell(10, 10);
+        $this->pdf->Cell(0, 10, 'Surat keterangan ini untuk Persyaratan Beasiswa PIP atas nama :', 0, 'L', '');
+        /* End Row */
 
         $this->pdf->Ln(6);
         /* Start Child Row */
@@ -1010,20 +1010,20 @@ class CetakSurat_model extends CI_Model
         $this->pdf->Cell(30, 10, 'SMP Negeri 4 Magetan', 0, 0, '');
         /* End Child Row */
 
-       /* Start Row */
+        /* Start Row */
         $this->pdf->SetFont('Arial', '', 12);
         $this->pdf->Ln(12);
         $this->pdf->Cell(10);
         $this->pdf->MultiCell(0, 5, 'Surat keterangan dinyatakan tidak berlaku apabila terjadi pelanggaran peraturan', 0, 'L', '');
         $this->pdf->Ln(1);
-        $this->pdf->Cell(0,10, 'perundangan-undangan dan Perda Kab Magetan serta apabila ada kekeliruan/kesalahan dalam ',0,'');   
+        $this->pdf->Cell(0, 10, 'perundangan-undangan dan Perda Kab Magetan serta apabila ada kekeliruan/kesalahan dalam ', 0, '');
         $this->pdf->Ln(8);
-        $this->pdf->Cell(0,10, 'pembuatannya pemohon/pemegang bersedia mempertanggungjawabkan secara hukum tanpa',0,'');
+        $this->pdf->Cell(0, 10, 'pembuatannya pemohon/pemegang bersedia mempertanggungjawabkan secara hukum tanpa', 0, '');
         $this->pdf->Ln(8);
-        $this->pdf->Cell(0,10, 'melibatkan pihak manapun.',0,'');
+        $this->pdf->Cell(0, 10, 'melibatkan pihak manapun.', 0, '');
         $this->pdf->SetFont('Arial', 'B', 12);
         $this->pdf->Ln(10);
-        $this->pdf->Cell(0,10, 'Surat Keterangan ini berlaku untuk satu kali Keperluan',0,'');
+        $this->pdf->Cell(0, 10, 'Surat Keterangan ini berlaku untuk satu kali Keperluan', 0, '');
         /* End Row */
 
         /* Start Row */
@@ -1032,7 +1032,7 @@ class CetakSurat_model extends CI_Model
         $this->pdf->Cell(10);
         $this->pdf->MultiCell(0, 5, 'Demikian Surat Keterangan ini kami buat, untuk dipergunakan sebagaimana mestinya', 0, 'L', '');
         /* End Row */
-       
+
         $this->pdf->Ln(15); // new line
         /* Start Row */
         $this->pdf->SetFont('Arial', '', 12);
@@ -1041,7 +1041,7 @@ class CetakSurat_model extends CI_Model
         $this->pdf->Cell(70);
         $this->pdf->Cell(45, 10, 'Magetan, ' . date('d M y'), 0, 0, 'C');
         $this->pdf->Ln(8); // new line
-        $this->pdf->Cell(20);   
+        $this->pdf->Cell(20);
         $this->pdf->Cell(50, 10, '', 0, 0, 'L');
         $this->pdf->Cell(47);
         $this->pdf->AddFont('Times New Roman', '', 'times.php'); //Regular
@@ -1067,8 +1067,10 @@ class CetakSurat_model extends CI_Model
         $this->pdf->Output();
     }
 
-    public function suratPindah($data)
+    public function suratPindah($id, $nik, $penduduk)
     {
+        $detailSurat = $this->getDetailSurat($id);
+        $detailSurat = json_decode($detailSurat['form_data']);
         /* Halaman 1 */
         /* Start Header */
         $this->pdf->SetFont('Arial', 'B', 14);
@@ -1092,14 +1094,14 @@ class CetakSurat_model extends CI_Model
         $this->pdf->SetFont('Arial', '', 10);
         $this->pdf->Cell(30, 8, '1. Nomor Kartu Keluarga', 0, 0, 'L');
         $this->pdf->Cell(30);
-        $this->pdf->Cell(0, 8, '3520061712076900', 1, 0, 'L');
+        $this->pdf->Cell(0, 8, $detailSurat->no_kk, 1, 0, 'L');
         $this->pdf->Ln(10);
 
         /* Start Row */
         $this->pdf->SetFont('Arial', '', 10);
         $this->pdf->Cell(30, 8, '2. Nama Kepala Keluarga', 0, 0, 'L');
         $this->pdf->Cell(30);
-        $this->pdf->Cell(0, 8, 'ISBIYANTO', 1, 0, 'L');
+        $this->pdf->Cell(0, 8, $detailSurat->nama_kepala_keluarga, 1, 0, 'L');
         /* End Row */
 
         $this->pdf->Ln(10);
@@ -1108,13 +1110,13 @@ class CetakSurat_model extends CI_Model
         $this->pdf->SetFont('Arial', '', 10);
         $this->pdf->Cell(30, 8, '3. Alamat', 0, 0, 'L');
         $this->pdf->Cell(30);
-        $this->pdf->Cell(50, 8, 'Jl. Kunti', 1, 0, 'L');
+        $this->pdf->Cell(50, 8, $detailSurat->alamat, 1, 0, 'L');
         $this->pdf->Cell(5);
         $this->pdf->Cell(10, 8, 'RT.', 0, 0, 'L');
-        $this->pdf->Cell(24, 8, '006', 1, 0, 'L');
+        $this->pdf->Cell(24, 8, $detailSurat->rt, 1, 0, 'L');
         $this->pdf->Cell(7);
         $this->pdf->Cell(10, 8, 'RW.', 0, 0, 'L');
-        $this->pdf->Cell(24, 8, '001', 1, 0, 'L');
+        $this->pdf->Cell(24, 8, $detailSurat->rw, 1, 0, 'L');
         /* End Row */
 
         $this->pdf->Ln(10);
@@ -1124,11 +1126,11 @@ class CetakSurat_model extends CI_Model
         $this->pdf->Cell(20);
         $this->pdf->Cell(30, 8, 'a. Desa/Kelurahan', 0, 0, 'L');
         $this->pdf->Cell(10);
-        $this->pdf->Cell(50, 8, 'Sukowinangun', 1, 0, 'L');
+        $this->pdf->Cell(50, 8, $detailSurat->kelurahan, 1, 0, 'L');
         $this->pdf->Cell(5);
         $this->pdf->Cell(15, 8, 'c. Kab/Kota', 0, 0, 'L');
         $this->pdf->Cell(10);
-        $this->pdf->Cell(50, 8, 'Magetan', 1, 0, 'L');
+        $this->pdf->Cell(50, 8, $detailSurat->kab, 1, 0, 'L');
         /* End Row */
 
         $this->pdf->Ln(10);
@@ -1138,11 +1140,11 @@ class CetakSurat_model extends CI_Model
         $this->pdf->Cell(20);
         $this->pdf->Cell(30, 8, 'b. Kecamatan', 0, 0, 'L');
         $this->pdf->Cell(10);
-        $this->pdf->Cell(50, 8, 'Magetan', 1, 0, 'L');
+        $this->pdf->Cell(50, 8, $detailSurat->kecamatan, 1, 0, 'L');
         $this->pdf->Cell(5);
         $this->pdf->Cell(15, 8, 'd. Provinsi', 0, 0, 'L');
         $this->pdf->Cell(10);
-        $this->pdf->Cell(50, 8, 'Jawa Timur', 1, 0, 'L');
+        $this->pdf->Cell(50, 8, $detailSurat->prov, 1, 0, 'L');
         /* End Row */
 
         $this->pdf->Ln(10);
@@ -1153,7 +1155,9 @@ class CetakSurat_model extends CI_Model
         $this->pdf->SetFont('Arial', '', 10);
         $this->pdf->Cell(30, 8, '1. Alasan Pindah', 0, 0, 'L');
         $this->pdf->Cell(30);
-        $this->pdf->Cell(8, 8, '6', 1, 0, 'C');
+        $this->pdf->SetFont('Arial', 'B', 10);
+        $this->pdf->Cell(8, 8, isset($detailSurat->alasan) ? $detailSurat->alasan : '7', 1, 0, 'C');
+        $this->pdf->SetFont('Arial', '', 10);
         $this->pdf->Cell(1, 0, '1. Pekerjaan', 0, 0, 'L');
         $this->pdf->Cell(25, 12, '2. Pendidikan', 0, 0, 'L');
         $this->pdf->Cell(1, 0, '3. Keamanan', 0, 0, 'L');
@@ -1161,7 +1165,7 @@ class CetakSurat_model extends CI_Model
         $this->pdf->Cell(1, 0, '5. Perumahan', 0, 0, 'L');
         $this->pdf->Cell(25, 12, '6. Keluarga', 0, 0, 'L');
         $this->pdf->Cell(1, 0, '7. Lainnya ( Sebutkan )', 0, 0, 'L');
-        $this->pdf->Cell(25, 12, '.....................................', 0, 0, 'L');
+        $this->pdf->Cell(25, 12, isset($detailSurat->alasan) ? '.....................................' : $detailSurat->alasan_lainnya, 0, 0, 'L');
         $this->pdf->Cell(10);
         /* End Row */
 
@@ -1171,14 +1175,14 @@ class CetakSurat_model extends CI_Model
         $this->pdf->SetFont('Arial', '', 10);
         $this->pdf->Cell(30, 8, '2. Alamat Tujuan Pindah', 0, 0, 'L');
         $this->pdf->Cell(30);
-        $this->pdf->Cell(50, 8, '', 1, 0, 'L');
+        $this->pdf->Cell(50, 8, $detailSurat->alamat_tujuan_pindah, 1, 0, 'L');
         $this->pdf->Cell(5);
         $this->pdf->Cell(5);
         $this->pdf->Cell(10, 8, 'RT.', 0, 0, 'L');
-        $this->pdf->Cell(24, 8, '006', 1, 0, 'L');
+        $this->pdf->Cell(24, 8, $detailSurat->rt_tujuan, 1, 0, 'L');
         $this->pdf->Cell(7);
         $this->pdf->Cell(10, 8, 'RW.', 0, 0, 'L');
-        $this->pdf->Cell(24, 8, '001', 1, 0, 'L');
+        $this->pdf->Cell(24, 8, $detailSurat->rw_tujuan, 1, 0, 'L');
         // $this->pdf->Cell(10);
         /* End Row */
 
@@ -1189,11 +1193,11 @@ class CetakSurat_model extends CI_Model
         $this->pdf->Cell(20);
         $this->pdf->Cell(30, 8, 'a. Desa/Kelurahan', 0, 0, 'L');
         $this->pdf->Cell(10);
-        $this->pdf->Cell(50, 8, 'Tambakrejo', 1, 0, 'L');
+        $this->pdf->Cell(50, 8, $detailSurat->kelurahan_tujuan, 1, 0, 'L');
         $this->pdf->Cell(5);
-        $this->pdf->Cell(15, 8, 'c. Kab./ Kodya', 0, 0, 'L');
+        $this->pdf->Cell(15, 8, 'c. Kab./ Kota', 0, 0, 'L');
         $this->pdf->Cell(10);
-        $this->pdf->Cell(50, 8, 'Magetan', 1, 0, 'L');
+        $this->pdf->Cell(50, 8, $detailSurat->kab_tujuan, 1, 0, 'L');
         /* End Row */
 
         $this->pdf->Ln(10);
@@ -1203,11 +1207,11 @@ class CetakSurat_model extends CI_Model
         $this->pdf->Cell(20);
         $this->pdf->Cell(30, 8, 'b. Kecamatan', 0, 0, 'L');
         $this->pdf->Cell(10);
-        $this->pdf->Cell(50, 8, 'Magetan', 1, 0, 'L');
+        $this->pdf->Cell(50, 8, $detailSurat->kecamatan_tujuan, 1, 0, 'L');
         $this->pdf->Cell(5);
         $this->pdf->Cell(15, 8, 'd. Prop', 0, 0, 'L');
         $this->pdf->Cell(10);
-        $this->pdf->Cell(50, 8, 'JAWA TIMUR', 1, 0, 'L');
+        $this->pdf->Cell(50, 8, $detailSurat->prov_tujuan, 1, 0, 'L');
         /* End Row */
 
         $this->pdf->Ln(13);
@@ -1216,7 +1220,9 @@ class CetakSurat_model extends CI_Model
         $this->pdf->SetFont('Arial', '', 10);
         $this->pdf->Cell(30, 8, '3. Klasifikasi Pindah', 0, 0, 'L');
         $this->pdf->Cell(30);
-        $this->pdf->Cell(8, 8, '2', 1, 0, 'C');
+        $this->pdf->SetFont('Arial', 'B', 10);
+        $this->pdf->Cell(8, 8, $detailSurat->klasifikasi, 1, 0, 'C');
+        $this->pdf->SetFont('Arial', '', 10);
         $this->pdf->Cell(1, 0, '1. Dalam satu Desa / Kel', 0, 0, 'L');
         $this->pdf->Cell(45, 12, '2. Antar Desa / Kel. ', 0, 0, 'L');
         $this->pdf->Cell(1, 0, '3. Antar kecamatan', 0, 0, 'L');
@@ -1231,7 +1237,9 @@ class CetakSurat_model extends CI_Model
         $this->pdf->SetFont('Arial', '', 10);
         $this->pdf->Cell(30, 8, '4. Jenis Kepindahan', 0, 0, 'L');
         $this->pdf->Cell(30);
-        $this->pdf->Cell(8, 8, '2', 1, 0, 'C');
+        $this->pdf->SetFont('Arial', 'B', 10);
+        $this->pdf->Cell(8, 8, $detailSurat->jenis, 1, 0, 'C');
+        $this->pdf->SetFont('Arial', '', 10);
         $this->pdf->Cell(1, 0, '1. Kep. Keluarga', 0, 0, 'L');
         $this->pdf->Cell(55, 12, '2. Kep.Kel. dan Seluruh Angg. Kel', 0, 0, 'L');
         $this->pdf->Cell(1, 0, '3. Kep. Kel. Dan Sbg Angg. Kel', 0, 0, 'L');
@@ -1246,7 +1254,7 @@ class CetakSurat_model extends CI_Model
         $this->pdf->Cell(22, 5, '5. Status Nomor KK', 0, 0, 'L');
         $this->pdf->Cell(38);
         $this->pdf->SetFont('Arial', 'B', 10);
-        $this->pdf->Cell(8, 8, '4', 1, 0, 'C');
+        $this->pdf->Cell(8, 8, $detailSurat->tidak_pindah, 1, 0, 'C');
         $this->pdf->SetFont('Arial', '', 10);
         $this->pdf->Cell(8, 5, '1. Numpang KK', 0, 0, 'L');
         $this->pdf->Cell(30);
@@ -1265,7 +1273,7 @@ class CetakSurat_model extends CI_Model
         $this->pdf->Cell(22, 5, '6. Status Nomor KK', 0, 0, 'L');
         $this->pdf->Cell(38);
         $this->pdf->SetFont('Arial', 'B', 10);
-        $this->pdf->Cell(8, 8, '2', 1, 0, 'C');
+        $this->pdf->Cell(8, 8, $detailSurat->pindah, 1, 0, 'C');
         $this->pdf->SetFont('Arial', '', 10);
         $this->pdf->Cell(8, 5, '1. Numpang KK', 0, 0, 'L');
         $this->pdf->Cell(30);
@@ -1278,19 +1286,20 @@ class CetakSurat_model extends CI_Model
 
         $this->pdf->Ln(10);
 
+        $tglPindah = explode('-', $detailSurat->rencana_tgl_pindah);
         /* Start Row */
         $this->pdf->SetFont('Arial', '', 10);
         $this->pdf->Cell(30, 8, '7. Rencana Tgl. Pindah', 0, 0, 'L');
         $this->pdf->Cell(30);
-        $this->pdf->Cell(8, 8, '13', 1, 0, 'C');
+        $this->pdf->Cell(8, 8, $tglPindah[2], 1, 0, 'C');
         $this->pdf->Cell(7);
-        $this->pdf->Cell(8, 8, '1', 1, 0, 'C');
-        $this->pdf->Cell(8, 8, '0', 'T:1, B:1, R:1', 0, 'C');
+        $this->pdf->Cell(8, 8, substr($tglPindah[1], 0, 1), 1, 0, 'C');
+        $this->pdf->Cell(8, 8, substr($tglPindah[1], 1, 1), 'T:1, B:1, R:1', 0, 'C');
         $this->pdf->Cell(7);
-        $this->pdf->Cell(8, 8, '2', 1, 0, 'C');
-        $this->pdf->Cell(8, 8, '0', 'T:1, B:1, R:1', 0, 'C');
-        $this->pdf->Cell(8, 8, '2', 'T:1, B:1, R:1', 0, 'C');
-        $this->pdf->Cell(8, 8, '0', 'T:1, B:1, R:1', 0, 'C');
+        $this->pdf->Cell(8, 8, substr($tglPindah[0], 0, 1), 1, 0, 'C');
+        $this->pdf->Cell(8, 8, substr($tglPindah[0], 1, 1), 'T:1, B:1, R:1', 0, 'C');
+        $this->pdf->Cell(8, 8, substr($tglPindah[0], 2, 1), 'T:1, B:1, R:1', 0, 'C');
+        $this->pdf->Cell(8, 8, substr($tglPindah[0], 3, 1), 'T:1, B:1, R:1', 0, 'C');
         /* End Row */
 
         $this->pdf->Ln(10);
@@ -1306,8 +1315,17 @@ class CetakSurat_model extends CI_Model
         $this->pdf->Cell(80, 5, 'NIK', 'L:1, T:1, R:1', 0, 'C');
         $this->pdf->Cell(80, 5, 'Nama', 'L:1, T:1, R:1', 0, 'C');
         $this->pdf->Cell(20, 5, 'SHDK', 'L:1, T:1, R:1', 0, 'C');
+        for ($i = 0; $i < count($detailSurat->nik_keluarga); $i++) {
+            $this->pdf->Ln(5);
+            $this->pdf->Cell(10, 6, $i + 1, 'L:1, T:1, R:1', 0, 'C');
+            $this->pdf->Cell(80, 6, $detailSurat->nik_keluarga[$i], 'L:1, T:1, R:1', 0, 'L');
+            $this->pdf->Cell(80, 6, $detailSurat->nama_keluarga[$i], 'L:1, T:1, R:1', 0, 'L');
+            $this->pdf->Cell(10, 6, $detailSurat->shdk[$i], 'L:1, T:1, R:1', 0, 'C');
+            $this->pdf->Cell(10, 6, '', 'L:1, T:1, R:1', 0, 'C');
+            // $this->pdf->Ln(5);
+        }
         /* Start Child Row */
-        $this->pdf->Ln(5);
+        /* $this->pdf->Ln(5);
         $this->pdf->Cell(10, 6, '1', 'L:1, T:1, R:1', 0, 'C');
         $this->pdf->Cell(80, 6, '3520060709900001', 'L:1, T:1, R:1', 0, 'L');
         $this->pdf->Cell(80, 6, 'NUR CAHYONO', 'L:1, T:1, R:1', 0, 'L');
@@ -1336,10 +1354,10 @@ class CetakSurat_model extends CI_Model
         $this->pdf->Cell(80, 6, '', 'L:1, T:1, R:1', 0, 'L');
         $this->pdf->Cell(80, 6, '', 'L:1, T:1, R:1', 0, 'L');
         $this->pdf->Cell(10, 6, '', 'L:1, T:1, R:1', 0, 'C');
-        $this->pdf->Cell(10, 6, '', 'L:1, T:1, R:1', 0, 'C');
+        $this->pdf->Cell(10, 6, '', 'L:1, T:1, R:1', 0, 'C'); */
         /* End Child Row */
         $this->pdf->Ln(0);
-        $this->pdf->Cell(0, 6, '', 'B:1', 0, '');
+        $this->pdf->Cell(190, 6, '', 'B:1', 0, '');
         /* End Row */
 
         $this->pdf->Ln(5);
@@ -1358,16 +1376,16 @@ class CetakSurat_model extends CI_Model
         $this->pdf->Ln(13); // new line
         $this->pdf->SetFont('Arial', 'BU', 10);
         $this->pdf->Cell(35);
-        $this->pdf->Cell(40, 10, 'BAGUS BUDIANTO', 0, 0, '');
+        $this->pdf->Cell(35, 10, $penduduk['nama'], 0, 0, '');
         $this->pdf->Cell(54);
         $this->pdf->SetFont('Arial', 'BU', 10);
-        $this->pdf->Cell(40, 10, 'SUCIPTO, S.Sos' ,0, 0, '');
+        $this->pdf->Cell(40, 10, 'SUCIPTO, S.Sos', 0, 0, '');
         $this->pdf->Ln(4);
         $this->pdf->Cell(120);
         $this->pdf->SetFont('Arial', '', 10);
-        $this->pdf->Cell(40, 10, 'Nip. 19680423 199602 1 001' ,0, 0, '');
+        $this->pdf->Cell(40, 10, 'Nip. 19680423 199602 1 001', 0, 0, '');
         /* End Row */
-        
+
         $this->pdf->Ln(15);
 
         /* Start Row */
@@ -1381,22 +1399,14 @@ class CetakSurat_model extends CI_Model
         $this->pdf->SetFont('Arial', '', 10);
         $this->pdf->Cell(30, 8, '1. Nomor Kartu Keluarga', 0, 0, 'L');
         $this->pdf->Cell(30);
-        $this->pdf->Cell(8, 8, '', 1, 0, 'C');
-        $this->pdf->Cell(8, 8, '', 'T:1, B:1, R:1', 0, 'C');
-        $this->pdf->Cell(8, 8, '', 'T:1, B:1, R:1', 0, 'C');
-        $this->pdf->Cell(8, 8, '', 'T:1, B:1, R:1', 0, 'C');
-        $this->pdf->Cell(8, 8, '', 'T:1, B:1, R:1', 0, 'C');
-        $this->pdf->Cell(8, 8, '', 'T:1, B:1, R:1', 0, 'C');
-        $this->pdf->Cell(8, 8, '', 'T:1, B:1, R:1', 0, 'C');
-        $this->pdf->Cell(8, 8, '', 'T:1, B:1, R:1', 0, 'C');
-        $this->pdf->Cell(8, 8, '', 'T:1, B:1, R:1', 0, 'C');
-        $this->pdf->Cell(8, 8, '', 'T:1, B:1, R:1', 0, 'C');
-        $this->pdf->Cell(8, 8, '', 'T:1, B:1, R:1', 0, 'C');
-        $this->pdf->Cell(8, 8, '', 'T:1, B:1, R:1', 0, 'C');
-        $this->pdf->Cell(8, 8, '', 'T:1, B:1, R:1', 0, 'C');
-        $this->pdf->Cell(8, 8, '', 'T:1, B:1, R:1', 0, 'C');
-        $this->pdf->Cell(8, 8, '', 'T:1, B:1, R:1', 0, 'C');
-        $this->pdf->Cell(8, 8, '', 'T:1, B:1, R:1', 0, 'C');
+        for ($i = 0; $i < strlen($detailSurat->no_kk); $i++) {
+          if ($i == 0)
+            $this->pdf->Cell(8, 8, $detailSurat->no_kk[$i], 1, 0, 'C'); // first cell
+          else if ($i == (strlen($detailSurat->no_kk) - 1))
+            $this->pdf->Cell(8, 8, $detailSurat->no_kk[$i], 'T:1, B:1, R:1', 0, 'C'); // last cell
+          else
+            $this->pdf->Cell(8, 8, $detailSurat->no_kk[$i], 'T:1, B:1, R:1', 0, 'C');
+        }
         /* End Row */
 
         $this->pdf->Ln(10);
@@ -1405,7 +1415,7 @@ class CetakSurat_model extends CI_Model
         $this->pdf->SetFont('Arial', '', 10);
         $this->pdf->Cell(30, 8, '2. Nama Kepala Keluarga', 0, 0, 'L');
         $this->pdf->Cell(30);
-        $this->pdf->Cell(0, 8, '', 1, 0, 'L');
+        $this->pdf->Cell(0, 8, $detailSurat->nama_kepala_keluarga, 1, 0, 'L');
         /* End Row */
 
         $this->pdf->Ln(10);
@@ -1414,22 +1424,14 @@ class CetakSurat_model extends CI_Model
         $this->pdf->SetFont('Arial', '', 10);
         $this->pdf->Cell(30, 8, '3. NIK Kepala  Keluarga', 0, 0, 'L');
         $this->pdf->Cell(30);
-        $this->pdf->Cell(8, 8, '', 1, 0, 'C');
-        $this->pdf->Cell(8, 8, '', 'T:1, B:1, R:1', 0, 'C');
-        $this->pdf->Cell(8, 8, '', 'T:1, B:1, R:1', 0, 'C');
-        $this->pdf->Cell(8, 8, '', 'T:1, B:1, R:1', 0, 'C');
-        $this->pdf->Cell(8, 8, '', 'T:1, B:1, R:1', 0, 'C');
-        $this->pdf->Cell(8, 8, '', 'T:1, B:1, R:1', 0, 'C');
-        $this->pdf->Cell(8, 8, '', 'T:1, B:1, R:1', 0, 'C');
-        $this->pdf->Cell(8, 8, '', 'T:1, B:1, R:1', 0, 'C');
-        $this->pdf->Cell(8, 8, '', 'T:1, B:1, R:1', 0, 'C');
-        $this->pdf->Cell(8, 8, '', 'T:1, B:1, R:1', 0, 'C');
-        $this->pdf->Cell(8, 8, '', 'T:1, B:1, R:1', 0, 'C');
-        $this->pdf->Cell(8, 8, '', 'T:1, B:1, R:1', 0, 'C');
-        $this->pdf->Cell(8, 8, '', 'T:1, B:1, R:1', 0, 'C');
-        $this->pdf->Cell(8, 8, '', 'T:1, B:1, R:1', 0, 'C');
-        $this->pdf->Cell(8, 8, '', 'T:1, B:1, R:1', 0, 'C');
-        $this->pdf->Cell(8, 8, '', 'T:1, B:1, R:1', 0, 'C');
+        for ($i = 0; $i < strlen($detailSurat->nik_kepala_keluarga); $i++) {
+          if ($i == 0)
+            $this->pdf->Cell(8, 8, $detailSurat->nik_kepala_keluarga[$i], 1, 0, 'C'); // first cell
+          else if ($i == (strlen($detailSurat->nik_kepala_keluarga) - 1))
+            $this->pdf->Cell(8, 8, $detailSurat->nik_kepala_keluarga[$i], 'T:1, B:1, R:1', 0, 'C'); // last cell
+          else
+            $this->pdf->Cell(8, 8, $detailSurat->nik_kepala_keluarga[$i], 'T:1, B:1, R:1', 0, 'C');
+        }
         /* End Row */
 
         $this->pdf->Ln(10);
@@ -1437,7 +1439,7 @@ class CetakSurat_model extends CI_Model
         $this->pdf->Cell(22, 5, '4. Status Nomor KK', 0, 0, 'L');
         $this->pdf->Cell(38);
         $this->pdf->SetFont('Arial', 'B', 10);
-        $this->pdf->Cell(8, 8, '', 1, 0, 'C');
+        $this->pdf->Cell(8, 8, $detailSurat->pindah, 1, 0, 'C');
         $this->pdf->SetFont('Arial', '', 10);
         $this->pdf->Cell(8, 5, '1. Numpang KK', 0, 0, 'L');
         $this->pdf->Cell(30);
@@ -1451,20 +1453,21 @@ class CetakSurat_model extends CI_Model
 
         $this->pdf->Ln(10);
 
+        $tglKedatangan = explode('-', $detailSurat->tgl_kedatangan);
+
         /* Start Row */
         $this->pdf->SetFont('Arial', '', 10);
         $this->pdf->Cell(30, 8, '5. Tanggal Kedatangan', 0, 0, 'L');
         $this->pdf->Cell(30);
-        $this->pdf->Cell(8, 8, '', 1, 0, 'C');
-        $this->pdf->Cell(8, 8, '', 1, 0, 'C');
+        $this->pdf->Cell(8, 8, $tglKedatangan[2], 1, 0, 'C');
         $this->pdf->Cell(7);
-        $this->pdf->Cell(8, 8, '', 1, 0, 'C');
-        $this->pdf->Cell(8, 8, '', 'T:1, B:1, R:1', 0, 'C');
+        $this->pdf->Cell(8, 8, substr($tglKedatangan[1], 0, 1), 1, 0, 'C');
+        $this->pdf->Cell(8, 8, substr($tglKedatangan[1], 1, 1), 'T:1, B:1, R:1', 0, 'C');
         $this->pdf->Cell(7);
-        $this->pdf->Cell(8, 8, '', 1, 0, 'C');
-        $this->pdf->Cell(8, 8, '', 'T:1, B:1, R:1', 0, 'C');
-        $this->pdf->Cell(8, 8, '', 'T:1, B:1, R:1', 0, 'C');
-        $this->pdf->Cell(8, 8, '', 'T:1, B:1, R:1', 0, 'C');
+        $this->pdf->Cell(8, 8, substr($tglKedatangan[0], 0, 1), 1, 0, 'C');
+        $this->pdf->Cell(8, 8, substr($tglKedatangan[0], 1, 1), 'T:1, B:1, R:1', 0, 'C');
+        $this->pdf->Cell(8, 8, substr($tglKedatangan[0], 2, 1), 'T:1, B:1, R:1', 0, 'C');
+        $this->pdf->Cell(8, 8, substr($tglKedatangan[0], 3, 1), 'T:1, B:1, R:1', 0, 'C');
         /* End Row */
 
         $this->pdf->Ln(10);
@@ -1473,14 +1476,14 @@ class CetakSurat_model extends CI_Model
         $this->pdf->SetFont('Arial', '', 10);
         $this->pdf->Cell(30, 8, '6. Alamat', 0, 0, 'L');
         $this->pdf->Cell(30);
-        $this->pdf->Cell(50, 8, '', 1, 0, 'L');
+        $this->pdf->Cell(50, 8, $detailSurat->alamat_tujuan_pindah, 1, 0, 'L');
         $this->pdf->Cell(5);
         $this->pdf->Cell(5);
         $this->pdf->Cell(10, 8, 'RT.', 0, 0, 'L');
-        $this->pdf->Cell(24, 8, '006', 1, 0, 'L');
+        $this->pdf->Cell(24, 8, $detailSurat->rt_tujuan, 1, 0, 'L');
         $this->pdf->Cell(7);
         $this->pdf->Cell(10, 8, 'RW.', 0, 0, 'L');
-        $this->pdf->Cell(24, 8, '001', 1, 0, 'L');
+        $this->pdf->Cell(24, 8, $detailSurat->rw_tujuan, 1, 0, 'L');
         /* End Row */
         $this->pdf->ln(10);
 
@@ -1489,11 +1492,11 @@ class CetakSurat_model extends CI_Model
         $this->pdf->Cell(20);
         $this->pdf->Cell(30, 8, 'a. Desa/Kelurahan', 0, 0, 'L');
         $this->pdf->Cell(10);
-        $this->pdf->Cell(50, 8, '', 1, 0, 'L');
+        $this->pdf->Cell(50, 8, $detailSurat->kelurahan_tujuan, 1, 0, 'L');
         $this->pdf->Cell(5);
         $this->pdf->Cell(15, 8, 'c. Kab/Kota', 0, 0, 'L');
         $this->pdf->Cell(10);
-        $this->pdf->Cell(50, 8, '', 1, 0, 'L');
+        $this->pdf->Cell(50, 8, $detailSurat->kab_tujuan, 1, 0, 'L');
         /* End Row */
 
         $this->pdf->Ln(10);
@@ -1503,11 +1506,11 @@ class CetakSurat_model extends CI_Model
         $this->pdf->Cell(20);
         $this->pdf->Cell(30, 8, 'b. Kecamatan', 0, 0, 'L');
         $this->pdf->Cell(10);
-        $this->pdf->Cell(50, 8, '', 1, 0, 'L');
+        $this->pdf->Cell(50, 8, $detailSurat->kecamatan_tujuan, 1, 0, 'L');
         $this->pdf->Cell(5);
         $this->pdf->Cell(15, 8, 'd. Provinsi', 0, 0, 'L');
         $this->pdf->Cell(10);
-        $this->pdf->Cell(50, 8, '', 1, 0, 'L');
+        $this->pdf->Cell(50, 8, $detailSurat->prov_tujuan, 1, 0, 'L');
         /* End Row */
 
         $this->pdf->Ln(10);
@@ -1524,42 +1527,21 @@ class CetakSurat_model extends CI_Model
         $this->pdf->Cell(80, 5, 'Nama', 'L:1, T:1, R:1', 0, 'C');
         $this->pdf->Cell(20, 5, 'SHDK', 'L:1, T:1, R:1', 0, 'C');
         /* Start Child Row */
-        $this->pdf->Ln(5);
-        $this->pdf->Cell(10, 6, '1', 'L:1, T:1, R:1', 0, 'C');
-        $this->pdf->Cell(80, 6, '', 'L:1, T:1, R:1', 0, 'L');
-        $this->pdf->Cell(80, 6, '', 'L:1, T:1, R:1', 0, 'L');
-        $this->pdf->Cell(10, 6, '', 'L:1, T:1, R:1', 0, 'C');
-        $this->pdf->Cell(10, 6, '', 'L:1, T:1, R:1', 0, 'C');
-        $this->pdf->Ln(5);
-        $this->pdf->Cell(10, 6, '2', 'L:1, T:1, R:1', 0, 'C');
-        $this->pdf->Cell(80, 6, '', 'L:1, T:1, R:1', 0, 'L');
-        $this->pdf->Cell(80, 6, '', 'L:1, T:1, R:1', 0, 'L');
-        $this->pdf->Cell(10, 6, '', 'L:1, T:1, R:1', 0, 'C');
-        $this->pdf->Cell(10, 6, '', 'L:1, T:1, R:1', 0, 'C');
-        $this->pdf->Ln(5);
-        $this->pdf->Cell(10, 6, '3', 'L:1, T:1, R:1', 0, 'C');
-        $this->pdf->Cell(80, 6, '', 'L:1, T:1, R:1', 0, 'L');
-        $this->pdf->Cell(80, 6, '', 'L:1, T:1, R:1', 0, 'L');
-        $this->pdf->Cell(10, 6, '', 'L:1, T:1, R:1', 0, 'C');
-        $this->pdf->Cell(10, 6, '', 'L:1, T:1, R:1', 0, 'C');
-        $this->pdf->Ln(5);
-        $this->pdf->Cell(10, 6, '4', 'L:1, T:1, R:1', 0, 'C');
-        $this->pdf->Cell(80, 6, '', 'L:1, T:1, R:1', 0, 'L');
-        $this->pdf->Cell(80, 6, '', 'L:1, T:1, R:1', 0, 'L');
-        $this->pdf->Cell(10, 6, '', 'L:1, T:1, R:1', 0, 'C');
-        $this->pdf->Cell(10, 6, '', 'L:1, T:1, R:1', 0, 'C');
-        $this->pdf->Ln(5);
-        $this->pdf->Cell(10, 6, '5', 'L:1, T:1, R:1', 0, 'C');
-        $this->pdf->Cell(80, 6, '', 'L:1, T:1, R:1', 0, 'L');
-        $this->pdf->Cell(80, 6, '', 'L:1, T:1, R:1', 0, 'L');
-        $this->pdf->Cell(10, 6, '', 'L:1, T:1, R:1', 0, 'C');
-        $this->pdf->Cell(10, 6, '', 'L:1, T:1, R:1', 0, 'C');
+        for ($i = 0; $i < count($detailSurat->nik_keluarga); $i++) {
+          $this->pdf->Ln(5);
+          $this->pdf->Cell(10, 6, $i + 1, 'L:1, T:1, R:1', 0, 'C');
+          $this->pdf->Cell(80, 6, $detailSurat->nik_keluarga[$i], 'L:1, T:1, R:1', 0, 'L');
+          $this->pdf->Cell(80, 6, $detailSurat->nama_keluarga[$i], 'L:1, T:1, R:1', 0, 'L');
+          $this->pdf->Cell(10, 6, $detailSurat->shdk[$i], 'L:1, T:1, R:1', 0, 'C');
+          $this->pdf->Cell(10, 6, '', 'L:1, T:1, R:1', 0, 'C');
+          // $this->pdf->Ln(5);
+        }
         /* End Child Row */
         $this->pdf->Ln(0);
-        $this->pdf->Cell(0, 6, '', 'B:1', 0, '');
+        $this->pdf->Cell(190, 6, '', 'B:1', 0, '');
         /* End Row */
 
-        $this->pdf->Ln(6);
+        $this->pdf->Ln(5);
 
         /* Start Row */
         $this->pdf->SetFont('Arial', '', 10);
@@ -1577,21 +1559,21 @@ class CetakSurat_model extends CI_Model
         $this->pdf->Cell(35);
         $this->pdf->Cell(40, 10, 'CAMAT MAGETAN', 0, 0, '');
         $this->pdf->Cell(54);
-        
+
         $this->pdf->Ln(13); // new line
         $this->pdf->SetFont('Arial', '', 10);
         $this->pdf->Cell(25);
         $this->pdf->Cell(40, 10, 'Nomor :           Tgl             2019', 0, 0, '');
         $this->pdf->Cell(65);
-        $this->pdf->Cell(40, 10, '' ,0, 0, '');
+        $this->pdf->Cell(40, 10, '', 0, 0, '');
         /* End Row */
-        
+
         $this->pdf->Ln(15);
         /* End Halaman 1 */
 
-        
+
         /* Halaman 2 */
-        
+
         $this->pdf->AddPage();
         // Header
         $this->header($this->pdf);
@@ -1613,7 +1595,7 @@ class CetakSurat_model extends CI_Model
         $this->pdf->Cell(60, 10, '1. NIK Kepala Keluarga', 0, 0, '');
         $this->pdf->Cell(10, 10, ':', 0, 0, 'C');
         $this->pdf->SetFont('Arial', '', 12);
-        $this->pdf->Cell(30, 10, '3520061712076900', 0, 0, '');
+        $this->pdf->Cell(30, 10, $detailSurat->nik_kepala_keluarga, 0, 0, '');
         /* End Row */
 
         $this->pdf->Ln(8); // new line
@@ -1623,7 +1605,7 @@ class CetakSurat_model extends CI_Model
         $this->pdf->Cell(60, 10, '2. Nama Kepala Keluarga', 0, 0, '');
         $this->pdf->Cell(10, 10, ':', 0, 0, 'C');
         $this->pdf->SetFont('Arial', '', 12);
-        $this->pdf->Cell(30, 10, 'ISBIYANTO', 0, 0, '');
+        $this->pdf->Cell(30, 10, $detailSurat->nama_kepala_keluarga, 0, 0, '');
         /* End Row */
 
         $this->pdf->Ln(8); // new line
@@ -1633,7 +1615,7 @@ class CetakSurat_model extends CI_Model
         $this->pdf->Cell(60, 10, '3. Alamat', 0, 0, '');
         $this->pdf->Cell(10, 10, ':', 0, 0, 'C');
         $this->pdf->SetFont('Arial', '', 12);
-        $this->pdf->Cell(50, 10, 'Jl.Kunti  RT 006 RW 001  Kel Sukowinangun, Kec.Kab Magetan', 0, 0, '');
+        $this->pdf->Cell(50, 10, $detailSurat->alamat.' RT '.$detailSurat->rt.' RW '.$detailSurat->rw.' Kel '.$detailSurat->kelurahan.' Kec '.$detailSurat->kecamatan.' Kab '.$detailSurat->kab, 0, 0, '');
         /* End Row */
 
         $this->pdf->Ln(8); // new line
@@ -1643,7 +1625,7 @@ class CetakSurat_model extends CI_Model
         $this->pdf->Cell(60, 10, '4. Alamat Tujuan Pindah', 0, 0, '');
         $this->pdf->Cell(10, 10, ':', 0, 0, 'C');
         $this->pdf->SetFont('Arial', '', 12);
-        $this->pdf->Cell(30, 10, 'Jln. Pepaya RT 01  RW 002 Desa Tambakrejo, Kec. Magetan', 0, 0, '');
+        $this->pdf->Cell(30, 10, $detailSurat->alamat_tujuan_pindah.' RT '.$detailSurat->rt_tujuan.' RW '.$detailSurat->rw_tujuan.' Kel '.$detailSurat->kelurahan_tujuan.' Kec '.$detailSurat->kecamatan_tujuan.' Kab '.$detailSurat->kab_tujuan, 0, 0, '');
         /* End Row */
 
         $this->pdf->Ln(8); // new line
@@ -1653,7 +1635,7 @@ class CetakSurat_model extends CI_Model
         $this->pdf->Cell(60, 10, '5. Keluarga Yang Pindah', 0, 0, '');
         $this->pdf->Cell(10, 10, ':', 0, 0, 'C');
         $this->pdf->SetFont('Arial', '', 12);
-        $this->pdf->Cell(30, 10, '1 Orang', 0, 0, '');
+        $this->pdf->Cell(30, 10, count($detailSurat->nik_keluarga).' Orang', 0, 0, '');
         /* End Row */
 
         $this->pdf->Ln(10); // new line
@@ -1669,9 +1651,19 @@ class CetakSurat_model extends CI_Model
 
         /* Start Row */
         $this->pdf->SetFont('Arial', '', 10);
-        $this->pdf->Cell(10, 20, '1', 'L:1, B:1', 0, 'C');
-        $this->pdf->Cell(105, 20, 'Bagus Budianto', 'L:1, B:1', 0, 'C');
-        $this->pdf->Cell(68, 20, 'Anak', 'L:1, B:1 R:1', 0, 'C');
+        // $this->pdf->Cell(10, 20, '1', 'L:1, B:1', 0, 'C');
+        // $this->pdf->Cell(105, 20, 'asd', 'L:1, T:1, B:1', 0, 'C');
+        // $this->pdf->Cell(68, 20, 'anak', 'L:1, T:1, B:1, R:1', 0, 'C');
+        // $this->pdf->Ln(5);
+        $no = 1;
+        for ($i=0; $i < count($detailSurat->nik_keluarga); $i++) {
+          // $this->pdf->Ln(5);
+          $this->pdf->Cell(10, 20, $no, 'L:1, B:1', 0, 'C');
+          $this->pdf->Cell(105, 20, $detailSurat->nama_keluarga[$i], 'L:1, B:1', 0, 'C');
+          $this->pdf->Cell(68, 20, $detailSurat->shdk[$i], 'L:1, B:1 R:1', 0, 'C');
+          $this->pdf->Ln(20);
+          $no++;
+        }
         /* End Row */
 
         /* End Table */
@@ -1685,7 +1677,7 @@ class CetakSurat_model extends CI_Model
         /* Start Row */
         $this->pdf->SetFont('Arial', '', 10);
         $this->pdf->Cell(130);
-        $this->pdf->Cell(30, 10, 'Magetan, 30 Desember 2019', 0, 0, 'C');
+        $this->pdf->Cell(30, 10, 'Magetan, '.date('d M Y'), 0, 0, 'C');
         $this->pdf->Ln(4); // new line
         $this->pdf->Cell(130);
         $this->pdf->Cell(30, 10, 'Lurah Sukowinangun', 0, 0, 'C');
@@ -1711,9 +1703,9 @@ class CetakSurat_model extends CI_Model
 
     public function suratKematian($data)
     {
-        
+
         /* Halaman 1 */
-        
+
         // $this->pdf->AddPage();
         // Header
         // $this->header($this->pdf);
@@ -1790,7 +1782,7 @@ class CetakSurat_model extends CI_Model
         /* End Row */
 
         $this->pdf->Ln(8); // new line
-        
+
         /* Start Row */
         $this->pdf->SetFont('Arial', '', 10);
         $this->pdf->Cell(30, 10, 'Hari', 0, 0, '');
@@ -1878,7 +1870,7 @@ class CetakSurat_model extends CI_Model
         /* End Halaman 1 */
 
         /* Halaman 2 */
-        
+
         $this->pdf->AddPage();
         // Header
         // $this->header($this->pdf);
@@ -2080,7 +2072,7 @@ class CetakSurat_model extends CI_Model
         /* End Halaman 2 */
 
         /* Halaman 3 */
-        
+
         $this->pdf->AddPage();
 
         $this->pdf->SetFont('Arial', '', 14);
@@ -2160,7 +2152,7 @@ class CetakSurat_model extends CI_Model
         /* End Row */
 
         $this->pdf->Ln(8); // new line
-        
+
         /* Start Row */
         $this->pdf->SetFont('Arial', '', 10);
         $this->pdf->Cell(30, 10, 'Hari', 0, 0, '');

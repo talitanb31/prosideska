@@ -100,7 +100,7 @@ class ListPermintaan extends CI_Controller
         if ($jenisSurat == 'surat pindah')
             $this->CetakSurat_model->suratPindah($jenisSurat);
         elseif ($jenisSurat == 'surat tidak mampu')
-            $this->CetakSurat_model->suratTidakMampu($jenisSurat);
+            $this->CetakSurat_model->suratTidakMampu($id, $penduduk);
         elseif ($jenisSurat == 'surat kematian')
             $this->CetakSurat_model->suratKematian($jenisSurat);
         elseif ($jenisSurat == 'surat kuasa')
@@ -112,12 +112,12 @@ class ListPermintaan extends CI_Controller
             // $html = [$page1];
             // $this->CetakSurat_model->printFromView($html, count($html));
             $this->CetakSurat_model->suratKelahiran($id, $penduduk);
-        // } elseif ($jenisSurat == 'surat kematian') {
-        //     $page1 = $this->load->view('cetak/surat-kematian', '', true);
-        //     $page2 = $this->load->view('cetak/surat-kematian2', '', true);
-        //     $html = [$page1, $page2];
+            // } elseif ($jenisSurat == 'surat kematian') {
+            //     $page1 = $this->load->view('cetak/surat-kematian', '', true);
+            //     $page2 = $this->load->view('cetak/surat-kematian2', '', true);
+            //     $html = [$page1, $page2];
 
-        //     $this->CetakSurat_model->printFromView($html, count($html));
+            //     $this->CetakSurat_model->printFromView($html, count($html));
         } elseif ($jenisSurat == 'surat keterangan cacatan kepolisian') {
             // $page1 = $this->load->view('cetak/surat-skck', '', true);
             // $page2 = $this->load->view('cetak/surat-skck2', '', true);
@@ -134,6 +134,8 @@ class ListPermintaan extends CI_Controller
             $this->CetakSurat_model->suketPengantarKehilangan($id, $nik, $penduduk);
         } elseif ($jenisSurat == 'surat perwalian') {
             $this->CetakSurat_model->suketPerwalian($id, $nik, $penduduk);
+        } elseif ($jenisSurat == 'surat keterangan pindah') {
+            $this->CetakSurat_model->suratPindah($id, $nik, $penduduk);
         }
     }
 }
