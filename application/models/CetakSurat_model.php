@@ -30,7 +30,7 @@ class CetakSurat_model extends CI_Model
     private function header()
     {
         // Logo
-        $this->pdf->Image('assets/img/madiun.gif', 10, 6, 30);
+        $this->pdf->Image('assets/img/logo_kab.png', 10, 6, 30);
         // Arial bold 15
         $this->pdf->SetFont('Arial', 'B', 15);
         // Move to the right
@@ -67,7 +67,7 @@ class CetakSurat_model extends CI_Model
     private function header2()
     {
         // Logo
-        $this->pdf->Image('assets/img/madiun.gif', 10, 6, 30);
+        $this->pdf->Image('assets/img/logo_kab.png', 10, 6, 30);
         // Arial bold 15
         $this->pdf->SetFont('Arial', 'B', 15);
         // Move to the right
@@ -1400,12 +1400,12 @@ class CetakSurat_model extends CI_Model
         $this->pdf->Cell(30, 8, '1. Nomor Kartu Keluarga', 0, 0, 'L');
         $this->pdf->Cell(30);
         for ($i = 0; $i < strlen($detailSurat->no_kk); $i++) {
-          if ($i == 0)
-            $this->pdf->Cell(8, 8, $detailSurat->no_kk[$i], 1, 0, 'C'); // first cell
-          else if ($i == (strlen($detailSurat->no_kk) - 1))
-            $this->pdf->Cell(8, 8, $detailSurat->no_kk[$i], 'T:1, B:1, R:1', 0, 'C'); // last cell
-          else
-            $this->pdf->Cell(8, 8, $detailSurat->no_kk[$i], 'T:1, B:1, R:1', 0, 'C');
+            if ($i == 0)
+                $this->pdf->Cell(8, 8, $detailSurat->no_kk[$i], 1, 0, 'C'); // first cell
+            else if ($i == (strlen($detailSurat->no_kk) - 1))
+                $this->pdf->Cell(8, 8, $detailSurat->no_kk[$i], 'T:1, B:1, R:1', 0, 'C'); // last cell
+            else
+                $this->pdf->Cell(8, 8, $detailSurat->no_kk[$i], 'T:1, B:1, R:1', 0, 'C');
         }
         /* End Row */
 
@@ -1425,12 +1425,12 @@ class CetakSurat_model extends CI_Model
         $this->pdf->Cell(30, 8, '3. NIK Kepala  Keluarga', 0, 0, 'L');
         $this->pdf->Cell(30);
         for ($i = 0; $i < strlen($detailSurat->nik_kepala_keluarga); $i++) {
-          if ($i == 0)
-            $this->pdf->Cell(8, 8, $detailSurat->nik_kepala_keluarga[$i], 1, 0, 'C'); // first cell
-          else if ($i == (strlen($detailSurat->nik_kepala_keluarga) - 1))
-            $this->pdf->Cell(8, 8, $detailSurat->nik_kepala_keluarga[$i], 'T:1, B:1, R:1', 0, 'C'); // last cell
-          else
-            $this->pdf->Cell(8, 8, $detailSurat->nik_kepala_keluarga[$i], 'T:1, B:1, R:1', 0, 'C');
+            if ($i == 0)
+                $this->pdf->Cell(8, 8, $detailSurat->nik_kepala_keluarga[$i], 1, 0, 'C'); // first cell
+            else if ($i == (strlen($detailSurat->nik_kepala_keluarga) - 1))
+                $this->pdf->Cell(8, 8, $detailSurat->nik_kepala_keluarga[$i], 'T:1, B:1, R:1', 0, 'C'); // last cell
+            else
+                $this->pdf->Cell(8, 8, $detailSurat->nik_kepala_keluarga[$i], 'T:1, B:1, R:1', 0, 'C');
         }
         /* End Row */
 
@@ -1528,13 +1528,13 @@ class CetakSurat_model extends CI_Model
         $this->pdf->Cell(20, 5, 'SHDK', 'L:1, T:1, R:1', 0, 'C');
         /* Start Child Row */
         for ($i = 0; $i < count($detailSurat->nik_keluarga); $i++) {
-          $this->pdf->Ln(5);
-          $this->pdf->Cell(10, 6, $i + 1, 'L:1, T:1, R:1', 0, 'C');
-          $this->pdf->Cell(80, 6, $detailSurat->nik_keluarga[$i], 'L:1, T:1, R:1', 0, 'L');
-          $this->pdf->Cell(80, 6, $detailSurat->nama_keluarga[$i], 'L:1, T:1, R:1', 0, 'L');
-          $this->pdf->Cell(10, 6, $detailSurat->shdk[$i], 'L:1, T:1, R:1', 0, 'C');
-          $this->pdf->Cell(10, 6, '', 'L:1, T:1, R:1', 0, 'C');
-          // $this->pdf->Ln(5);
+            $this->pdf->Ln(5);
+            $this->pdf->Cell(10, 6, $i + 1, 'L:1, T:1, R:1', 0, 'C');
+            $this->pdf->Cell(80, 6, $detailSurat->nik_keluarga[$i], 'L:1, T:1, R:1', 0, 'L');
+            $this->pdf->Cell(80, 6, $detailSurat->nama_keluarga[$i], 'L:1, T:1, R:1', 0, 'L');
+            $this->pdf->Cell(10, 6, $detailSurat->shdk[$i], 'L:1, T:1, R:1', 0, 'C');
+            $this->pdf->Cell(10, 6, '', 'L:1, T:1, R:1', 0, 'C');
+            // $this->pdf->Ln(5);
         }
         /* End Child Row */
         $this->pdf->Ln(0);
@@ -1615,7 +1615,7 @@ class CetakSurat_model extends CI_Model
         $this->pdf->Cell(60, 10, '3. Alamat', 0, 0, '');
         $this->pdf->Cell(10, 10, ':', 0, 0, 'C');
         $this->pdf->SetFont('Arial', '', 12);
-        $this->pdf->Cell(50, 10, $detailSurat->alamat.' RT '.$detailSurat->rt.' RW '.$detailSurat->rw.' Kel '.$detailSurat->kelurahan.' Kec '.$detailSurat->kecamatan.' Kab '.$detailSurat->kab, 0, 0, '');
+        $this->pdf->Cell(50, 10, $detailSurat->alamat . ' RT ' . $detailSurat->rt . ' RW ' . $detailSurat->rw . ' Kel ' . $detailSurat->kelurahan . ' Kec ' . $detailSurat->kecamatan . ' Kab ' . $detailSurat->kab, 0, 0, '');
         /* End Row */
 
         $this->pdf->Ln(8); // new line
@@ -1625,7 +1625,7 @@ class CetakSurat_model extends CI_Model
         $this->pdf->Cell(60, 10, '4. Alamat Tujuan Pindah', 0, 0, '');
         $this->pdf->Cell(10, 10, ':', 0, 0, 'C');
         $this->pdf->SetFont('Arial', '', 12);
-        $this->pdf->Cell(30, 10, $detailSurat->alamat_tujuan_pindah.' RT '.$detailSurat->rt_tujuan.' RW '.$detailSurat->rw_tujuan.' Kel '.$detailSurat->kelurahan_tujuan.' Kec '.$detailSurat->kecamatan_tujuan.' Kab '.$detailSurat->kab_tujuan, 0, 0, '');
+        $this->pdf->Cell(30, 10, $detailSurat->alamat_tujuan_pindah . ' RT ' . $detailSurat->rt_tujuan . ' RW ' . $detailSurat->rw_tujuan . ' Kel ' . $detailSurat->kelurahan_tujuan . ' Kec ' . $detailSurat->kecamatan_tujuan . ' Kab ' . $detailSurat->kab_tujuan, 0, 0, '');
         /* End Row */
 
         $this->pdf->Ln(8); // new line
@@ -1635,7 +1635,7 @@ class CetakSurat_model extends CI_Model
         $this->pdf->Cell(60, 10, '5. Keluarga Yang Pindah', 0, 0, '');
         $this->pdf->Cell(10, 10, ':', 0, 0, 'C');
         $this->pdf->SetFont('Arial', '', 12);
-        $this->pdf->Cell(30, 10, count($detailSurat->nik_keluarga).' Orang', 0, 0, '');
+        $this->pdf->Cell(30, 10, count($detailSurat->nik_keluarga) . ' Orang', 0, 0, '');
         /* End Row */
 
         $this->pdf->Ln(10); // new line
@@ -1656,13 +1656,13 @@ class CetakSurat_model extends CI_Model
         // $this->pdf->Cell(68, 20, 'anak', 'L:1, T:1, B:1, R:1', 0, 'C');
         // $this->pdf->Ln(5);
         $no = 1;
-        for ($i=0; $i < count($detailSurat->nik_keluarga); $i++) {
-          // $this->pdf->Ln(5);
-          $this->pdf->Cell(10, 20, $no, 'L:1, B:1', 0, 'C');
-          $this->pdf->Cell(105, 20, $detailSurat->nama_keluarga[$i], 'L:1, B:1', 0, 'C');
-          $this->pdf->Cell(68, 20, $detailSurat->shdk[$i], 'L:1, B:1 R:1', 0, 'C');
-          $this->pdf->Ln(20);
-          $no++;
+        for ($i = 0; $i < count($detailSurat->nik_keluarga); $i++) {
+            // $this->pdf->Ln(5);
+            $this->pdf->Cell(10, 20, $no, 'L:1, B:1', 0, 'C');
+            $this->pdf->Cell(105, 20, $detailSurat->nama_keluarga[$i], 'L:1, B:1', 0, 'C');
+            $this->pdf->Cell(68, 20, $detailSurat->shdk[$i], 'L:1, B:1 R:1', 0, 'C');
+            $this->pdf->Ln(20);
+            $no++;
         }
         /* End Row */
 
@@ -1677,7 +1677,7 @@ class CetakSurat_model extends CI_Model
         /* Start Row */
         $this->pdf->SetFont('Arial', '', 10);
         $this->pdf->Cell(130);
-        $this->pdf->Cell(30, 10, 'Magetan, '.date('d M Y'), 0, 0, 'C');
+        $this->pdf->Cell(30, 10, 'Magetan, ' . date('d M Y'), 0, 0, 'C');
         $this->pdf->Ln(4); // new line
         $this->pdf->Cell(130);
         $this->pdf->Cell(30, 10, 'Lurah Sukowinangun', 0, 0, 'C');
