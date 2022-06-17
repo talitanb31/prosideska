@@ -1,3 +1,25 @@
+/* Pie Chart */
+var suratSelesai = document.getElementById('total_selesai').value
+var suratPending = document.getElementById('total_pending').value
+var suratProses = document.getElementById('total_proses').value
+var suratTolak = document.getElementById('total_tolak').value
+/* END Pie Chart */
+
+/* Line Chart */
+var m1 = document.getElementById('m1').value
+var m2 = document.getElementById('m2').value
+var m3 = document.getElementById('m3').value
+var m4 = document.getElementById('m4').value
+var m5 = document.getElementById('m5').value
+var m6 = document.getElementById('m6').value
+var m7 = document.getElementById('m7').value
+var m8 = document.getElementById('m8').value
+var m9 = document.getElementById('m9').value
+var m10 = document.getElementById('m10').value
+var m11 = document.getElementById('m11').value
+var m12 = document.getElementById('m12').value
+/* END Line Chart */
+
 demo = {
   initPickColor: function() {
     $('.pick-class-label').click(function() {
@@ -16,13 +38,13 @@ demo = {
   initDocChart: function() {
     chartColor = "#FFFFFF";
 
-    ctx = document.getElementById('chartHours').getContext("2d");
+    ctx = document.getElementById('lineChart').getContext("2d");
 
     myChart = new Chart(ctx, {
       type: 'line',
 
       data: {
-        labels: ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct"],
+        labels: ["Jan", "Feb", "Mar", "Apr", "Mei", "Jun", "Jul", "Agus", "Sep", "Okt", "Nov", "Des"],
         datasets: [{
             borderColor: "#6bd098",
             backgroundColor: "#6bd098",
@@ -30,7 +52,7 @@ demo = {
             pointHoverRadius: 0,
             borderWidth: 3,
             data: [300, 310, 316, 322, 330, 326, 333, 345, 338, 354]
-          },
+          },/* 
           {
             borderColor: "#f17e5d",
             backgroundColor: "#f17e5d",
@@ -46,7 +68,7 @@ demo = {
             pointHoverRadius: 0,
             borderWidth: 3,
             data: [370, 394, 415, 409, 425, 445, 460, 450, 478, 484]
-          }
+          } */
         ]
       },
       options: {
@@ -97,21 +119,21 @@ demo = {
   initChartsPages: function() {
     chartColor = "#FFFFFF";
 
-    ctx = document.getElementById('chartHours').getContext("2d");
+    ctx = document.getElementById('lineChart').getContext("2d");
 
     myChart = new Chart(ctx, {
       type: 'line',
 
       data: {
-        labels: ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct"],
+        labels: ["Jan", "Feb", "Mar", "Apr", "Mei", "Jun", "Jul", "Agus", "Sep", "Okt", "Nov", "Des"],
         datasets: [{
             borderColor: "#6bd098",
             backgroundColor: "#6bd098",
             pointRadius: 0,
             pointHoverRadius: 0,
             borderWidth: 3,
-            data: [300, 310, 316, 322, 330, 326, 333, 345, 338, 354]
-          },
+            data: [m1, m2, m3, m4, m5, m6, m7, m8, m9, m10, m11, m12]
+          },/* 
           {
             borderColor: "#f17e5d",
             backgroundColor: "#f17e5d",
@@ -127,7 +149,7 @@ demo = {
             pointHoverRadius: 0,
             borderWidth: 3,
             data: [370, 394, 415, 409, 425, 445, 460, 450, 478, 484]
-          }
+          } */
         ]
       },
       options: {
@@ -174,7 +196,7 @@ demo = {
     });
 
 
-    ctx = document.getElementById('chartEmail').getContext("2d");
+    ctx = document.getElementById('chartStatistikSurat').getContext("2d");
 
     myChart = new Chart(ctx, {
       type: 'pie',
@@ -191,7 +213,7 @@ demo = {
             '#6bd098'
           ],
           borderWidth: 0,
-          data: [342, 480, 530, 120]
+          data: [suratPending, suratProses, suratTolak, suratSelesai]
         }]
       },
 
@@ -265,7 +287,7 @@ demo = {
     };
 
     var speedData = {
-      labels: ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"],
+      labels: ["Jan", "Feb", "Mar", "Apr", "Mei", "Jun", "Jul", "Agus", "Sep", "Okt", "Nov", "Des"],
       datasets: [dataFirst, dataSecond]
     };
 

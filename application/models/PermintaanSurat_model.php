@@ -23,6 +23,24 @@ class PermintaanSurat_model extends CI_Model
     return $query->result_array();
   }
 
+  public function getSuratByStatus($status)
+  {
+    return $this->db->get_where($this->_table, ['status' => $status])->result_array();
+  }
+
+  public function getSuratByMonth($month)
+  {
+    $this->db->select('permintaan_surat.id');
+    $this->db->from($this->_table);
+    $this->db->where('status', 'selesai');
+    $this->db->where('YEAR(created_at)', date('Y'));
+    $this->db->where('MONTH(created_at)', $month);
+    $this->db->where('status', 'selesai');
+    $query = $this->db->get();
+
+    return $query->result_array();
+  }
+
   public function terima($id, $nik)
   {
     $data = array('status' => 'diproses', 'id_admin' => $_SESSION['id']);
