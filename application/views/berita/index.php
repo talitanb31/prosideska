@@ -18,7 +18,7 @@
                         <a href="<?=site_url('berita/create')?>" class="btn btn-primary p-3">Tambah Data</a>
                     </div>
                     <div class="table-responsive">
-                        <table class="table">
+                        <table class="table" id="example">
                             <thead>
                                 <tr>
                                     <th>#</th>

@@ -3,12 +3,16 @@ defined('BASEPATH') or exit('No direct script access allowed');
 
 class SyaratSurat extends CI_Controller
 {
+
+  private $data;
+
   public function __construct()
   {
       parent::__construct();
       is_login();
       $this->load->model('SyaratSurat_model');
       $this->load->model('Jenis_surat_model');
+      $this->data['page_title']  = 'Master Jenis Surat';
   }
 
   function _rules() {
@@ -24,14 +28,14 @@ class SyaratSurat extends CI_Controller
 
   public function index()
   {
-    $data['data'] = $this->SyaratSurat_model->getAllData();
-    $this->template->load('template', 'syarat_surat/index',$data);
+    $this->data['data'] = $this->SyaratSurat_model->getAllData();
+    $this->template->load('template', 'syarat_surat/index',$this->data);
   }
 
   public function create()
   {
-    $data['jenis'] = $this->Jenis_surat_model->getAllData();
-    $this->template->load('template', 'syarat_surat/create', $data);
+    $this->data['jenis'] = $this->Jenis_surat_model->getAllData();
+    $this->template->load('template', 'syarat_surat/create', $this->data);
   }
 
   public function store()
@@ -50,13 +54,13 @@ class SyaratSurat extends CI_Controller
 
   public function edit($id)
   {
-    $data['jenis'] = $this->Jenis_surat_model->getAllData();
-    $data['data'] = $this->SyaratSurat_model->editData($id);
-    $this->template->load('template', 'syarat_surat/edit',$data);
+    $this->data['jenis'] = $this->Jenis_surat_model->getAllData();
+    $this->data['data'] = $this->SyaratSurat_model->editData($id);
+    $this->template->load('template', 'syarat_surat/edit',$this->data);
   }
 
   public function update($id)
-  { 
+  {
     $this->_rules();
 
     if ($this->form_validation->run() == TRUE) {
@@ -65,8 +69,8 @@ class SyaratSurat extends CI_Controller
         redirect('syaratsurat/index');
       }
     }else{
-      $data['dataJenis'] = $this->SyaratSurat_model->editData($id);
-      $this->template->load('template','syarat_surat/edit',$data);
+      $this->data['dataJenis'] = $this->SyaratSurat_model->editData($id);
+      $this->template->load('template','syarat_surat/edit',$this->data);
     }
   }
 

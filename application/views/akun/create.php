@@ -34,7 +34,7 @@
                                 <div class="form-group">
                                     <label for="">Password</label>
                                     <div class="input-group" id="show_hide_password">
-                                        <input class="form-control <?= form_error('password') != null ? 'is-invalid' : ''; ?>" type="password " name="password" placeholder="Masukkan Password">
+                                        <input class="form-control <?= form_error('password') != null ? 'is-invalid' : ''; ?>" type="password" name="password" placeholder="Masukkan Password">
                                         <div class="input-group-addon mt-2">
                                             <a href=""><i class="fa fa-eye-slash" aria-hidden="true"></i></a>
                                         </div>

@@ -3,22 +3,25 @@ defined('BASEPATH') or exit('No direct script access allowed');
 
 class JenisSurat extends CI_Controller
 {
+  private $data;
+
   public function __construct()
   {
       parent::__construct();
       is_login();
       $this->load->model('Jenis_surat_model');
+      $this->data['page_title']  = 'Master Jenis Surat';
   }
 
   public function index()
   {
-    $data['dataJenis'] = $this->Jenis_surat_model->getAllData();
-    $this->template->load('template', 'jenis_surat/index',$data);
+    $this->data['dataJenis'] = $this->Jenis_surat_model->getAllData();
+    $this->template->load('template', 'jenis_surat/index',$this->data);
 
   }
   public function create()
   {
- 
+
     $this->template->load('template', 'jenis_surat/create');
   }
   public function store()
@@ -30,7 +33,7 @@ class JenisSurat extends CI_Controller
                             'required' => 'Data harus terisi.',
                             'is_unique' => 'Data sudah ada.'
                         ));
- 
+
 
     if ($this->form_validation->run() == TRUE) {
       if ($this->Jenis_surat_model->insertData()) {
@@ -43,8 +46,8 @@ class JenisSurat extends CI_Controller
   }
   public function edit($id)
   {
-    $data['dataJenis'] = $this->Jenis_surat_model->editData($id);
-    $this->template->load('template', 'jenis_surat/edit',$data);
+    $this->data['dataJenis'] = $this->Jenis_surat_model->editData($id);
+    $this->template->load('template', 'jenis_surat/edit',$this->data);
   }
 
   public function update($id)
@@ -55,7 +58,7 @@ class JenisSurat extends CI_Controller
                           array(
                             'required' => 'Data harus terisi.',
                         ));
- 
+
 
     if ($this->form_validation->run() == TRUE) {
       if ($this->Jenis_surat_model->updateData()) {
@@ -63,8 +66,8 @@ class JenisSurat extends CI_Controller
         redirect('jenissurat/index');
       }
     }else{
-      $data['dataJenis'] = $this->Jenis_surat_model->editData($id);
-      $this->template->load('template','jenis_surat/edit',$data);
+      $this->data['dataJenis'] = $this->Jenis_surat_model->editData($id);
+      $this->template->load('template','jenis_surat/edit',$this->data);
     }
   }
 

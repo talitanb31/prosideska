@@ -20,7 +20,6 @@
                 <div class="card-body">
                 <div class="d-flex justify-content-start mb-4">
                     <a href="<?=site_url('syaratsurat/create')?>" class="btn btn-primary p-3"> <i class="fa fa-plus" aria-hidden="true"></i> Tambah Data</a>
-
                 </div>
                     <div class="table-responsive">
                         <table class="table table-striped table-bordered" id="example">
@@ -53,4 +52,3 @@
         </div>
     </div>
 </div>
-       

@@ -7,7 +7,7 @@
                     <li class="breadcrumb-item " aria-current="page"><a href="<?=site_url("welcome/index")?>">Dashboard</a></li>
                 </ol>
             </nav>
-         
+
         </div>
     </div>
     <div class="row">
@@ -18,25 +18,30 @@
                     <a href="" class="btn btn-primary p-3">Tambah Data</a>
                 </div> -->
                     <div class="table-responsive">
-                        <table class="table">
+                        <table class="table" id="example">
                             <thead>
+                              <?php $no = 1; ?>
                                 <tr>
                                     <th>#</th>
                                     <th>Nama</th>
                                     <th>Pesan</th>
+                                    <th>Waktu</th>
                                     <th>Action</th>
                                 </tr>
                             </thead>
                             <tbody>
+                              <?php foreach ($kritikSaran as $item) : ?>
                                 <tr>
-                                    <td>1</td>
-                                    <td>Dummy User</td>
-                                    <td>Lorem ipsum dolor sit amet consectetur adipisicing elit. Unde perferendis voluptatibus maiores blanditiis minima consequatur distinctio veritatis eligendi nesciunt porro commodi expedita, cumque illo praesentium sapiente voluptate, nisi atque omnis.</td>
+                                    <td><?= $no ?></td>
+                                    <td><?= $item['nama'] ?></td>
+                                    <td><?= $item['pesan'] ?></td>
+                                    <td><?= $item['waktu'] ?></td>
                                     <td>
-                                        <a href="#" class="btn btn-warning"><i class="fa fa-edit"></i></a>
-                                        <a href="#" onclick="return confirm('Apakah anda yakin ingin menghapus data ?')" class="btn btn-danger"><i class="fa fa-trash"></i></a>
+                                        <!-- <a href="#" class="btn btn-warning"><i class="fa fa-edit"></i></a> -->
+                                        <a href="<?=base_url('kritiksaran/delete/')?><?=$item['id']?>" onclick="return confirm('Apakah anda yakin ingin menghapus data ?')" class="btn btn-danger"><i class="fa fa-trash"></i></a>
                                     </td>
                                 </tr>
+                              <?php $no++; endforeach; ?>
                             </tbody>
                         </table>
                     </div>

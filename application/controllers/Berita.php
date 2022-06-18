@@ -5,18 +5,21 @@ defined('BASEPATH') or exit('No direct script access allowed');
 class Berita extends CI_Controller
 {
 
+   private $data;
+
     public function __construct()
     {
         parent::__construct();
         is_login();
         $this->load->model('Berita_model');
         $this->load->library('datatables');
+        $this->data['page_title']  = 'Berita';
     }
 
     public function index()
     {
-        $data['data'] = $this->Berita_model->getAllData();
-        $this->template->load('template', 'berita/index', $data);
+        $this->data['data'] = $this->Berita_model->getAllData();
+        $this->template->load('template', 'berita/index', $this->data);
     }
 
     public function create()
@@ -68,7 +71,7 @@ class Berita extends CI_Controller
     public function store()
     {
         $this->_rules();
-        
+
         $cover = $this->upload_foto();
         if ($this->form_validation->run() == TRUE) {
             if ($this->Berita_model->insertData($cover['file_name'])) {
@@ -82,8 +85,8 @@ class Berita extends CI_Controller
 
     public function edit($id)
     {
-        $data['data'] = $this->Berita_model->editData($id);
-        $this->template->load('template', 'berita/edit',$data);
+        $this->data['data'] = $this->Berita_model->editData($id);
+        $this->template->load('template', 'berita/edit',$this->data);
     }
 
     public function update($id)

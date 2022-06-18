@@ -4,6 +4,7 @@ defined('BASEPATH') or exit('No direct script access allowed');
 
 class Welcome extends CI_Controller
 {
+    private $data;
 
     public function __construct()
     {
@@ -14,33 +15,34 @@ class Welcome extends CI_Controller
         $this->load->model('Penduduk_model');
         $this->load->model('Akun_model');
         $this->load->model('PermintaanSurat_model');
+        $this->data['page_title'] = 'Dashboard';
     }
 
     public function index()
     {
         //$this->load->view('table');
-        $data['total_jenis_surat'] = $this->Jenis_surat_model->getAllData() != null ? count($this->Jenis_surat_model->getAllData()) : 0;
-        $data['total_kartu_keluarga'] = $this->KartuKeluarga_model->getAllData() != null ? count($this->KartuKeluarga_model->getAllData()) : 0;
-        $data['total_penduduk'] = $this->Penduduk_model->getAllData() != null ? count($this->Penduduk_model->getAllData()) : 0;
-        $data['total_admin'] = $this->Akun_model->getAllData() != null ? count($this->Akun_model->getAllData()) : 0;
-        $data['total_surat_selesai'] = $this->PermintaanSurat_model->getSuratByStatus('selesai') != null ? count($this->PermintaanSurat_model->getSuratByStatus('selesai')) : 0;
-        $data['total_surat_pending'] = $this->PermintaanSurat_model->getSuratByStatus('pending') != null ? count($this->PermintaanSurat_model->getSuratByStatus('pending')) : 0;
-        $data['total_surat_diproses'] = $this->PermintaanSurat_model->getSuratByStatus('diproses') != null ? count($this->PermintaanSurat_model->getSuratByStatus('diproses')) : 0;
-        $data['total_surat_ditolak'] = $this->PermintaanSurat_model->getSuratByStatus('ditolak') != null ? count($this->PermintaanSurat_model->getSuratByStatus('ditolak')) : 0;
-        $data['januari'] = $this->PermintaanSurat_model->getSuratByMonth(1) != null ? count($this->PermintaanSurat_model->getSuratByMonth(1)) : 0;
-        $data['februari'] = $this->PermintaanSurat_model->getSuratByMonth(2) != null ? count($this->PermintaanSurat_model->getSuratByMonth(2)) : 0;
-        $data['maret'] = $this->PermintaanSurat_model->getSuratByMonth(3) != null ? count($this->PermintaanSurat_model->getSuratByMonth(3)) : 0;
-        $data['april'] = $this->PermintaanSurat_model->getSuratByMonth(4) != null ? count($this->PermintaanSurat_model->getSuratByMonth(4)) : 0;
-        $data['mei'] = $this->PermintaanSurat_model->getSuratByMonth(5) != null ? count($this->PermintaanSurat_model->getSuratByMonth(5)) : 0;
-        $data['juni'] = $this->PermintaanSurat_model->getSuratByMonth(6) != null ? count($this->PermintaanSurat_model->getSuratByMonth(6)) : 0;
-        $data['juli'] = $this->PermintaanSurat_model->getSuratByMonth(7) != null ? count($this->PermintaanSurat_model->getSuratByMonth(7)) : 0;
-        $data['agustus'] = $this->PermintaanSurat_model->getSuratByMonth(8) != null ? count($this->PermintaanSurat_model->getSuratByMonth(8)) : 0;
-        $data['september'] = $this->PermintaanSurat_model->getSuratByMonth(9) != null ? count($this->PermintaanSurat_model->getSuratByMonth(9)) : 0;
-        $data['oktober'] = $this->PermintaanSurat_model->getSuratByMonth(10) != null ? count($this->PermintaanSurat_model->getSuratByMonth(10)) : 0;
-        $data['november'] = $this->PermintaanSurat_model->getSuratByMonth(11) != null ? count($this->PermintaanSurat_model->getSuratByMonth(11)) : 0;
-        $data['desember'] = $this->PermintaanSurat_model->getSuratByMonth(12) != null ? count($this->PermintaanSurat_model->getSuratByMonth(12)) : 0;
+        $this->data['total_jenis_surat'] = $this->Jenis_surat_model->getAllData() != null ? count($this->Jenis_surat_model->getAllData()) : 0;
+        $this->data['total_kartu_keluarga'] = $this->KartuKeluarga_model->getAllData() != null ? count($this->KartuKeluarga_model->getAllData()) : 0;
+        $this->data['total_penduduk'] = $this->Penduduk_model->getAllData() != null ? count($this->Penduduk_model->getAllData()) : 0;
+        $this->data['total_admin'] = $this->Akun_model->getAllData() != null ? count($this->Akun_model->getAllData()) : 0;
+        $this->data['total_surat_selesai'] = $this->PermintaanSurat_model->getSuratByStatus('selesai') != null ? count($this->PermintaanSurat_model->getSuratByStatus('selesai')) : 0;
+        $this->data['total_surat_pending'] = $this->PermintaanSurat_model->getSuratByStatus('pending') != null ? count($this->PermintaanSurat_model->getSuratByStatus('pending')) : 0;
+        $this->data['total_surat_diproses'] = $this->PermintaanSurat_model->getSuratByStatus('diproses') != null ? count($this->PermintaanSurat_model->getSuratByStatus('diproses')) : 0;
+        $this->data['total_surat_ditolak'] = $this->PermintaanSurat_model->getSuratByStatus('ditolak') != null ? count($this->PermintaanSurat_model->getSuratByStatus('ditolak')) : 0;
+        $this->data['januari'] = $this->PermintaanSurat_model->getSuratByMonth(1) != null ? count($this->PermintaanSurat_model->getSuratByMonth(1)) : 0;
+        $this->data['februari'] = $this->PermintaanSurat_model->getSuratByMonth(2) != null ? count($this->PermintaanSurat_model->getSuratByMonth(2)) : 0;
+        $this->data['maret'] = $this->PermintaanSurat_model->getSuratByMonth(3) != null ? count($this->PermintaanSurat_model->getSuratByMonth(3)) : 0;
+        $this->data['april'] = $this->PermintaanSurat_model->getSuratByMonth(4) != null ? count($this->PermintaanSurat_model->getSuratByMonth(4)) : 0;
+        $this->data['mei'] = $this->PermintaanSurat_model->getSuratByMonth(5) != null ? count($this->PermintaanSurat_model->getSuratByMonth(5)) : 0;
+        $this->data['juni'] = $this->PermintaanSurat_model->getSuratByMonth(6) != null ? count($this->PermintaanSurat_model->getSuratByMonth(6)) : 0;
+        $this->data['juli'] = $this->PermintaanSurat_model->getSuratByMonth(7) != null ? count($this->PermintaanSurat_model->getSuratByMonth(7)) : 0;
+        $this->data['agustus'] = $this->PermintaanSurat_model->getSuratByMonth(8) != null ? count($this->PermintaanSurat_model->getSuratByMonth(8)) : 0;
+        $this->data['september'] = $this->PermintaanSurat_model->getSuratByMonth(9) != null ? count($this->PermintaanSurat_model->getSuratByMonth(9)) : 0;
+        $this->data['oktober'] = $this->PermintaanSurat_model->getSuratByMonth(10) != null ? count($this->PermintaanSurat_model->getSuratByMonth(10)) : 0;
+        $this->data['november'] = $this->PermintaanSurat_model->getSuratByMonth(11) != null ? count($this->PermintaanSurat_model->getSuratByMonth(11)) : 0;
+        $this->data['desember'] = $this->PermintaanSurat_model->getSuratByMonth(12) != null ? count($this->PermintaanSurat_model->getSuratByMonth(12)) : 0;
 
-        $this->template->load('template', '_partials/content', $data);
+        $this->template->load('template', '_partials/content', $this->data);
     }
 
     public function form()
@@ -74,7 +76,7 @@ class Welcome extends CI_Controller
         $pdf->AddPage();
         // setting jenis font yang akan digunakan
         $pdf->SetFont('Arial', 'B', 16);
-        // mencetak string 
+        // mencetak string
         $pdf->Cell(190, 7, 'SEKOLAH MENENGAH KEJURUSAN NEEGRI 2 LANGSA', 0, 1, 'C');
         $pdf->SetFont('Arial', 'B', 12);
         $pdf->Cell(190, 7, 'DAFTAR SISWA KELAS IX JURUSAN REKAYASA PERANGKAT LUNAK', 0, 1, 'C');

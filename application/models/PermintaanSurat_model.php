@@ -23,6 +23,20 @@ class PermintaanSurat_model extends CI_Model
     return $query->result_array();
   }
 
+  public function getAllDataRiwayat()
+  {
+    $this->db->select('permintaan_surat.*, jenis_surat.jenis, penduduk.nama as penduduk, penduduk.nik, akun.nama as admin');
+    $this->db->from($this->_table);
+    $this->db->join('jenis_surat', 'jenis_surat.id = permintaan_surat.id_jenis_surat');
+    $this->db->join('penduduk', 'penduduk.nik = permintaan_surat.nik');
+    $this->db->join('akun', 'akun.id = permintaan_surat.id_admin', 'left');
+    $this->db->where('permintaan_surat.status', 'selesai');
+    $this->db->order_by("created_at DESC");
+    $query = $this->db->get();
+
+    return $query->result_array();
+  }
+
   public function getSuratByStatus($status)
   {
     return $this->db->get_where($this->_table, ['status' => $status])->result_array();

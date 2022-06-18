@@ -5,6 +5,8 @@ defined('BASEPATH') or exit('No direct script access allowed');
 class Penduduk extends CI_Controller
 {
 
+    private $data;
+
     public function __construct()
     {
         parent::__construct();
@@ -14,20 +16,21 @@ class Penduduk extends CI_Controller
         $this->load->model('Pekerjaan_model');
         $this->load->model('Negara_model');
         $this->load->library('datatables');
+        $this->data['page_title']  = 'Penduduk';
     }
 
     public function index()
     {
-        $data['data'] = $this->Penduduk_model->getAllData();
-        $this->template->load('template', 'penduduk/index', $data);
+        $this->data['data'] = $this->Penduduk_model->getAllData();
+        $this->template->load('template', 'penduduk/index', $this->data);
     }
 
     public function create()
     {
-        $data['pendidikan'] = $this->Pendidikan_model->getAllData();
-        $data['pekerjaan'] = $this->Pekerjaan_model->getAllData();
-        $data['negara'] = $this->Negara_model->getAllData();
-        $this->template->load('template', 'penduduk/create', $data);
+        $this->data['pendidikan'] = $this->Pendidikan_model->getAllData();
+        $this->data['pekerjaan'] = $this->Pekerjaan_model->getAllData();
+        $this->data['negara'] = $this->Negara_model->getAllData();
+        $this->template->load('template', 'penduduk/create', $this->data);
     }
 
     public function store()
@@ -134,20 +137,20 @@ class Penduduk extends CI_Controller
 
     public function detail($id)
     {
-        $data['data'] = $this->Penduduk_model->editData($id);
-        $data['pendidikan'] = $this->Pendidikan_model->getAllData();
-        $data['pekerjaan'] = $this->Pekerjaan_model->getAllData();
-        $data['negara'] = $this->Negara_model->getAllData();
-        $this->template->load('template', 'penduduk/detail', $data);
+        $this->data['data'] = $this->Penduduk_model->editData($id);
+        $this->data['pendidikan'] = $this->Pendidikan_model->getAllData();
+        $this->data['pekerjaan'] = $this->Pekerjaan_model->getAllData();
+        $this->data['negara'] = $this->Negara_model->getAllData();
+        $this->template->load('template', 'penduduk/detail', $this->data);
     }
 
     public function edit($id)
     {
-        $data['data'] = $this->Penduduk_model->editData($id);
-        $data['pendidikan'] = $this->Pendidikan_model->getAllData();
-        $data['pekerjaan'] = $this->Pekerjaan_model->getAllData();
-        $data['negara'] = $this->Negara_model->getAllData();
-        $this->template->load('template', 'penduduk/edit', $data);
+        $this->data['data'] = $this->Penduduk_model->editData($id);
+        $this->data['pendidikan'] = $this->Pendidikan_model->getAllData();
+        $this->data['pekerjaan'] = $this->Pekerjaan_model->getAllData();
+        $this->data['negara'] = $this->Negara_model->getAllData();
+        $this->template->load('template', 'penduduk/edit', $this->data);
     }
 
     public function update($id)
@@ -233,12 +236,12 @@ class Penduduk extends CI_Controller
                 redirect('penduduk/index');
             }
         } else {
-            $data['data'] = $this->Penduduk_model->editData($id);
-            $data['pendidikan'] = $this->Pendidikan_model->getAllData();
-            $data['pekerjaan'] = $this->Pekerjaan_model->getAllData();
-            $data['negara'] = $this->Negara_model->getAllData();
+            $this->data['data'] = $this->Penduduk_model->editData($id);
+            $this->data['pendidikan'] = $this->Pendidikan_model->getAllData();
+            $this->data['pekerjaan'] = $this->Pekerjaan_model->getAllData();
+            $this->data['negara'] = $this->Negara_model->getAllData();
 
-            $this->template->load('template', 'penduduk/edit', $data);
+            $this->template->load('template', 'penduduk/edit', $this->data);
         }
     }
 

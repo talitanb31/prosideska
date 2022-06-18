@@ -5,6 +5,8 @@ defined('BASEPATH') or exit('No direct script access allowed');
 class ListPermintaan extends CI_Controller
 {
 
+    private $data;
+
     public function __construct()
     {
         parent::__construct();
@@ -13,13 +15,14 @@ class ListPermintaan extends CI_Controller
         $this->load->model('PermintaanSurat_model');
         $this->load->model('CetakSurat_model');
         $this->load->model('Penduduk_model');
+        $this->data['page_title']  = 'Permintaan Surat';
     }
 
     public function index()
     {
-        $data['data'] = $this->PermintaanSurat_model->getAllData();
+        $this->data['data'] = $this->PermintaanSurat_model->getAllData();
 
-        $this->template->load('template', 'list_permintaan/index', $data);
+        $this->template->load('template', 'list_permintaan/index', $this->data);
     }
 
     public function terima($id, $nik)
@@ -29,11 +32,11 @@ class ListPermintaan extends CI_Controller
         $jenisSurat = $this->db->get_where('permintaan_surat', array('permintaan_surat.id' => $id))->row_array();
 
         if ($jenisSurat['jenis'] == 'Surat Keterangan Perjalanan') {
-            $data['id'] = $id;
-            $data['jenis'] = $jenisSurat['jenis'];
-            $data['nik'] = $nik;
+            $this->data['id'] = $id;
+            $this->data['jenis'] = $jenisSurat['jenis'];
+            $this->data['nik'] = $nik;
 
-            $this->template->load('template', 'list_permintaan/form-surat', $data);
+            $this->template->load('template', 'list_permintaan/form-surat', $this->data);
         } else {
             if ($this->PermintaanSurat_model->terima($id, $nik)) {
                 $this->session->set_flashdata('pesan', 'surat berhasil diterima');
@@ -53,7 +56,7 @@ class ListPermintaan extends CI_Controller
         $formData->berlaku_hingga = $this->input->post('berlaku_hingga');
 
         $formData = json_encode($formData);
-        $data = array(
+        $this->data = array(
             'status' => 'diproses',
             'id_admin' => $_SESSION['id'],
             'form_data' => $formData,
@@ -61,7 +64,7 @@ class ListPermintaan extends CI_Controller
 
         $this->db->where('id', $id);
 
-        $this->db->update('permintaan_surat', $data);
+        $this->db->update('permintaan_surat', $this->data);
 
         if ($this->PermintaanSurat_model->storeNotification($this->input->post('nik'), 'Permintaan surat anda sudah diterima.')) {
             $this->session->set_flashdata('pesan', 'surat berhasil diterima');
@@ -102,7 +105,7 @@ class ListPermintaan extends CI_Controller
         elseif ($jenisSurat == 'surat tidak mampu')
             $this->CetakSurat_model->suratTidakMampu($id, $penduduk);
         elseif ($jenisSurat == 'surat kematian')
-            $this->CetakSurat_model->suratKematian($id, $data, $penduduk);
+            $this->CetakSurat_model->suratKematian($id, $this->data, $penduduk);
         elseif ($jenisSurat == 'surat kuasa')
             $this->CetakSurat_model->suratKuasa($id, $penduduk);
         elseif ($jenisSurat == 'surat usaha')

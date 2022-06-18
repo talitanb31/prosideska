@@ -8,7 +8,7 @@
                     <li class="breadcrumb-item active" aria-current="page"><?=ucwords($this->uri->segment(2))?></li>
                 </ol>
             </nav>
-         
+
         </div>
     </div>
     <div class="row">
@@ -42,4 +42,3 @@
         </div>
     </div>
 </div>
-       

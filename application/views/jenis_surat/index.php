@@ -18,11 +18,9 @@
         <div class="col-lg-12">
             <div class="card">
                 <div class="card-body">
-                <div class="d-flex justify-content-start mb-4">
+                <!-- <div class="d-flex justify-content-start mb-4">
                     <a href="<?=site_url('jenissurat/create')?>" class="btn btn-primary p-3"> <i class="fa fa-wpforms" aria-hidden="true"></i> Tambah Data</a>
-                    <!-- <?php echo anchor(site_url('user/create'), '<i class="fa fa-wpforms" aria-hidden="true"></i> Tambah Data', 'class="btn btn-danger btn-sm"'); ?> -->
-
-                </div>
+                </div> -->
                     <div class="table-responsive">
                         <table class="table table-striped table-bordered" id="example">
                             <thead>
@@ -39,7 +37,7 @@
                                         <td><?=$no++?></td>
                                         <td><?=$item['jenis']?></td>
                                         <td>
-                                            <a href="<?=base_url('jenissurat/edit/')?><?=$item['id']?>" class="btn btn-warning"><i class="fa fa-edit"></i></a>
+                                            <!-- <a href="<?=base_url('jenissurat/edit/')?><?=$item['id']?>" class="btn btn-warning"><i class="fa fa-edit"></i></a> -->
                                             <a href="<?=base_url('jenissurat/delete/')?><?=$item['id']?>" onclick="return confirm('Apakah anda yakin ingin menghapus data ?')" class="btn btn-danger"><i class="fa fa-trash"></i></a>
                                         </td>
                                     </tr>
@@ -52,4 +50,3 @@
         </div>
     </div>
 </div>
-       

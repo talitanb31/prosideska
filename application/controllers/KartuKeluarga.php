@@ -5,18 +5,21 @@ defined('BASEPATH') or exit('No direct script access allowed');
 class KartuKeluarga extends CI_Controller
 {
 
+    private $data;
+
     public function __construct()
     {
         parent::__construct();
         is_login();
         $this->load->model('KartuKeluarga_model');
         $this->load->library('datatables');
+        $this->data['page_title']  = 'Kartu Keluarga';
     }
 
     public function index()
     {
-        $data['data'] = $this->KartuKeluarga_model->getAllData();
-        $this->template->load('template', 'kartu_keluarga/index', $data);
+        $this->data['data'] = $this->KartuKeluarga_model->getAllData();
+        $this->template->load('template', 'kartu_keluarga/index', $this->data);
     }
 
     public function create()
@@ -102,8 +105,8 @@ class KartuKeluarga extends CI_Controller
 
     public function edit($id)
     {
-        $data['data'] = $this->KartuKeluarga_model->editData($id);
-        $this->template->load('template', 'kartu_keluarga/edit', $data);
+        $this->data['data'] = $this->KartuKeluarga_model->editData($id);
+        $this->template->load('template', 'kartu_keluarga/edit', $this->data);
     }
 
     public function update($id)
