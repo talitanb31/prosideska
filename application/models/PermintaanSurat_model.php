@@ -17,6 +17,7 @@ class PermintaanSurat_model extends CI_Model
     $this->db->join('jenis_surat', 'jenis_surat.id = permintaan_surat.id_jenis_surat');
     $this->db->join('penduduk', 'penduduk.nik = permintaan_surat.nik');
     $this->db->join('akun', 'akun.id = permintaan_surat.id_admin', 'left');
+    $this->db->where('permintaan_surat.status !=', 'selesai');
     $this->db->order_by("FIELD(permintaan_surat.status, 'pending', 'diproses', 'selesai', 'ditolak')");
     $query = $this->db->get();
 
