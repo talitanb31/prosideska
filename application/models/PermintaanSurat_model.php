@@ -95,4 +95,27 @@ class PermintaanSurat_model extends CI_Model
 
     return $this->db->insert("notifikasi", $data);
   }
+
+  public function edit($id)
+  {
+    $this->db->select('id,form_data');
+    $this->db->from($this->_table);
+    $this->db->where('id',$id);
+    $query = $this->db->get();
+    
+    return $query->result_array();
+  }
+
+  public function updateData($id,$json){
+      $data = array(
+        'form_data' => $json,
+        'created_at' => date('Y-m-d H:i:s'),
+        'updated_at' => date('Y-m-d H:i:s'),
+    );
+    $this->db->where('id', $id);
+
+    return $this->db->update($this->_table, $data);
+
+    // return $this->db->insert($this->_table, $data);
+  }
 }

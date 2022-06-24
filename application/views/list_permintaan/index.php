@@ -45,11 +45,13 @@
                                             <?php if ($item['status'] == 'pending' && $_SESSION['level'] == 'kepaladesa') : ?>
                                                 <a href="<?= site_url("listpermintaan/terima/") ?><?= $item['id'] . '/' . $item['nik'] ?>" onclick="return confirm('Apakah anda yakin ingin menerima ?')" class="btn btn-success"><i class="fa fa-check"></i></a>
                                                 <a href="<?= site_url("listpermintaan/tolak/") ?><?= $item['id'] . '/' . $item['nik'] ?>" onclick="return confirm('Apakah anda yakin ingin menolak ?')" class="btn btn-danger"><i class="fa fa-close"></i></a>
-                                                <button type="button" class="btn btn-primary editPermintaan" data-id="<?= $item['id']?>" data-toggle="modal" data-target="#ListPermintaanModal">
-                                                    Edit
-                                                </button>
+                                            <?php elseif ($item['status'] == 'pending' && $_SESSION['level'] == 'admin') : ?>
+                                                <a href="<?= site_url("listpermintaan/update/") ?><?= $item['id'] ?>" onclick="return confirm('Apakah anda yakin ingin dirubah ?')" class="btn btn-warning"><i class="fa fa-pencil"></i></a>
 
-                                            <?php elseif ($item['status'] == 'diproses' && $_SESSION['level'] == 'kepaladesa') : ?>
+                                            <!-- <button type="button" class="btn btn-primary editPermintaan" data-id="<?= $item['id']?>" data-toggle="modal" data-target="#ListPermintaanModal">
+                                                    Edit
+                                                </button> -->
+                                            <?php elseif ($item['status'] == 'diproses' && $_SESSION['level'] == 'admin') : ?>
                                                 <a href="<?= site_url("listpermintaan/printPdf/") ?><?= $item['id'] . '/' . strtolower(str_replace(' ', '-', $item['jenis']) . '/' . $item['nik']) ?>" target="_blank" onclick="return confirm('Apakah anda yakin ingin mencetak surat ?')" class="btn btn-primary"><i class="fa fa-print"></i></a>
                                                 <a href="<?= site_url("listpermintaan/done/") ?><?= $item['id'] . '/' . $item['nik'] ?>" target="_blank" onclick="return confirm('Konfirmasi selesai?')" class="btn btn-warning"><i class="fa fa-check-square"></i> Selesai</a>
                                             <?php elseif ($item['status'] == 'selesai') : ?>
@@ -79,13 +81,17 @@
           <span aria-hidden="true">&times;</span>
         </button>
       </div>
+      <input type="hidden" name="id" class="id" id="id">
       <div class="modal-body">
-        <label for="">Id Permintaan Surat</label>
-        <input type="text" name="id" class="id" id="id">
+        <form action="">
+            <div id="form_data">
+
+            </div>
       </div>
       <div class="modal-footer">
         <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
         <button type="button" class="btn btn-primary">Save changes</button>
+        </form>
       </div>
     </div>
   </div>

@@ -24,7 +24,35 @@
         e.preventDefault();
         let id = $(this).attr('data-id');
         $('#id').val(id);
+        var _html = '';
+        if (id) {
+            $.ajax({
+              type: 'GET',
+              url: "<?php echo base_url()?>ListPermintaan/update/" + id,
+              dataType: 'json',
+              // data: {id: id},
+              success: function(data){
+                $.each(data, function(key, value){
+                  var data = JSON.parse(value.form_data);
+                    for (let [key,value] of Object.entries(data)){
+                        _html += '<div class="form-group">'
+                          _html += '<label for="' + key + '"> ' + capitalizeFirstLetter(key.replaceAll('_', ' ')) + '</label>'
+                            _html += '<input type="text" name="' + key + '" value="' + value + '" class="form-control mb-3" id="' + key + '</input>'
+                        _html += '</div>';
+                    }
+                  })
+    
+                  $('#form_data').append(_html)
+                }
+            })
+        }else{
+          $('#form_data').remove()
+        }
     });
+
+    function capitalizeFirstLetter(string) {
+      return string.charAt(0).toUpperCase() + string.slice(1);
+    }
 
     $('#example').DataTable({
       "pageLength": 5,

@@ -141,4 +141,28 @@ class ListPermintaan extends CI_Controller
             $this->CetakSurat_model->suratPindah($id, $nik, $penduduk);
         }
     }
+
+    // public function edit($id){
+    //     $data = $this->PermintaanSurat_model->edit($id);
+    //     $this->template->load('template', 'list_permintaan/form-surat', $data);
+    // }
+    public function update($id){
+        // $id =  $this->uri->segment(3);
+        $this->data['data'] = $this->PermintaanSurat_model->edit($id);
+        $this->template->load('template', 'list_permintaan/edit',$this->data);
+        // echo json_encode($data);
+    }
+    public function updatedata($id){
+        $id = $this->uri->segment(3);
+        foreach ($_POST as $key => $value) {
+            $form[$key] = isset($value) ? $value : '-';
+        }
+    
+        $json = json_encode($form);
+        if ($this->PermintaanSurat_model->updateData($id,$json)) {
+            $this->session->set_flashdata('pesan', 'Pengajuan berhasil dikirim');
+      
+            echo '<script type="text/javascript">alert("Berhasil mengirim permintaan");window.location="' . base_url() . 'listpermintaan/index"</script>';
+        }
+    }
 }
