@@ -26,6 +26,7 @@
                                     <th>User</th>
                                     <th>Admin</th>
                                     <th>Status</th>
+                                    <th>Dibuat pada</th>
                                     <th>Action</th>
                                 </tr>
                             </thead>
@@ -38,6 +39,7 @@
                                         <td><?= $item['penduduk'] ?></td>
                                         <td><?= $item['admin'] !== null ? $item['admin'] : '-' ?></td>
                                         <td><?= $item['status'] == 'diproses' ? 'menunggu persetujuan kepala desa' : $item['status'] ?></td>
+                                        <td><?= date('d-m-Y', strtotime($item['created_at'])) ?></td>
                                         <td>
                                             <?php if ($item['status'] == 'pending') : ?>
                                                 <a href="<?= site_url("listpermintaan/terima/") ?><?= $item['id'] . '/' . $item['nik'] ?>" onclick="return confirm('Apakah anda yakin ingin menerima ?')" class="btn btn-success"><i class="fa fa-check"></i></a>
