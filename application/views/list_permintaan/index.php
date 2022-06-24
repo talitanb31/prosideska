@@ -41,7 +41,7 @@
                                         <td><?= $item['status'] == 'diproses' ? 'menunggu persetujuan kepala desa' : $item['status'] ?></td>
                                         <td><?= date('d-m-Y', strtotime($item['created_at'])) ?></td>
                                         <td>
-                                            <?php if ($item['status'] == 'pending') : ?>
+                                            <?php if ($item['status'] == 'pending' && $_SESSION['level'] == 'kepaladesa') : ?>
                                                 <a href="<?= site_url("listpermintaan/terima/") ?><?= $item['id'] . '/' . $item['nik'] ?>" onclick="return confirm('Apakah anda yakin ingin menerima ?')" class="btn btn-success"><i class="fa fa-check"></i></a>
                                                 <a href="<?= site_url("listpermintaan/tolak/") ?><?= $item['id'] . '/' . $item['nik'] ?>" onclick="return confirm('Apakah anda yakin ingin menolak ?')" class="btn btn-danger"><i class="fa fa-close"></i></a>
                                             <?php elseif ($item['status'] == 'diproses' && $_SESSION['level'] == 'kepaladesa') : ?>
