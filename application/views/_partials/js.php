@@ -20,6 +20,12 @@
 <!-- <script src="https://cdn.datatables.net/1.11.5/js/jquery.dataTables.min.js"></script> -->
 <script>
   $(document).ready(function() {
+    $(document).on('click','.editPermintaan',function(e){
+        e.preventDefault();
+        let id = $(this).attr('data-id');
+        $('#id').val(id);
+    });
+
     $('#example').DataTable({
       "pageLength": 5,
       "bLengthChange": false,
@@ -44,11 +50,11 @@
   });
 </script>
 <?php if ($this->uri->segment(1) == 'welcome') : ?>
-  <script src="<?php echo base_url() ?>assets/demo/demo.js"></script>
-  <script>
-    $(document).ready(function() {
-      // Javascript method's body can be found in assets/assets-for-demo/js/demo.js
-      demo.initChartsPages();
-    });
-    <?php endif ?>
-  </script>
+<script src="<?php echo base_url() ?>assets/demo/demo.js"></script>
+<script>
+  $(document).ready(function() {
+    // Javascript method's body can be found in assets/assets-for-demo/js/demo.js
+    demo.initChartsPages();
+  });
+  <?php endif ?>
+</script>
