@@ -23,6 +23,7 @@
                                     <th>User</th>
                                     <th>Admin</th>
                                     <th>Status</th>
+                                    <th>Dibuat pada</th>
                                     <th>Action</th>
                                 </tr>
                             </thead>
@@ -35,6 +36,7 @@
                                         <td><?= $item['penduduk'] ?></td>
                                         <td><?= $item['admin'] !== null ? $item['admin'] : '-' ?></td>
                                         <td><?= $item['status'] ?></td>
+                                        <td><?= date('d-m-Y', strtotime($item['created_at'])) ?></td>
                                         <td>
                                             <a href="<?= site_url("listpermintaan/printPdf/") ?><?= $item['id'] . '/' . strtolower(str_replace(' ', '-', $item['jenis']) . '/' . $item['nik']) ?>" target="_blank" onclick="return confirm('Apakah anda yakin ingin mencetak surat ?')" class="btn btn-primary"><i class="fa fa-print"></i></a>
                                         </td>
