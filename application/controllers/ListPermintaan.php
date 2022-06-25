@@ -100,21 +100,32 @@ class ListPermintaan extends CI_Controller
 
         $jenisSurat = str_replace('-', ' ', $jenisSurat);
 
+        $currentNo = $this->PermintaanSurat_model->getNoUrut($id);
+        $newNo = 0;
+
+        if ($currentNo == 0) {
+            // update
+            $newNo = $this->PermintaanSurat_model->generateNoUrut();
+
+            $this->PermintaanSurat_model->setNoUrut($id, $newNo);
+        } else
+            $newNo = $currentNo;
+
         if ($jenisSurat == 'surat pindah')
-            $this->CetakSurat_model->suratPindah($jenisSurat);
+            $this->CetakSurat_model->suratPindah($jenisSurat, $newNo);
         elseif ($jenisSurat == 'surat tidak mampu')
-            $this->CetakSurat_model->suratTidakMampu($id, $penduduk);
+            $this->CetakSurat_model->suratTidakMampu($id, $penduduk, $newNo);
         elseif ($jenisSurat == 'surat kematian')
-            $this->CetakSurat_model->suratKematian($id, $this->data, $penduduk);
+            $this->CetakSurat_model->suratKematian($id, $this->data, $penduduk, $newNo);
         elseif ($jenisSurat == 'surat kuasa')
-            $this->CetakSurat_model->suratKuasa($id, $penduduk);
+            $this->CetakSurat_model->suratKuasa($id, $penduduk, $newNo);
         elseif ($jenisSurat == 'surat usaha')
-            $this->CetakSurat_model->suratUsaha($id, $penduduk);
+            $this->CetakSurat_model->suratUsaha($id, $penduduk, $newNo);
         elseif ($jenisSurat == 'surat kelahiran') {
             // $page1 = $this->load->view('cetak/surat-kelahiran', '', true);
             // $html = [$page1];
             // $this->CetakSurat_model->printFromView($html, count($html));
-            $this->CetakSurat_model->suratKelahiran($id, $penduduk);
+            $this->CetakSurat_model->suratKelahiran($id, $penduduk, $newNo);
             // } elseif ($jenisSurat == 'surat kematian') {
             //     $page1 = $this->load->view('cetak/surat-kematian', '', true);
             //     $page2 = $this->load->view('cetak/surat-kematian2', '', true);
@@ -128,17 +139,17 @@ class ListPermintaan extends CI_Controller
             // $html = [$page1, $page2, $page3];
 
             // $this->CetakSurat_model->printFromView($html, count($html));
-            $this->CetakSurat_model->skck($id, $nik, $penduduk);
+            $this->CetakSurat_model->skck($id, $nik, $penduduk, $newNo);
         } elseif ($jenisSurat == 'surat keterangan perjalanan') {
-            $this->CetakSurat_model->suketPerjalanan($id, $nik, $penduduk);
+            $this->CetakSurat_model->suketPerjalanan($id, $nik, $penduduk, $newNo);
         } elseif ($jenisSurat == 'surat keterangan belum menikah') {
-            $this->CetakSurat_model->suketBelumMenikah($id, $nik, $penduduk);
+            $this->CetakSurat_model->suketBelumMenikah($id, $nik, $penduduk, $newNo);
         } elseif ($jenisSurat == 'surat keterangan kehilangan') {
-            $this->CetakSurat_model->suketPengantarKehilangan($id, $nik, $penduduk);
+            $this->CetakSurat_model->suketPengantarKehilangan($id, $nik, $penduduk, $newNo);
         } elseif ($jenisSurat == 'surat perwalian') {
-            $this->CetakSurat_model->suketPerwalian($id, $nik, $penduduk);
+            $this->CetakSurat_model->suketPerwalian($id, $nik, $penduduk, $newNo);
         } elseif ($jenisSurat == 'surat keterangan pindah') {
-            $this->CetakSurat_model->suratPindah($id, $nik, $penduduk);
+            $this->CetakSurat_model->suratPindah($id, $nik, $penduduk, $newNo);
         }
     }
 
@@ -146,22 +157,24 @@ class ListPermintaan extends CI_Controller
     //     $data = $this->PermintaanSurat_model->edit($id);
     //     $this->template->load('template', 'list_permintaan/form-surat', $data);
     // }
-    public function update($id){
+    public function update($id)
+    {
         // $id =  $this->uri->segment(3);
         $this->data['data'] = $this->PermintaanSurat_model->edit($id);
-        $this->template->load('template', 'list_permintaan/edit',$this->data);
+        $this->template->load('template', 'list_permintaan/edit', $this->data);
         // echo json_encode($data);
     }
-    public function updatedata($id){
+    public function updatedata($id)
+    {
         $id = $this->uri->segment(3);
         foreach ($_POST as $key => $value) {
             $form[$key] = isset($value) ? $value : '-';
         }
-    
+
         $json = json_encode($form);
-        if ($this->PermintaanSurat_model->updateData($id,$json)) {
+        if ($this->PermintaanSurat_model->updateData($id, $json)) {
             $this->session->set_flashdata('pesan', 'Pengajuan berhasil dikirim');
-      
+
             echo '<script type="text/javascript">alert("Berhasil mengirim permintaan");window.location="' . base_url() . 'listpermintaan/index"</script>';
         }
     }

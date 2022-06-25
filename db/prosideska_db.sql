@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Jun 21, 2022 at 06:21 PM
+-- Generation Time: Jun 25, 2022 at 07:34 PM
 -- Server version: 10.4.22-MariaDB
 -- PHP Version: 7.4.27
 
@@ -603,6 +603,7 @@ INSERT INTO `penduduk` (`nik`, `nama`, `agama`, `tempat_lahir`, `tanggal_lahir`,
 
 CREATE TABLE `permintaan_surat` (
   `id` int(11) NOT NULL,
+  `no_urut` int(11) NOT NULL,
   `id_jenis_surat` int(11) NOT NULL,
   `status` enum('pending','diproses','ditolak','selesai') NOT NULL DEFAULT 'pending',
   `nik` varchar(16) DEFAULT NULL,
@@ -616,11 +617,11 @@ CREATE TABLE `permintaan_surat` (
 -- Dumping data for table `permintaan_surat`
 --
 
-INSERT INTO `permintaan_surat` (`id`, `id_jenis_surat`, `status`, `nik`, `form_data`, `id_admin`, `created_at`, `updated_at`) VALUES
-(1, 14, 'selesai', '3511182612000001', '{\"jenis_surat\":\"Surat Keterangan Cacatan Kepolisian\",\"id_jenis_surat\":\"14\"}', 8, '2022-06-10 09:02:01', '2022-06-10 09:02:01'),
-(2, 14, 'selesai', '3511182612000001', '{\"jenis_surat\":\"Surat Keterangan Cacatan Kepolisian\",\"id_jenis_surat\":\"14\"}', 5, '2022-06-10 09:02:38', '2022-06-10 09:02:38'),
-(3, 2, 'selesai', '3511182612000001', '{\"jenis_surat\":\"Surat Keterangan Pindah\",\"id_jenis_surat\":\"2\",\"no_kk\":\"1234567891234567\",\"nik_kepala_keluarga\":\"1234567891234569\",\"nama_kepala_keluarga\":\"Subandi\",\"alamat\":\"Probolinggo\",\"rt\":\"1\",\"rw\":\"2\",\"kelurahan\":\"Sukosari\",\"kecamatan\":\"Tamanan\",\"kab\":\"Bondowoso\",\"prov\":\"Jawa Timur\",\"tgl_pindah\":\"2022-06-15\",\"alasan\":\"\",\"alasan_lainnya\":\"Bosen sama tetangga\",\"klasifikasi\":\"\",\"jenis\":\"2\",\"alamat_tujuan_pindah\":\"\",\"rt_tujuan\":\"2\",\"rw_tujuan\":\"\",\"kelurahan_tujuan\":\"Curahdami\",\"kecamatan_tujuan\":\"Tangsel Wetan\",\"kab_tujuan\":\"Jember\",\"prov_tujuan\":\"Jawa Tengah\",\"tgl_kedatangan\":\"2022-06-24\",\"tidak_pindah\":\"1\",\"pindah\":\"1\",\"rencana_tgl_pindah\":\"2022-06-24\",\"nik_keluarga\":[\"2\"],\"nama_keluarga\":[\"Bambang\"],\"shdk\":[\"Test\"]}', 5, '2022-06-10 09:07:11', '2022-06-10 09:07:11'),
-(4, 4, 'selesai', '3511182612000002', '{\"jenis_surat\":\"Surat Tidak Mampu\",\"id_jenis_surat\":\"4\",\"tujuan\":\"Pesyaratan Beasiswa Kabupaten Bondowoso\",\"nama\":\"Bapak Joko\",\"nik\":\"3511182612000001\",\"tempat_lahir\":\"Bondowoso\",\"tanggal_lahir\":\"2022-06-30\",\"nama_instansi\":\"Pemerintah Kabupaten\"}', 5, '2022-06-10 09:10:10', '2022-06-10 09:10:10');
+INSERT INTO `permintaan_surat` (`id`, `no_urut`, `id_jenis_surat`, `status`, `nik`, `form_data`, `id_admin`, `created_at`, `updated_at`) VALUES
+(1, 1, 14, 'selesai', '3511182612000001', '{\"jenis_surat\":\"Surat Keterangan Cacatan Kepolisian\",\"id_jenis_surat\":\"14\"}', 8, '2022-06-10 09:02:01', '2022-06-10 09:02:01'),
+(2, 2, 14, 'selesai', '3511182612000001', '{\"jenis_surat\":\"Surat Keterangan Cacatan Kepolisian\",\"id_jenis_surat\":\"14\"}', 5, '2022-06-10 09:02:38', '2022-06-10 09:02:38'),
+(3, 3, 2, 'selesai', '3511182612000001', '{\"jenis_surat\":\"Surat Keterangan Pindah\",\"id_jenis_surat\":\"2\",\"no_kk\":\"1234567891234567\",\"nik_kepala_keluarga\":\"1234567891234569\",\"nama_kepala_keluarga\":\"Subandi\",\"alamat\":\"Probolinggo\",\"rt\":\"1\",\"rw\":\"2\",\"kelurahan\":\"Sukosari\",\"kecamatan\":\"Tamanan\",\"kab\":\"Bondowoso\",\"prov\":\"Jawa Timur\",\"tgl_pindah\":\"2022-06-15\",\"alasan\":\"\",\"alasan_lainnya\":\"Bosen sama tetangga\",\"klasifikasi\":\"\",\"jenis\":\"2\",\"alamat_tujuan_pindah\":\"\",\"rt_tujuan\":\"2\",\"rw_tujuan\":\"\",\"kelurahan_tujuan\":\"Curahdami\",\"kecamatan_tujuan\":\"Tangsel Wetan\",\"kab_tujuan\":\"Jember\",\"prov_tujuan\":\"Jawa Tengah\",\"tgl_kedatangan\":\"2022-06-24\",\"tidak_pindah\":\"1\",\"pindah\":\"1\",\"rencana_tgl_pindah\":\"2022-06-24\",\"nik_keluarga\":[\"2\"],\"nama_keluarga\":[\"Bambang\"],\"shdk\":[\"Test\"]}', 5, '2022-06-10 09:07:11', '2022-06-10 09:07:11'),
+(4, 4, 4, 'diproses', '3511182612000002', '{\"jenis_surat\":\"Surat Tidak Mampu\",\"id_jenis_surat\":\"4\",\"tujuan\":\"Pesyaratan Beasiswa Kabupaten Bondowoso\",\"nama\":\"Bapak Joko\",\"nik\":\"3511182612000001\",\"tempat_lahir\":\"Bondowoso\",\"tanggal_lahir\":\"2022-06-30\",\"nama_instansi\":\"Pemerintah Kabupaten\"}', 5, '2022-06-10 09:10:10', '2022-06-10 09:10:10');
 
 -- --------------------------------------------------------
 

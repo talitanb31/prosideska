@@ -24,6 +24,37 @@ class PermintaanSurat_model extends CI_Model
     return $query->result_array();
   }
 
+  public function getNoUrut($id)
+  {
+    return $this->db->get_where($this->_table, ['id' => $id])->row_array()['no_urut'];
+  }
+
+  public function setNoUrut($id, $no)
+  {
+    $data = array('no_urut' => $no);
+    $this->db->where('id', $id);
+
+    return $this->db->update($this->_table, $data);
+  }
+
+  public function generateNoUrut()
+  {
+    $this->db->select('permintaan_surat.no_urut');
+    $this->db->from($this->_table);
+    $this->db->where('status =', 'selesai');
+    $this->db->order_by('no_urut', 'desc');
+    $query = $this->db->get();
+    $query = $query->result_array();
+    $no_urut = '';
+
+    if ($query != null && count($query) > 0)
+      $no_urut = $query[0]['no_urut'] + 1;
+    else
+      $no_urut = 1;
+
+    return $no_urut;
+  }
+
   public function getAllDataRiwayat()
   {
     $this->db->select('permintaan_surat.*, jenis_surat.jenis, penduduk.nama as penduduk, penduduk.nik, akun.nama as admin');
@@ -100,17 +131,18 @@ class PermintaanSurat_model extends CI_Model
   {
     $this->db->select('id,form_data');
     $this->db->from($this->_table);
-    $this->db->where('id',$id);
+    $this->db->where('id', $id);
     $query = $this->db->get();
-    
+
     return $query->result_array();
   }
 
-  public function updateData($id,$json){
-      $data = array(
-        'form_data' => $json,
-        'created_at' => date('Y-m-d H:i:s'),
-        'updated_at' => date('Y-m-d H:i:s'),
+  public function updateData($id, $json)
+  {
+    $data = array(
+      'form_data' => $json,
+      'created_at' => date('Y-m-d H:i:s'),
+      'updated_at' => date('Y-m-d H:i:s'),
     );
     $this->db->where('id', $id);
 

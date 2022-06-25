@@ -109,7 +109,7 @@ class CetakSurat_model extends CI_Model
         $mpdf->Output();
     }
 
-    public function suratUsaha($idSurat, $data)
+    public function suratUsaha($idSurat, $data, $noUrut)
     {
         $detailSurat = $this->getDetailSurat($idSurat);
         $detailSurat = json_decode($detailSurat['form_data']);
@@ -132,7 +132,7 @@ class CetakSurat_model extends CI_Model
 
         $this->pdf->SetFont('Arial', '', 12);
         $this->pdf->Cell(80);
-        $this->pdf->Cell(30, 10, 'Nomor : 504 /       / 403.401.07 / 2022', 0, 0, 'C');
+        $this->pdf->Cell(30, 10, 'Nomor : ' . $noUrut . ' /       / 403.401.07 / 2022', 0, 0, 'C');
 
         $this->pdf->Ln(15); // new line
 
@@ -317,7 +317,7 @@ class CetakSurat_model extends CI_Model
         $this->pdf->Output();
     }
 
-    public function suratKelahiran($idSurat, $data)
+    public function suratKelahiran($idSurat, $data, $noUrut)
     {
         $detailSurat = $this->getDetailSurat($idSurat);
         $detailSurat = json_decode($detailSurat['form_data']);
@@ -340,7 +340,7 @@ class CetakSurat_model extends CI_Model
 
         $this->pdf->SetFont('Arial', '', 12);
         $this->pdf->Cell(80);
-        $this->pdf->Cell(30, 10, 'Nomor : 474 /       / 403.406.07 / 2022', 0, 0, 'C');
+        $this->pdf->Cell(30, 10, 'Nomor : ' . $noUrut . ' /       / 403.406.07 / 2022', 0, 0, 'C');
 
         $this->pdf->Ln(15); // new line
 
@@ -645,7 +645,7 @@ class CetakSurat_model extends CI_Model
         $this->pdf->Output();
     }
 
-    public function suratKuasa($id, $penduduk)
+    public function suratKuasa($id, $penduduk, $noUrut)
     {
         $detailSurat = $this->getDetailSurat($id);
         $detailSurat = json_decode($detailSurat['form_data']);
@@ -830,7 +830,7 @@ class CetakSurat_model extends CI_Model
         $this->pdf->Output();
     }
 
-    public function suratTidakMampu($idSurat, $penduduk)
+    public function suratTidakMampu($idSurat, $penduduk, $noUrut)
     {
         $detailSurat = $this->getDetailSurat($idSurat);
         $detailSurat = json_decode($detailSurat['form_data']);
@@ -855,7 +855,7 @@ class CetakSurat_model extends CI_Model
 
         $this->pdf->SetFont('Arial', '', 12);
         $this->pdf->Cell(80);
-        $this->pdf->Cell(30, 10, 'Nomor : 145/     /403.406.07/ 2022', 0, 0, 'C');
+        $this->pdf->Cell(30, 10, 'Nomor : ' . $noUrut . '/     /403.406.07/ 2022', 0, 0, 'C');
 
         $this->pdf->Ln(15); // new line
 
@@ -884,7 +884,7 @@ class CetakSurat_model extends CI_Model
         $this->pdf->Cell(60, 10, 'Tempat, Tanggal Lahir', 0, 0, '');
         $this->pdf->Cell(10, 10, ':', 0, 0, 'C');
         $this->pdf->SetFont('Arial', '', 12);
-        $this->pdf->Cell(30, 10, $penduduk['tempat_lahir'].', '.date('D-M-Y', strtotime($penduduk['tanggal_lahir'])), 0, 0, '');
+        $this->pdf->Cell(30, 10, $penduduk['tempat_lahir'] . ', ' . date('D-M-Y', strtotime($penduduk['tanggal_lahir'])), 0, 0, '');
         /* End Child Row */
 
         $this->pdf->Ln(6);
@@ -963,7 +963,7 @@ class CetakSurat_model extends CI_Model
         $this->pdf->Cell(0, 10, 'Tangggal 14 Maret 2022 bahwa yang bersangkutan di atas benar-benar Keluarga Tidak Mampu', 0, '');
         $this->pdf->Ln(8);
         $this->pdf->Cell(10, 10);
-        $this->pdf->Cell(0, 10, 'Surat keterangan ini untuk Persyaratan '.$detailSurat->tujuan.' atas nama :', 0, 'L', '');
+        $this->pdf->Cell(0, 10, 'Surat keterangan ini untuk Persyaratan ' . $detailSurat->tujuan . ' atas nama :', 0, 'L', '');
         /* End Row */
 
         $this->pdf->Ln(6);
@@ -996,7 +996,7 @@ class CetakSurat_model extends CI_Model
         $this->pdf->Cell(60, 10, 'Tempat, Tgl Lahir', 0, 0, '');
         $this->pdf->Cell(10, 10, ':', 0, 0, 'C');
         $this->pdf->SetFont('Arial', '', 12);
-        $this->pdf->Cell(30, 10, $detailSurat->tempat_lahir.', '.date('D-M-Y', strtotime($detailSurat->tanggal_lahir)), 0, 0, '');
+        $this->pdf->Cell(30, 10, $detailSurat->tempat_lahir . ', ' . date('D-M-Y', strtotime($detailSurat->tanggal_lahir)), 0, 0, '');
         /* End Child Row */
 
         $this->pdf->Ln(6);
@@ -1067,7 +1067,7 @@ class CetakSurat_model extends CI_Model
         $this->pdf->Output();
     }
 
-    public function suratPindah($id, $nik, $penduduk)
+    public function suratPindah($id, $nik, $penduduk, $noUrut)
     {
         $detailSurat = $this->getDetailSurat($id);
         $detailSurat = json_decode($detailSurat['form_data']);
@@ -1586,7 +1586,7 @@ class CetakSurat_model extends CI_Model
 
         $this->pdf->SetFont('Arial', '', 12);
         $this->pdf->Cell(80);
-        $this->pdf->Cell(30, 10, 'Nomor : 471.21 / 219 / 402.315. 10 / 2019', 0, 0, 'C');
+        $this->pdf->Cell(30, 10, 'Nomor : ' . $noUrut . ' / 219 / 402.315. 10 / 2019', 0, 0, 'C');
 
         $this->pdf->Ln(8); // new line
 
@@ -1701,7 +1701,7 @@ class CetakSurat_model extends CI_Model
         $this->pdf->Output();
     }
 
-    public function suratKematian($id, $nik, $penduduk)
+    public function suratKematian($id, $nik, $penduduk, $noUrut)
     {
         $detailSurat = $this->getDetailSurat($id);
         $detailSurat = json_decode($detailSurat['form_data']);
@@ -1725,7 +1725,7 @@ class CetakSurat_model extends CI_Model
 
         $this->pdf->SetFont('Arial', '', 12);
         $this->pdf->Cell(80);
-        $this->pdf->Cell(30, 10, 'Nomor : 474.3/  /403.406.07/2022', 0, 0, 'C');
+        $this->pdf->Cell(30, 10, 'Nomor : ' . $noUrut . '/  /403.406.07/2022', 0, 0, 'C');
 
         $this->pdf->Ln(8); // new line
 
@@ -1762,7 +1762,7 @@ class CetakSurat_model extends CI_Model
         $this->pdf->Cell(30, 10, 'Alamat', 0, 0, '');
         $this->pdf->Cell(10, 10, ':', 0, 0, 'C');
         $this->pdf->SetFont('Arial', '', 10);
-        $this->pdf->Cell(30, 10, $detailSurat->desa_jenazah.' RT. '.$detailSurat->rt_jenazah.' RW. '.$detailSurat->rw_jenazah.' Kel '.$detailSurat->kelurahan_jenazah.' , '.$detailSurat->kecamatan_jenazah, 0, 0, '');
+        $this->pdf->Cell(30, 10, $detailSurat->desa_jenazah . ' RT. ' . $detailSurat->rt_jenazah . ' RW. ' . $detailSurat->rw_jenazah . ' Kel ' . $detailSurat->kelurahan_jenazah . ' , ' . $detailSurat->kecamatan_jenazah, 0, 0, '');
         /* End Row */
 
         $this->pdf->Ln(8); // new line
@@ -1772,7 +1772,7 @@ class CetakSurat_model extends CI_Model
         $this->pdf->Cell(30, 10, 'Umur', 0, 0, '');
         $this->pdf->Cell(10, 10, ':', 0, 0, 'C');
         $this->pdf->SetFont('Arial', '', 10);
-        $this->pdf->Cell(30, 10, $detailSurat->umur.' Tahun', 0, 0, '');
+        $this->pdf->Cell(30, 10, $detailSurat->umur . ' Tahun', 0, 0, '');
         /* End Row */
 
         $this->pdf->Ln(8); // new line
@@ -1854,7 +1854,7 @@ class CetakSurat_model extends CI_Model
         /* Start Row */
         $this->pdf->SetFont('Arial', '', 10);
         $this->pdf->Cell(130);
-        $this->pdf->Cell(30, 10, 'Magetan, '.date('D M Y'), 0, 0, 'C');
+        $this->pdf->Cell(30, 10, 'Magetan, ' . date('D M Y'), 0, 0, 'C');
         $this->pdf->Ln(4); // new line
         $this->pdf->Cell(130);
         $this->pdf->Cell(30, 10, 'LURAH SUKOWINANGUN', 0, 0, 'C');
@@ -1919,7 +1919,7 @@ class CetakSurat_model extends CI_Model
         $this->pdf->Cell(36, 10, '3. Alamat', 0, 0, '');
         $this->pdf->Cell(10, 10, ':', 0, 0, 'C');
         $this->pdf->SetFont('Arial', '', 10);
-        $this->pdf->Cell(30, 10, $detailSurat->desa_jenazah.' RT. '.$detailSurat->rt_jenazah.' RW. '.$detailSurat->rw_jenazah.' Kel '.$detailSurat->kelurahan_jenazah.' , '.$detailSurat->kecamatan_jenazah, 0, 0, '');
+        $this->pdf->Cell(30, 10, $detailSurat->desa_jenazah . ' RT. ' . $detailSurat->rt_jenazah . ' RW. ' . $detailSurat->rw_jenazah . ' Kel ' . $detailSurat->kelurahan_jenazah . ' , ' . $detailSurat->kecamatan_jenazah, 0, 0, '');
         /* End Row */
 
         $this->pdf->Ln(8); // new line
@@ -1929,7 +1929,7 @@ class CetakSurat_model extends CI_Model
         $this->pdf->Cell(36, 10, '4. Dilahirkan', 0, 0, '');
         $this->pdf->Cell(10, 10, ':', 0, 0, 'C');
         $this->pdf->SetFont('Arial', '', 10);
-        $this->pdf->Cell(30, 10, 'Tgl '.date('dd', strtotime($detailSurat->tanggal_lahir)).' Bln '.date('M', strtotime($detailSurat->tanggal_lahir)).' Tahun '.date('Y', strtotime($detailSurat->tanggal_lahir)), 0, 0, '');
+        $this->pdf->Cell(30, 10, 'Tgl ' . date('dd', strtotime($detailSurat->tanggal_lahir)) . ' Bln ' . date('M', strtotime($detailSurat->tanggal_lahir)) . ' Tahun ' . date('Y', strtotime($detailSurat->tanggal_lahir)), 0, 0, '');
         /* End Row */
 
         $this->pdf->Ln(8); // new line
@@ -1949,7 +1949,7 @@ class CetakSurat_model extends CI_Model
         $this->pdf->Cell(36, 10, '6. Umur', 0, 0, '');
         $this->pdf->Cell(10, 10, ':', 0, 0, 'C');
         $this->pdf->SetFont('Arial', '', 10);
-        $this->pdf->Cell(30, 10, $detailSurat->umur.' Tahun', 0, 0, '');
+        $this->pdf->Cell(30, 10, $detailSurat->umur . ' Tahun', 0, 0, '');
         /* End Row */
 
         $this->pdf->Ln(8); // new line
@@ -2056,7 +2056,7 @@ class CetakSurat_model extends CI_Model
         /* Start Row */
         $this->pdf->SetFont('Arial', '', 10);
         $this->pdf->Cell(130);
-        $this->pdf->Cell(30, 10, 'Magetan, '.date('d M Y', strtotime($detailSurat->tanggal_kematian)), 0, 0, 'C');
+        $this->pdf->Cell(30, 10, 'Magetan, ' . date('d M Y', strtotime($detailSurat->tanggal_kematian)), 0, 0, 'C');
         $this->pdf->Ln(4); // new line
         $this->pdf->Cell(130);
         $this->pdf->Cell(30, 10, 'LURAH SUKOWINANGUN', 0, 0, 'C');
@@ -2132,7 +2132,7 @@ class CetakSurat_model extends CI_Model
         $this->pdf->Cell(30, 10, 'Alamat', 0, 0, '');
         $this->pdf->Cell(10, 10, ':', 0, 0, 'C');
         $this->pdf->SetFont('Arial', '', 10);
-        $this->pdf->Cell(30, 10, $detailSurat->desa_jenazah.' RT. '.$detailSurat->rt_jenazah.' RW. '.$detailSurat->rw_jenazah.' Kel '.$detailSurat->kelurahan_jenazah.' , '.$detailSurat->kecamatan_jenazah, 0, 0, '');
+        $this->pdf->Cell(30, 10, $detailSurat->desa_jenazah . ' RT. ' . $detailSurat->rt_jenazah . ' RW. ' . $detailSurat->rw_jenazah . ' Kel ' . $detailSurat->kelurahan_jenazah . ' , ' . $detailSurat->kecamatan_jenazah, 0, 0, '');
         /* End Row */
 
         $this->pdf->Ln(8); // new line
@@ -2142,7 +2142,7 @@ class CetakSurat_model extends CI_Model
         $this->pdf->Cell(30, 10, 'Umur', 0, 0, '');
         $this->pdf->Cell(10, 10, ':', 0, 0, 'C');
         $this->pdf->SetFont('Arial', '', 10);
-        $this->pdf->Cell(30, 10, $detailSurat->umur.' Tahun', 0, 0, '');
+        $this->pdf->Cell(30, 10, $detailSurat->umur . ' Tahun', 0, 0, '');
         /* End Row */
 
         $this->pdf->Ln(8); // new line
@@ -2204,7 +2204,7 @@ class CetakSurat_model extends CI_Model
         /* Start Row */
         $this->pdf->SetFont('Arial', '', 10);
         $this->pdf->Cell(130);
-        $this->pdf->Cell(30, 10, 'Magetan, '.date('d M Y'), 0, 0, 'C');
+        $this->pdf->Cell(30, 10, 'Magetan, ' . date('d M Y'), 0, 0, 'C');
         $this->pdf->Ln(4); // new line
         $this->pdf->Cell(130);
         $this->pdf->Cell(30, 10, 'LURAH SUKOWINANGUN', 0, 0, 'C');
@@ -2223,7 +2223,7 @@ class CetakSurat_model extends CI_Model
         $this->pdf->Output();
     }
 
-    public function skck($idSurat, $nik, $penduduk)
+    public function skck($idSurat, $nik, $penduduk, $noUrut)
     {
         $detailSurat = $this->getDetailSurat($idSurat);
         $detailSurat = json_decode($detailSurat['form_data']);
@@ -2246,7 +2246,7 @@ class CetakSurat_model extends CI_Model
 
         $this->pdf->SetFont('Arial', '', 12);
         $this->pdf->Cell(80);
-        $this->pdf->Cell(30, 10, 'Nomor : 474/   /403.406.07/2022', 0, 0, 'C');
+        $this->pdf->Cell(30, 10, 'Nomor : ' . $noUrut . '/   /403.406.07/2022', 0, 0, 'C');
 
         $this->pdf->Ln(10); // new line
 
@@ -3083,7 +3083,7 @@ class CetakSurat_model extends CI_Model
         $this->pdf->Output();
     }
 
-    public function suketPerjalanan($idSurat, $nik, $penduduk)
+    public function suketPerjalanan($idSurat, $nik, $penduduk, $noUrut)
     {
         $detailSurat = $this->getDetailSurat($idSurat);
         $detailSurat = json_decode($detailSurat['form_data']);
@@ -3106,7 +3106,7 @@ class CetakSurat_model extends CI_Model
 
         $this->pdf->SetFont('Arial', '', 12);
         $this->pdf->Cell(80);
-        $this->pdf->Cell(30, 10, 'Nomor : 147/   /403.406.07/2022', 0, 0, 'C');
+        $this->pdf->Cell(30, 10, 'Nomor : ' . $noUrut . '/   /403.406.07/2022', 0, 0, 'C');
 
 
         $this->pdf->Ln(12); // new line
@@ -3267,7 +3267,7 @@ class CetakSurat_model extends CI_Model
         $this->pdf->Output();
     }
 
-    public function suketBelumMenikah($idSurat, $nik, $penduduk)
+    public function suketBelumMenikah($idSurat, $nik, $penduduk, $noUrut)
     {
         $detailSurat = $this->getDetailSurat($idSurat);
         $detailSurat = json_decode($detailSurat['form_data']);
@@ -3290,7 +3290,7 @@ class CetakSurat_model extends CI_Model
 
         $this->pdf->SetFont('Arial', '', 12);
         $this->pdf->Cell(80);
-        $this->pdf->Cell(30, 10, 'Nomor : 145/   /403.406.07/2022', 0, 0, 'C');
+        $this->pdf->Cell(30, 10, 'Nomor : ' . $noUrut . '/   /403.406.07/2022', 0, 0, 'C');
 
         $this->pdf->Ln(10); // new line
 
@@ -3478,7 +3478,7 @@ class CetakSurat_model extends CI_Model
         $this->pdf->Output();
     }
 
-    public function suketPengantarKehilangan($idSurat, $nik, $penduduk)
+    public function suketPengantarKehilangan($idSurat, $nik, $penduduk, $noUrut)
     {
         $detailSurat = $this->getDetailSurat($idSurat);
         $detailSurat = json_decode($detailSurat['form_data']);
@@ -3501,7 +3501,7 @@ class CetakSurat_model extends CI_Model
 
         $this->pdf->SetFont('Arial', '', 12);
         $this->pdf->Cell(80);
-        $this->pdf->Cell(30, 10, 'Nomor : 145/   /403.406.07/2022', 0, 0, 'C');
+        $this->pdf->Cell(30, 10, 'Nomor : ' . $noUrut . '/   /403.406.07/2022', 0, 0, 'C');
 
         $this->pdf->Ln(10); // new line
 
@@ -3683,7 +3683,7 @@ class CetakSurat_model extends CI_Model
         $this->pdf->Output();
     }
 
-    public function suketPerwalian($idSurat, $nik, $penduduk)
+    public function suketPerwalian($idSurat, $nik, $penduduk, $noUrut)
     {
         $detailSurat = $this->getDetailSurat($idSurat);
         $detailSurat = json_decode($detailSurat['form_data']);
@@ -3706,7 +3706,7 @@ class CetakSurat_model extends CI_Model
 
         $this->pdf->SetFont('Arial', '', 12);
         $this->pdf->Cell(80);
-        $this->pdf->Cell(30, 10, 'Nomor : 145/   /403.406.07/2022', 0, 0, 'C');
+        $this->pdf->Cell(30, 10, 'Nomor : ' . $noUrut . '/   /403.406.07/2022', 0, 0, 'C');
 
         $this->pdf->Ln(10); // new line
 
