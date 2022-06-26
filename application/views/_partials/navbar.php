@@ -35,7 +35,17 @@
                             <span class="d-lg-none d-md-block">Some Actions</span>
                         </p>
                     </a>
+                    <?php
+                    $CI = &get_instance();
+                    $CI->load->model('PermintaanSurat_model');
+                    $total = count($CI->PermintaanSurat_model->getSuratByStatus('pending'));
+                    // foreach ($result as $row) {
+                    //     echo $row['column_name'];
+                    // }
+
+                    ?>
                     <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdownMenuLink">
+                        <a class="dropdown-item" href="<?= site_url('notifikasisurat') ?>">Notifikasi <?= $total ?></a>
                         <a class="dropdown-item" href="<?= site_url('auth/logout') ?>">Logout</a>
                     </div>
                 </li>

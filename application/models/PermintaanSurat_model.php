@@ -71,6 +71,9 @@ class PermintaanSurat_model extends CI_Model
 
   public function getSuratByStatus($status)
   {
+    $this->db->select('jenis_surat.jenis, penduduk.nik, penduduk.nama, permintaan_surat.created_at');
+    $this->db->join('jenis_surat', 'jenis_surat.id = permintaan_surat.id_jenis_surat');
+    $this->db->join('penduduk', 'penduduk.nik = permintaan_surat.nik');
     return $this->db->get_where($this->_table, ['status' => $status])->result_array();
   }
 
