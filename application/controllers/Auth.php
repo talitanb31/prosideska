@@ -34,7 +34,13 @@ class Auth extends CI_Controller
             echo ($user['password']);
             if (password_verify($password, $user['password'])) {
                 // retrive user data to session
-                $this->session->set_userdata($user);
+                // $this->session->set_userdata($user);
+                $_SESSION['id'] = $user['id'];
+                $_SESSION['nama'] = $user['nama'];
+                $_SESSION['username'] = $user['username'];
+                $_SESSION['level'] = $user['level'];
+                $_SESSION['created_at'] = $user['created_at'];
+                $_SESSION['updated_at'] = $user['updated_at'];
                 redirect('welcome');
             } else {
                 redirect('auth');
@@ -47,7 +53,13 @@ class Auth extends CI_Controller
 
     function logout()
     {
-        $this->session->sess_destroy();
+        // $this->session->sess_destroy();
+        $_SESSION['id'] = '';
+        $_SESSION['nama'] = '';
+        $_SESSION['username'] = '';
+        $_SESSION['level'] = '';
+        $_SESSION['created_at'] = '';
+        $_SESSION['updated_at'] = '';
         $this->session->set_flashdata('status_login', 'Anda sudah berhasil keluar dari aplikasi');
         redirect('auth');
     }
