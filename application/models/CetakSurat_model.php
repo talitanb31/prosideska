@@ -132,7 +132,7 @@ class CetakSurat_model extends CI_Model
 
         $this->pdf->SetFont('Arial', '', 12);
         $this->pdf->Cell(80);
-        $this->pdf->Cell(30, 10, 'Nomor : ' . $noUrut . ' /       / 403.401.07 / 2022', 0, 0, 'C');
+        $this->pdf->Cell(30, 10, 'Nomor : 504 / ' . $noUrut . ' / 403.401.07 / ' . date('Y'), 0, 0, 'C');
 
         $this->pdf->Ln(15); // new line
 
@@ -190,7 +190,7 @@ class CetakSurat_model extends CI_Model
         $this->pdf->Cell(60, 10, 'Tempat, Tgl. Lahir', 0, 0, '');
         $this->pdf->Cell(10, 10, ':', 0, 0, 'C');
         $this->pdf->SetFont('Arial', '', 12);
-        $this->pdf->Cell(30, 10, $data['tempat_lahir'] . ',' . $data['tanggal_lahir'], 0, 0, '');
+        $this->pdf->Cell(30, 10, $data['tempat_lahir'] . ',' . date('d F Y', strtotime($data['tanggal_lahir'])), 0, 0, '');
         /* End Child Row */
 
         $this->pdf->Ln(6);
@@ -289,7 +289,7 @@ class CetakSurat_model extends CI_Model
         $this->pdf->Cell(20);
         $this->pdf->Cell(30, 10, '', 0, 0, 'C');
         $this->pdf->Cell(70);
-        $this->pdf->Cell(45, 10, 'Magetan, ' . date('d M y'), 0, 0, 'C');
+        $this->pdf->Cell(45, 10, 'Magetan, ' . date('d F Y'), 0, 0, 'C');
         $this->pdf->Ln(8); // new line
         $this->pdf->Cell(20);
         $this->pdf->Cell(50, 10, '', 0, 0, 'L');
@@ -340,7 +340,7 @@ class CetakSurat_model extends CI_Model
 
         $this->pdf->SetFont('Arial', '', 12);
         $this->pdf->Cell(80);
-        $this->pdf->Cell(30, 10, 'Nomor : ' . $noUrut . ' /       / 403.406.07 / 2022', 0, 0, 'C');
+        $this->pdf->Cell(30, 10, 'Nomor : 474 / ' . $noUrut . ' / 403.406.07 / ' . date('Y'), 0, 0, 'C');
 
         $this->pdf->Ln(15); // new line
 
@@ -617,7 +617,7 @@ class CetakSurat_model extends CI_Model
         $this->pdf->Cell(20);
         $this->pdf->Cell(30, 10, '', 0, 0, 'C');
         $this->pdf->Cell(73);
-        $this->pdf->Cell(30, 10, 'Magetan, ' . date('d M yyyy'), 0, 0, 'C');
+        $this->pdf->Cell(30, 10, 'Magetan, ' . date('d F Yyyy'), 0, 0, 'C');
         $this->pdf->Ln(4); // new line
         $this->pdf->Cell(20);
         $this->pdf->Cell(50, 10, '', 0, 0, 'L');
@@ -682,7 +682,7 @@ class CetakSurat_model extends CI_Model
         $this->pdf->Cell(60, 10, 'Tempat, tanggal lahir', 0, 0, '');
         $this->pdf->Cell(10, 10, ':', 0, 0, 'C');
         $this->pdf->SetFont('Arial', '', 11);
-        $this->pdf->Cell(50, 10, $penduduk['tempat_lahir'] . ', ' . $penduduk['tanggal_lahir'], 0, 0, '');
+        $this->pdf->Cell(50, 10, $penduduk['tempat_lahir'] . ', ' . date('d F Y', strtotime($penduduk['tanggal_lahir'])), 0, 0, '');
         /* End Row */
 
         $this->pdf->Ln(8); // new line
@@ -855,7 +855,7 @@ class CetakSurat_model extends CI_Model
 
         $this->pdf->SetFont('Arial', '', 12);
         $this->pdf->Cell(80);
-        $this->pdf->Cell(30, 10, 'Nomor : ' . $noUrut . '/     /403.406.07/ 2022', 0, 0, 'C');
+        $this->pdf->Cell(30, 10, 'Nomor : 145/ ' . $noUrut . ' /403.406.07/ ' . date('Y'), 0, 0, 'C');
 
         $this->pdf->Ln(15); // new line
 
@@ -884,7 +884,7 @@ class CetakSurat_model extends CI_Model
         $this->pdf->Cell(60, 10, 'Tempat, Tanggal Lahir', 0, 0, '');
         $this->pdf->Cell(10, 10, ':', 0, 0, 'C');
         $this->pdf->SetFont('Arial', '', 12);
-        $this->pdf->Cell(30, 10, $penduduk['tempat_lahir'] . ', ' . date('D-M-Y', strtotime($penduduk['tanggal_lahir'])), 0, 0, '');
+        $this->pdf->Cell(30, 10, $penduduk['tempat_lahir'] . ', ' . date('d F Y', strtotime($penduduk['tanggal_lahir'])), 0, 0, '');
         /* End Child Row */
 
         $this->pdf->Ln(6);
@@ -996,7 +996,7 @@ class CetakSurat_model extends CI_Model
         $this->pdf->Cell(60, 10, 'Tempat, Tgl Lahir', 0, 0, '');
         $this->pdf->Cell(10, 10, ':', 0, 0, 'C');
         $this->pdf->SetFont('Arial', '', 12);
-        $this->pdf->Cell(30, 10, $detailSurat->tempat_lahir . ', ' . date('D-M-Y', strtotime($detailSurat->tanggal_lahir)), 0, 0, '');
+        $this->pdf->Cell(30, 10, $detailSurat->tempat_lahir . ', ' . date('d F Y', strtotime($detailSurat->tanggal_lahir)), 0, 0, '');
         /* End Child Row */
 
         $this->pdf->Ln(6);
@@ -1039,7 +1039,7 @@ class CetakSurat_model extends CI_Model
         $this->pdf->Cell(20);
         $this->pdf->Cell(30, 10, '', 0, 0, 'C');
         $this->pdf->Cell(70);
-        $this->pdf->Cell(45, 10, 'Magetan, ' . date('d M y'), 0, 0, 'C');
+        $this->pdf->Cell(45, 10, 'Magetan, ' . date('d F Y'), 0, 0, 'C');
         $this->pdf->Ln(8); // new line
         $this->pdf->Cell(20);
         $this->pdf->Cell(50, 10, '', 0, 0, 'L');
@@ -1563,7 +1563,7 @@ class CetakSurat_model extends CI_Model
         $this->pdf->Ln(13); // new line
         $this->pdf->SetFont('Arial', '', 10);
         $this->pdf->Cell(25);
-        $this->pdf->Cell(40, 10, 'Nomor :           Tgl             2019', 0, 0, '');
+        $this->pdf->Cell(40, 10, 'Nomor :           Tgl             ' . date('Y'), 0, 0, '');
         $this->pdf->Cell(65);
         $this->pdf->Cell(40, 10, '', 0, 0, '');
         /* End Row */
@@ -1586,7 +1586,7 @@ class CetakSurat_model extends CI_Model
 
         $this->pdf->SetFont('Arial', '', 12);
         $this->pdf->Cell(80);
-        $this->pdf->Cell(30, 10, 'Nomor : ' . $noUrut . ' / 219 / 402.315. 10 / 2019', 0, 0, 'C');
+        $this->pdf->Cell(30, 10, 'Nomor : 476 / ' . $noUrut . ' / 402.315. 10 / ' . date('Y'), 0, 0, 'C');
 
         $this->pdf->Ln(8); // new line
 
@@ -1677,7 +1677,7 @@ class CetakSurat_model extends CI_Model
         /* Start Row */
         $this->pdf->SetFont('Arial', '', 10);
         $this->pdf->Cell(130);
-        $this->pdf->Cell(30, 10, 'Magetan, ' . date('d M Y'), 0, 0, 'C');
+        $this->pdf->Cell(30, 10, 'Magetan, ' . date('d F Y'), 0, 0, 'C');
         $this->pdf->Ln(4); // new line
         $this->pdf->Cell(130);
         $this->pdf->Cell(30, 10, 'Lurah Sukowinangun', 0, 0, 'C');
@@ -1725,7 +1725,7 @@ class CetakSurat_model extends CI_Model
 
         $this->pdf->SetFont('Arial', '', 12);
         $this->pdf->Cell(80);
-        $this->pdf->Cell(30, 10, 'Nomor : ' . $noUrut . '/  /403.406.07/2022', 0, 0, 'C');
+        $this->pdf->Cell(30, 10, 'Nomor : 474.3 / ' . $noUrut . ' /403.406.07/' . date('Y'), 0, 0, 'C');
 
         $this->pdf->Ln(8); // new line
 
@@ -1798,7 +1798,7 @@ class CetakSurat_model extends CI_Model
         $this->pdf->Cell(30, 10, 'Tanggal', 0, 0, '');
         $this->pdf->Cell(10, 10, ':', 0, 0, 'C');
         $this->pdf->SetFont('Arial', '', 10);
-        $this->pdf->Cell(30, 10, date('d M Y', strtotime($detailSurat->tanggal_kematian)), 0, 0, '');
+        $this->pdf->Cell(30, 10, date('d F Y', strtotime($detailSurat->tanggal_kematian)), 0, 0, '');
         /* End Row */
 
         $this->pdf->Ln(8); // new line
@@ -1854,7 +1854,7 @@ class CetakSurat_model extends CI_Model
         /* Start Row */
         $this->pdf->SetFont('Arial', '', 10);
         $this->pdf->Cell(130);
-        $this->pdf->Cell(30, 10, 'Magetan, ' . date('D M Y'), 0, 0, 'C');
+        $this->pdf->Cell(30, 10, 'Magetan, ' . date('d F Y'), 0, 0, 'C');
         $this->pdf->Ln(4); // new line
         $this->pdf->Cell(130);
         $this->pdf->Cell(30, 10, 'LURAH SUKOWINANGUN', 0, 0, 'C');
@@ -1890,7 +1890,7 @@ class CetakSurat_model extends CI_Model
 
         $this->pdf->SetFont('Arial', '', 12);
         $this->pdf->Cell(80);
-        $this->pdf->Cell(30, 10, 'Nomor : 474.3/  /403.406.07/2022', 0, 0, 'C');
+        $this->pdf->Cell(30, 10, 'Nomor : 474.3/ ' . $noUrut . ' /403.406.07/' . date('Y'), 0, 0, 'C');
 
         $this->pdf->Ln(8); // new line
 
@@ -1929,7 +1929,7 @@ class CetakSurat_model extends CI_Model
         $this->pdf->Cell(36, 10, '4. Dilahirkan', 0, 0, '');
         $this->pdf->Cell(10, 10, ':', 0, 0, 'C');
         $this->pdf->SetFont('Arial', '', 10);
-        $this->pdf->Cell(30, 10, 'Tgl ' . date('dd', strtotime($detailSurat->tanggal_lahir)) . ' Bln ' . date('M', strtotime($detailSurat->tanggal_lahir)) . ' Tahun ' . date('Y', strtotime($detailSurat->tanggal_lahir)), 0, 0, '');
+        $this->pdf->Cell(30, 10, 'Tgl ' . date('dd', strtotime($detailSurat->tanggal_lahir)) . ' Bln ' . date('F', strtotime($detailSurat->tanggal_lahir)) . ' Tahun ' . date('Y', strtotime($detailSurat->tanggal_lahir)), 0, 0, '');
         /* End Row */
 
         $this->pdf->Ln(8); // new line
@@ -1939,7 +1939,7 @@ class CetakSurat_model extends CI_Model
         $this->pdf->Cell(36, 10, '5. Tanggal Kematian', 0, 0, '');
         $this->pdf->Cell(10, 10, ':', 0, 0, 'C');
         $this->pdf->SetFont('Arial', '', 10);
-        $this->pdf->Cell(30, 10, date('d M Y', strtotime($detailSurat->tanggal_kematian)), 0, 0, '');
+        $this->pdf->Cell(30, 10, date('d F Y', strtotime($detailSurat->tanggal_kematian)), 0, 0, '');
         /* End Row */
 
         $this->pdf->Ln(8); // new line
@@ -2056,7 +2056,7 @@ class CetakSurat_model extends CI_Model
         /* Start Row */
         $this->pdf->SetFont('Arial', '', 10);
         $this->pdf->Cell(130);
-        $this->pdf->Cell(30, 10, 'Magetan, ' . date('d M Y', strtotime($detailSurat->tanggal_kematian)), 0, 0, 'C');
+        $this->pdf->Cell(30, 10, 'Magetan, ' . date('d F Y', strtotime($detailSurat->tanggal_kematian)), 0, 0, 'C');
         $this->pdf->Ln(4); // new line
         $this->pdf->Cell(130);
         $this->pdf->Cell(30, 10, 'LURAH SUKOWINANGUN', 0, 0, 'C');
@@ -2095,7 +2095,7 @@ class CetakSurat_model extends CI_Model
 
         $this->pdf->SetFont('Arial', '', 12);
         $this->pdf->Cell(80);
-        $this->pdf->Cell(30, 10, 'Nomor : 474.3/  /403.406.07/2022', 0, 0, 'C');
+        $this->pdf->Cell(30, 10, 'Nomor : 474.3/ ' . $noUrut . ' /403.406.07/' . date('Y'), 0, 0, 'C');
 
         $this->pdf->Ln(8); // new line
 
@@ -2168,7 +2168,7 @@ class CetakSurat_model extends CI_Model
         $this->pdf->Cell(30, 10, 'Tanggal', 0, 0, '');
         $this->pdf->Cell(10, 10, ':', 0, 0, 'C');
         $this->pdf->SetFont('Arial', '', 10);
-        $this->pdf->Cell(30, 10, date('d M Y', strtotime($detailSurat->tanggal_kematian)), 0, 0, '');
+        $this->pdf->Cell(30, 10, date('d F Y', strtotime($detailSurat->tanggal_kematian)), 0, 0, '');
         /* End Row */
 
         $this->pdf->Ln(8); // new line
@@ -2204,7 +2204,7 @@ class CetakSurat_model extends CI_Model
         /* Start Row */
         $this->pdf->SetFont('Arial', '', 10);
         $this->pdf->Cell(130);
-        $this->pdf->Cell(30, 10, 'Magetan, ' . date('d M Y'), 0, 0, 'C');
+        $this->pdf->Cell(30, 10, 'Magetan, ' . date('d F Y'), 0, 0, 'C');
         $this->pdf->Ln(4); // new line
         $this->pdf->Cell(130);
         $this->pdf->Cell(30, 10, 'LURAH SUKOWINANGUN', 0, 0, 'C');
@@ -2246,7 +2246,7 @@ class CetakSurat_model extends CI_Model
 
         $this->pdf->SetFont('Arial', '', 12);
         $this->pdf->Cell(80);
-        $this->pdf->Cell(30, 10, 'Nomor : ' . $noUrut . '/   /403.406.07/2022', 0, 0, 'C');
+        $this->pdf->Cell(30, 10, 'Nomor : 474 / ' . $noUrut . ' /403.406.07/' . date('Y'), 0, 0, 'C');
 
         $this->pdf->Ln(10); // new line
 
@@ -2278,7 +2278,7 @@ class CetakSurat_model extends CI_Model
         $this->pdf->Cell(60, 10, 'Tempat, Tgl. Lahir', 0, 0, '');
         $this->pdf->Cell(10, 10, ':', 0, 0, 'C');
         $this->pdf->SetFont('Arial', '', 12);
-        $this->pdf->Cell(30, 10, $penduduk['tempat_lahir'] . ', ' . $penduduk['tanggal_lahir'], 0, 0, '');
+        $this->pdf->Cell(30, 10, $penduduk['tempat_lahir'] . ', ' . date('d F Y', strtotime($penduduk['tanggal_lahir'])), 0, 0, '');
         /* End Row */
 
         $this->pdf->Ln(8); // new line
@@ -2391,7 +2391,7 @@ class CetakSurat_model extends CI_Model
         $this->pdf->Cell(20);
         $this->pdf->Cell(30, 10, '', 0, 0, 'C');
         $this->pdf->Cell(70);
-        $this->pdf->Cell(45, 10, 'Magetan, ' . date('d M Y'), 0, 0, 'C');
+        $this->pdf->Cell(45, 10, 'Magetan, ' . date('d F Y'), 0, 0, 'C');
         $this->pdf->Ln(8); // new line
         $this->pdf->Cell(20);
         $this->pdf->Cell(50, 10, '', 0, 0, 'L');
@@ -3051,7 +3051,7 @@ class CetakSurat_model extends CI_Model
         // $this->pdf->Cell(20);
         // $this->pdf->Cell(50, 10, 'Mengetahui', 0, 0, 'C');
         // $this->pdf->Cell(70);
-        // $this->pdf->Cell(1, 10, 'Sidorejo, 30 Desember 2019', 0, 0, 'C');
+        // $this->pdf->Cell(1, 10, 'Sidorejo, 30 Desember '.date('Y'), 0, 0, 'C');
         // $this->pdf->Ln(4); // new line
         // $this->pdf->Cell(26);
         // $this->pdf->Cell(50, 10, 'Kepala Desa Sidorejo', 0, 0, 'L');
@@ -3106,7 +3106,7 @@ class CetakSurat_model extends CI_Model
 
         $this->pdf->SetFont('Arial', '', 12);
         $this->pdf->Cell(80);
-        $this->pdf->Cell(30, 10, 'Nomor : ' . $noUrut . '/   /403.406.07/2022', 0, 0, 'C');
+        $this->pdf->Cell(30, 10, 'Nomor : 147 / ' . $noUrut . ' /403.406.07/' . date('Y'), 0, 0, 'C');
 
 
         $this->pdf->Ln(12); // new line
@@ -3139,7 +3139,7 @@ class CetakSurat_model extends CI_Model
         $this->pdf->Cell(60, 10, 'Tempat, Tgl. Lahir', 0, 0, '');
         $this->pdf->Cell(10, 10, ':', 0, 0, 'C');
         $this->pdf->SetFont('Arial', '', 12);
-        $this->pdf->Cell(30, 10, $penduduk['tempat_lahir'] . ', ' . $penduduk['tanggal_lahir'], 0, 0, '');
+        $this->pdf->Cell(30, 10, $penduduk['tempat_lahir'] . ', ' . date('d F Y', strtotime($penduduk['tanggal_lahir'])), 0, 0, '');
         /* End Row */
 
         $this->pdf->Ln(8); // new line
@@ -3235,7 +3235,7 @@ class CetakSurat_model extends CI_Model
         $this->pdf->Cell(20);
         $this->pdf->Cell(30, 10, '', 0, 0, 'C');
         $this->pdf->Cell(70);
-        $this->pdf->Cell(45, 10, 'Magetan, ' . date('d M y'), 0, 0, 'C');
+        $this->pdf->Cell(45, 10, 'Magetan, ' . date('d F Y'), 0, 0, 'C');
         $this->pdf->Ln(8); // new line
         $this->pdf->Cell(20);
         $this->pdf->Cell(50, 10, '', 0, 0, 'L');
@@ -3290,7 +3290,7 @@ class CetakSurat_model extends CI_Model
 
         $this->pdf->SetFont('Arial', '', 12);
         $this->pdf->Cell(80);
-        $this->pdf->Cell(30, 10, 'Nomor : ' . $noUrut . '/   /403.406.07/2022', 0, 0, 'C');
+        $this->pdf->Cell(30, 10, 'Nomor : 145 / ' . $noUrut . ' /403.406.07/' . date('Y'), 0, 0, 'C');
 
         $this->pdf->Ln(10); // new line
 
@@ -3322,7 +3322,7 @@ class CetakSurat_model extends CI_Model
         $this->pdf->Cell(60, 10, 'Tempat, Tgl. Lahir', 0, 0, '');
         $this->pdf->Cell(10, 10, ':', 0, 0, 'C');
         $this->pdf->SetFont('Arial', '', 12);
-        $this->pdf->Cell(30, 10, $penduduk['tempat_lahir'] . ', ' . $penduduk['tanggal_lahir'], 0, 0, '');
+        $this->pdf->Cell(30, 10, $penduduk['tempat_lahir'] . ', ' . date('d F Y', strtotime($penduduk['tanggal_lahir'])), 0, 0, '');
         /* End Row */
 
         $this->pdf->Ln(8); // new line
@@ -3446,7 +3446,7 @@ class CetakSurat_model extends CI_Model
         $this->pdf->Cell(20);
         $this->pdf->Cell(30, 10, '', 0, 0, 'C');
         $this->pdf->Cell(70);
-        $this->pdf->Cell(45, 10, 'Magetan, ' . date('d M y'), 0, 0, 'C');
+        $this->pdf->Cell(45, 10, 'Magetan, ' . date('d F Y'), 0, 0, 'C');
         $this->pdf->Ln(8); // new line
         $this->pdf->Cell(20);
         $this->pdf->Cell(50, 10, '', 0, 0, 'L');
@@ -3501,7 +3501,7 @@ class CetakSurat_model extends CI_Model
 
         $this->pdf->SetFont('Arial', '', 12);
         $this->pdf->Cell(80);
-        $this->pdf->Cell(30, 10, 'Nomor : ' . $noUrut . '/   /403.406.07/2022', 0, 0, 'C');
+        $this->pdf->Cell(30, 10, 'Nomor : 145 / ' . $noUrut . ' /403.406.07/' . date('Y'), 0, 0, 'C');
 
         $this->pdf->Ln(10); // new line
 
@@ -3533,7 +3533,7 @@ class CetakSurat_model extends CI_Model
         $this->pdf->Cell(60, 10, 'Tempat, Tgl. Lahir', 0, 0, '');
         $this->pdf->Cell(10, 10, ':', 0, 0, 'C');
         $this->pdf->SetFont('Arial', '', 12);
-        $this->pdf->Cell(30, 10, $penduduk['tempat_lahir'] . ', ' . $penduduk['tanggal_lahir'], 0, 0, '');
+        $this->pdf->Cell(30, 10, $penduduk['tempat_lahir'] . ', ' . date('d F Y', strtotime($penduduk['tanggal_lahir'])), 0, 0, '');
         /* End Row */
 
         $this->pdf->Ln(8); // new line
@@ -3651,7 +3651,7 @@ class CetakSurat_model extends CI_Model
         $this->pdf->Cell(20);
         $this->pdf->Cell(30, 10, '', 0, 0, 'C');
         $this->pdf->Cell(70);
-        $this->pdf->Cell(45, 10, 'Magetan, ' . date('d M y'), 0, 0, 'C');
+        $this->pdf->Cell(45, 10, 'Magetan, ' . date('d F Y'), 0, 0, 'C');
         $this->pdf->Ln(8); // new line
         $this->pdf->Cell(20);
         $this->pdf->Cell(50, 10, '', 0, 0, 'L');
@@ -3706,7 +3706,7 @@ class CetakSurat_model extends CI_Model
 
         $this->pdf->SetFont('Arial', '', 12);
         $this->pdf->Cell(80);
-        $this->pdf->Cell(30, 10, 'Nomor : ' . $noUrut . '/   /403.406.07/2022', 0, 0, 'C');
+        $this->pdf->Cell(30, 10, 'Nomor : 145 / ' . $noUrut . ' /403.406.07/' . date('Y'), 0, 0, 'C');
 
         $this->pdf->Ln(10); // new line
 
@@ -3740,7 +3740,7 @@ class CetakSurat_model extends CI_Model
         $this->pdf->Cell(60, 10, 'Tempat, Tgl. Lahir', 0, 0, '');
         $this->pdf->Cell(10, 10, ':', 0, 0, 'C');
         $this->pdf->SetFont('Arial', '', 12);
-        $this->pdf->Cell(30, 10, $penduduk['tempat_lahir'] . ', ' . $penduduk['tanggal_lahir'], 0, 0, '');
+        $this->pdf->Cell(30, 10, $penduduk['tempat_lahir'] . ', ' . date('d F Y', strtotime($penduduk['tanggal_lahir'])), 0, 0, '');
         /* End Row */
 
         $this->pdf->Ln(8); // new line
@@ -3856,7 +3856,7 @@ class CetakSurat_model extends CI_Model
         $this->pdf->Cell(20);
         $this->pdf->Cell(40, 10, 'Yang Bersangkutan', 0, 0, 'C');
         $this->pdf->Cell(50, 10);
-        $this->pdf->Cell(70, 10, 'Magetan,' . date('d M y'), 0, 0, 'C');
+        $this->pdf->Cell(70, 10, 'Magetan,' . date('d F Y'), 0, 0, 'C');
         $this->pdf->Ln(8); // new line
         $this->pdf->Cell(20);
         $this->pdf->Cell(50, 10, '', 0, 0, 'L');

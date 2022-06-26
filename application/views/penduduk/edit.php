@@ -60,7 +60,7 @@
                             <div class="col-lg-6">
                                 <div class="form-group">
                                     <label for="tgl_lahir">Tanggal Lahir</label>
-                                    <input type="date" name="tanggal_lahir" class="form-control <?= form_error('tanggal_lahir') != null ? 'is-invalid' : ''; ?>" placeholder="Masukkan tanggal lahir" id="tgl_lahir" value="<?= $data['tanggal_lahir'] ?>">
+                                    <input type="date" name="tanggal_lahir" class="form-control <?= form_error('tanggal_lahir') != null ? 'is-invalid' : ''; ?>" placeholder="Masukkan tanggal lahir" id="tgl_lahir" value="<?= date('d F Y', strtotime($data['tanggal_lahir'])) ?>">
                                     <?php echo form_error('tanggal_lahir', '<small class="text-danger">', '</small>'); ?>
                                 </div>
                             </div>

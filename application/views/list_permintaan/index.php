@@ -47,8 +47,9 @@
                                                 <a href="<?= site_url("listpermintaan/tolak/") ?><?= $item['id'] . '/' . $item['nik'] ?>" onclick="return confirm('Apakah anda yakin ingin menolak ?')" class="btn btn-danger"><i class="fa fa-close"></i></a>
                                             <?php elseif ($item['status'] == 'pending' && $_SESSION['level'] == 'admin') : ?>
                                                 <a href="<?= site_url("listpermintaan/update/") ?><?= $item['id'] ?>" onclick="return confirm('Apakah anda yakin ingin dirubah ?')" class="btn btn-warning"><i class="fa fa-pencil"></i></a>
+                                                <a href="<?= site_url("listpermintaan/printPdf/") ?><?= $item['id'] . '/' . strtolower(str_replace(' ', '-', $item['jenis']) . '/' . $item['nik']) ?>" target="_blank" onclick="return confirm('Apakah anda yakin ingin mencetak surat ?')" class="btn btn-primary"><i class="fa fa-print"></i></a>
 
-                                            <!-- <button type="button" class="btn btn-primary editPermintaan" data-id="<?= $item['id']?>" data-toggle="modal" data-target="#ListPermintaanModal">
+                                                <!-- <button type="button" class="btn btn-primary editPermintaan" data-id="<?= $item['id'] ?>" data-toggle="modal" data-target="#ListPermintaanModal">
                                                     Edit
                                                 </button> -->
                                             <?php elseif ($item['status'] == 'diproses' && $_SESSION['level'] == 'admin') : ?>
@@ -73,27 +74,27 @@
 
 <!-- Edit list permintaan Modal -->
 <div class="modal fade" id="ListPermintaanModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-  <div class="modal-dialog" role="document">
-    <div class="modal-content">
-      <div class="modal-header">
-        <h5 class="modal-title" id="exampleModalLabel">Modal title</h5>
-        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-          <span aria-hidden="true">&times;</span>
-        </button>
-      </div>
-      <input type="hidden" name="id" class="id" id="id">
-      <div class="modal-body">
-        <form action="">
-            <div id="form_data">
-
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLabel">Modal title</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
             </div>
-      </div>
-      <div class="modal-footer">
-        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-        <button type="button" class="btn btn-primary">Save changes</button>
-        </form>
-      </div>
+            <input type="hidden" name="id" class="id" id="id">
+            <div class="modal-body">
+                <form action="">
+                    <div id="form_data">
+
+                    </div>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                <button type="button" class="btn btn-primary">Save changes</button>
+                </form>
+            </div>
+        </div>
     </div>
-  </div>
 </div>
 <!-- edit  -->
