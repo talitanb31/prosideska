@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Jun 25, 2022 at 07:34 PM
+-- Generation Time: Jun 27, 2022 at 03:28 PM
 -- Server version: 10.4.22-MariaDB
 -- PHP Version: 7.4.27
 
@@ -88,20 +88,11 @@ INSERT INTO `berita` (`id`, `id_admin`, `cover`, `title`, `slug`, `deskripsi`, `
 CREATE TABLE `feedback` (
   `id` int(11) NOT NULL,
   `nama` varchar(50) NOT NULL,
+  `email` varchar(100) DEFAULT NULL,
+  `subjek` text DEFAULT NULL,
   `pesan` text NOT NULL,
   `waktu` timestamp NOT NULL DEFAULT current_timestamp()
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
-
---
--- Dumping data for table `feedback`
---
-
-INSERT INTO `feedback` (`id`, `nama`, `pesan`, `waktu`) VALUES
-(1, 'Muhammad Khalil Zhillullah', 'asdadss', '2022-04-04 12:26:50'),
-(2, 'Rifjan Jundilla', 'qwe', '2022-04-04 12:27:49'),
-(3, 'Muhammad Khalil Zhillullah', 'asd', '2022-04-04 12:28:39'),
-(4, 'Abdul Munir', 'ads', '2022-04-04 12:28:47'),
-(5, 'Rifjan Jundilla', 'asdas', '2022-04-04 12:42:55');
 
 -- --------------------------------------------------------
 
@@ -498,24 +489,6 @@ CREATE TABLE `notifikasi` (
   `pesan` text NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
---
--- Dumping data for table `notifikasi`
---
-
-INSERT INTO `notifikasi` (`id`, `nik`, `pesan`) VALUES
-(1, '3511182612000001', 'Permintaan surat anda sudah diterima.'),
-(2, '3511182612000001', 'Permintaan surat anda sudah diterima.'),
-(3, '3511182612000001', 'Permintaan surat anda sudah diterima.'),
-(4, '3511182612000001', 'Permintaan surat anda sudah diterima.'),
-(5, '3511182612000001', 'Permintaan surat anda sudah diterima.'),
-(6, '3511182612000001', 'Permintaan surat anda sudah diterima.'),
-(7, '3511182612000001', 'Permintaan surat anda sudah diterima.'),
-(8, '3511182612000001', 'Permintaan surat anda sudah diterima.'),
-(9, '3511182612000001', 'Permintaan surat anda sudah diterima.'),
-(10, '3511182612000001', 'Permintaan surat anda sudah diterima.'),
-(11, '3511182612000001', 'Permintaan surat anda sudah diterima.'),
-(12, '3511182612000001', 'Permintaan surat anda sudah diterima.');
-
 -- --------------------------------------------------------
 
 --
@@ -618,10 +591,12 @@ CREATE TABLE `permintaan_surat` (
 --
 
 INSERT INTO `permintaan_surat` (`id`, `no_urut`, `id_jenis_surat`, `status`, `nik`, `form_data`, `id_admin`, `created_at`, `updated_at`) VALUES
-(1, 1, 14, 'selesai', '3511182612000001', '{\"jenis_surat\":\"Surat Keterangan Cacatan Kepolisian\",\"id_jenis_surat\":\"14\"}', 8, '2022-06-10 09:02:01', '2022-06-10 09:02:01'),
+(1, 1, 14, 'pending', '3511182612000001', '{\"jenis_surat\":\"Surat Keterangan Cacatan Kepolisian\",\"id_jenis_surat\":\"14\"}', 8, '2022-06-10 09:02:01', '2022-06-10 09:02:01'),
 (2, 2, 14, 'selesai', '3511182612000001', '{\"jenis_surat\":\"Surat Keterangan Cacatan Kepolisian\",\"id_jenis_surat\":\"14\"}', 5, '2022-06-10 09:02:38', '2022-06-10 09:02:38'),
-(3, 3, 2, 'selesai', '3511182612000001', '{\"jenis_surat\":\"Surat Keterangan Pindah\",\"id_jenis_surat\":\"2\",\"no_kk\":\"1234567891234567\",\"nik_kepala_keluarga\":\"1234567891234569\",\"nama_kepala_keluarga\":\"Subandi\",\"alamat\":\"Probolinggo\",\"rt\":\"1\",\"rw\":\"2\",\"kelurahan\":\"Sukosari\",\"kecamatan\":\"Tamanan\",\"kab\":\"Bondowoso\",\"prov\":\"Jawa Timur\",\"tgl_pindah\":\"2022-06-15\",\"alasan\":\"\",\"alasan_lainnya\":\"Bosen sama tetangga\",\"klasifikasi\":\"\",\"jenis\":\"2\",\"alamat_tujuan_pindah\":\"\",\"rt_tujuan\":\"2\",\"rw_tujuan\":\"\",\"kelurahan_tujuan\":\"Curahdami\",\"kecamatan_tujuan\":\"Tangsel Wetan\",\"kab_tujuan\":\"Jember\",\"prov_tujuan\":\"Jawa Tengah\",\"tgl_kedatangan\":\"2022-06-24\",\"tidak_pindah\":\"1\",\"pindah\":\"1\",\"rencana_tgl_pindah\":\"2022-06-24\",\"nik_keluarga\":[\"2\"],\"nama_keluarga\":[\"Bambang\"],\"shdk\":[\"Test\"]}', 5, '2022-06-10 09:07:11', '2022-06-10 09:07:11'),
-(4, 4, 4, 'diproses', '3511182612000002', '{\"jenis_surat\":\"Surat Tidak Mampu\",\"id_jenis_surat\":\"4\",\"tujuan\":\"Pesyaratan Beasiswa Kabupaten Bondowoso\",\"nama\":\"Bapak Joko\",\"nik\":\"3511182612000001\",\"tempat_lahir\":\"Bondowoso\",\"tanggal_lahir\":\"2022-06-30\",\"nama_instansi\":\"Pemerintah Kabupaten\"}', 5, '2022-06-10 09:10:10', '2022-06-10 09:10:10');
+(3, 3, 2, 'pending', '3511182612000001', '{\"jenis_surat\":\"Surat Keterangan Pindah\",\"id_jenis_surat\":\"2\",\"no_kk\":\"1234567891234567\",\"nik_kepala_keluarga\":\"1234567891234569\",\"nama_kepala_keluarga\":\"Subandi\",\"alamat\":\"Probolinggo\",\"rt\":\"1\",\"rw\":\"2\",\"kelurahan\":\"Sukosari\",\"kecamatan\":\"Tamanan\",\"kab\":\"Bondowoso\",\"prov\":\"Jawa Timur\",\"tgl_pindah\":\"2022-06-15\",\"alasan\":\"\",\"alasan_lainnya\":\"Bosen sama tetangga\",\"klasifikasi\":\"\",\"jenis\":\"2\",\"alamat_tujuan_pindah\":\"\",\"rt_tujuan\":\"2\",\"rw_tujuan\":\"\",\"kelurahan_tujuan\":\"Curahdami\",\"kecamatan_tujuan\":\"Tangsel Wetan\",\"kab_tujuan\":\"Jember\",\"prov_tujuan\":\"Jawa Tengah\",\"tgl_kedatangan\":\"2022-06-24\",\"tidak_pindah\":\"1\",\"pindah\":\"1\",\"rencana_tgl_pindah\":\"2022-06-24\",\"nik_keluarga\":[\"2\"],\"nama_keluarga\":[\"Bambang\"],\"shdk\":[\"Test\"]}', 5, '2022-06-10 09:07:11', '2022-06-10 09:07:11'),
+(4, 4, 4, 'diproses', '3511182612000002', '{\"jenis_surat\":\"Surat Tidak Mampu\",\"id_jenis_surat\":\"4\",\"tujuan\":\"Pesyaratan Beasiswa Kabupaten Bondowoso\",\"nama\":\"Bapak Joko\",\"nik\":\"3511182612000001\",\"tempat_lahir\":\"Bondowoso\",\"tanggal_lahir\":\"2022-06-30\",\"nama_instansi\":\"Pemerintah Kabupaten\"}', 5, '2022-06-10 09:10:10', '2022-06-10 09:10:10'),
+(5, 4, 6, 'diproses', '3511182612000001', '{\"jenis_surat\":\"Surat Usaha\",\"id_jenis_surat\":\"6\",\"bidang_usaha\":\"Teknologi\"}', 8, '2022-06-26 01:51:10', '2022-06-26 01:51:10'),
+(6, 0, 6, 'pending', '3511182612000001', '{\"jenis_surat\":\"Surat Usaha\",\"id_jenis_surat\":\"6\",\"bidang_usaha\":\"Jahit-menjahit\"}', NULL, '2022-06-27 08:22:55', '2022-06-27 08:22:55');
 
 -- --------------------------------------------------------
 
@@ -634,16 +609,6 @@ CREATE TABLE `syarat_surat` (
   `id_jenis_surat` int(11) NOT NULL,
   `syarat` text NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
-
---
--- Dumping data for table `syarat_surat`
---
-
-INSERT INTO `syarat_surat` (`id`, `id_jenis_surat`, `syarat`) VALUES
-(1, 1, 'Iste quia quidem vol'),
-(2, 1, 'Reprehenderit velit'),
-(3, 2, 'Voluptatem in aut e'),
-(4, 2, 'Sit dignissimos fuga');
 
 --
 -- Indexes for dumped tables
@@ -750,7 +715,7 @@ ALTER TABLE `berita`
 -- AUTO_INCREMENT for table `feedback`
 --
 ALTER TABLE `feedback`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
 
 --
 -- AUTO_INCREMENT for table `jenis_surat`
@@ -774,7 +739,7 @@ ALTER TABLE `negara`
 -- AUTO_INCREMENT for table `notifikasi`
 --
 ALTER TABLE `notifikasi`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=13;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
 
 --
 -- AUTO_INCREMENT for table `pekerjaan`
@@ -792,13 +757,13 @@ ALTER TABLE `pendidikan`
 -- AUTO_INCREMENT for table `permintaan_surat`
 --
 ALTER TABLE `permintaan_surat`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
 
 --
 -- AUTO_INCREMENT for table `syarat_surat`
 --
 ALTER TABLE `syarat_surat`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
 
 --
 -- Constraints for dumped tables
