@@ -43,10 +43,11 @@ class Auth extends CI_Controller
                 $_SESSION['updated_at'] = $user['updated_at'];
                 redirect('welcome');
             } else {
+                $this->session->set_flashdata('status_login', 'Password yang anda input salah');
                 redirect('auth');
             }
         } else {
-            $this->session->set_flashdata('status_login', 'username atau password yang anda input salah');
+            $this->session->set_flashdata('status_login', 'Akun tidak ditemukan');
             redirect('auth');
         }
     }
