@@ -1057,7 +1057,7 @@ class CetakSurat_model extends CI_Model
         $this->pdf->Cell(60, 10, 'Nama Sekolah', 0, 0, '');
         $this->pdf->Cell(10, 10, ':', 0, 0, 'C');
         $this->pdf->SetFont('Arial', '', 12);
-        $this->pdf->Cell(30, 10, $detailSurat->nama_instansi , 0, 0, '');
+        $this->pdf->Cell(30, 10, $detailSurat->nama_instansi, 0, 0, '');
         /* End Child Row */
 
         /* Start Row */
@@ -1134,7 +1134,7 @@ class CetakSurat_model extends CI_Model
         $this->pdf->SetFont('Arial', 'BU', 14);
         $this->pdf->Cell(80);
         $this->pdf->Cell(30, 10, 'SURAT KETERANGAN PINDAH DATANG WNI', 0, 0, 'C');
-        
+
         $this->pdf->Ln(10);
 
         /* Start Row */
@@ -1207,7 +1207,7 @@ class CetakSurat_model extends CI_Model
         $this->pdf->SetFont('Arial', '', 9);
         $this->pdf->Cell(30, 10, 'DATA  KEPINDAHAN :', 0, 0, 'L');
         /* End Row */
-        
+
         $this->pdf->Ln(10);
 
         /* Start Row */
@@ -1448,7 +1448,7 @@ class CetakSurat_model extends CI_Model
         $this->pdf->Ln(10);
 
         /* Start Row */
-        $this->pdf->SetFont('Arial', '', );
+        $this->pdf->SetFont('Arial', '');
         $this->pdf->Cell(30, 10, 'DATA  DAERAH TUJUAN :', 0, 0, 'L');
         /* End Row */
 
@@ -2445,8 +2445,8 @@ class CetakSurat_model extends CI_Model
         $this->pdf->Cell(15, 15);
         $this->pdf->Cell(50, 8, 'Surat keterangan ini akan dipergunakan untuk persyaratan Membuat SKCK di Polsek', 0, 'L', '');
         $this->pdf->Ln(10);
-        $this->pdf->Cell(10,15);
-        $this->pdf->Cell(50,0, 'Magetan.', 0, 0, '');
+        $this->pdf->Cell(10, 15);
+        $this->pdf->Cell(50, 0, 'Magetan.', 0, 0, '');
 
         // $this->pdf->SetFont('Arial', '', 12);
         // $this->pdf->Ln(1);

@@ -13,6 +13,7 @@ class ListPermintaan extends CI_Controller
         is_login();
         $this->load->library('Pdf');
         $this->load->model('PermintaanSurat_model');
+        $this->load->model('Jenis_surat_model');
         $this->load->model('CetakSurat_model');
         $this->load->model('Penduduk_model');
         $this->data['page_title']  = 'Permintaan Surat';
@@ -20,7 +21,10 @@ class ListPermintaan extends CI_Controller
 
     public function index()
     {
-        $this->data['data'] = $this->PermintaanSurat_model->getAllData();
+        $jenis = $this->input->get('jenis');
+
+        $this->data['data'] = $this->PermintaanSurat_model->getAllData($jenis);
+        $this->data['jenisSurat'] = $this->Jenis_surat_model->getAllData();
 
         $this->template->load('template', 'list_permintaan/index', $this->data);
     }

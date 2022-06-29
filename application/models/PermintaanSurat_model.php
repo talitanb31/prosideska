@@ -10,14 +10,19 @@ class PermintaanSurat_model extends CI_Model
     parent::__construct();
   }
 
-  public function getAllData()
+  public function getAllData($jenis)
   {
     $this->db->select('permintaan_surat.*, jenis_surat.jenis, penduduk.nama as penduduk, penduduk.nik, akun.nama as admin');
     $this->db->from($this->_table);
     $this->db->join('jenis_surat', 'jenis_surat.id = permintaan_surat.id_jenis_surat');
     $this->db->join('penduduk', 'penduduk.nik = permintaan_surat.nik');
     $this->db->join('akun', 'akun.id = permintaan_surat.id_admin', 'left');
+
+    if ($jenis != '' && $jenis != 'semua')
+      $this->db->where('permintaan_surat.id_jenis_surat =', $jenis);
+
     $this->db->where('permintaan_surat.status !=', 'selesai');
+    $this->db->order_by('permintaan_surat.updated_at', 'desc');
     $this->db->order_by("FIELD(permintaan_surat.status, 'pending', 'diproses', 'selesai', 'ditolak')");
     $query = $this->db->get();
 
@@ -55,13 +60,15 @@ class PermintaanSurat_model extends CI_Model
     return $no_urut;
   }
 
-  public function getAllDataRiwayat()
+  public function getAllDataRiwayat($jenis)
   {
     $this->db->select('permintaan_surat.*, jenis_surat.jenis, penduduk.nama as penduduk, penduduk.nik, akun.nama as admin');
     $this->db->from($this->_table);
     $this->db->join('jenis_surat', 'jenis_surat.id = permintaan_surat.id_jenis_surat');
     $this->db->join('penduduk', 'penduduk.nik = permintaan_surat.nik');
     $this->db->join('akun', 'akun.id = permintaan_surat.id_admin', 'left');
+    if ($jenis != '' && $jenis != 'semua')
+      $this->db->where('permintaan_surat.id_jenis_surat =', $jenis);
     $this->db->where('permintaan_surat.status', 'selesai');
     $this->db->order_by("created_at DESC");
     $query = $this->db->get();
@@ -92,7 +99,7 @@ class PermintaanSurat_model extends CI_Model
 
   public function terima($id, $nik)
   {
-    $data = array('status' => 'diproses', 'id_admin' => $_SESSION['id']);
+    $data = array('status' => 'diproses', 'id_admin' => $_SESSION['id'], 'updated_at' => date('Y-m-d H:i:s'));
     $this->db->where('id', $id);
 
     $this->db->update($this->_table, $data);

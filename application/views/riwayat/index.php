@@ -14,6 +14,22 @@
         <div class="col-lg-12">
             <div class="card">
                 <div class="card-body">
+                    <form action="" method="get" class="row d-flex flex-wrap align-content-center">
+                        <div class="col">
+                            <div class="form-group">
+                                <label for="jenis">Pilih jenis surat</label>
+                                <select name="jenis" id="jenis" class="form-control mt-2">
+                                    <option value="semua">Semua</option>
+                                    <?php foreach ($jenisSurat as $value) : ?>
+                                        <option value="<?= $value['id'] ?>" <?= isset($_GET['jenis']) && $_GET['jenis'] == $value['id'] ? 'selected' : '' ?>><?= $value['jenis'] ?></option>
+                                    <?php endforeach ?>
+                                </select>
+                            </div>
+                        </div>
+                        <div class="col pt-4">
+                            <button type="submit" class="btn btn-primary">Filter</button>
+                        </div>
+                    </form>
                     <div class="table-responsive">
                         <table class="table" id="example">
                             <thead>
