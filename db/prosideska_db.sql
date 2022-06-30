@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Jun 27, 2022 at 03:28 PM
+-- Generation Time: Jun 30, 2022 at 04:44 PM
 -- Server version: 10.4.22-MariaDB
 -- PHP Version: 7.4.27
 
@@ -489,6 +489,13 @@ CREATE TABLE `notifikasi` (
   `pesan` text NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
+--
+-- Dumping data for table `notifikasi`
+--
+
+INSERT INTO `notifikasi` (`id`, `nik`, `pesan`) VALUES
+(1, '3511182612000001', 'Permintaan surat anda sudah diterima.');
+
 -- --------------------------------------------------------
 
 --
@@ -583,20 +590,21 @@ CREATE TABLE `permintaan_surat` (
   `form_data` longtext NOT NULL,
   `id_admin` int(11) DEFAULT NULL,
   `created_at` timestamp NOT NULL DEFAULT current_timestamp(),
-  `updated_at` timestamp NOT NULL DEFAULT current_timestamp()
+  `updated_at` timestamp NOT NULL DEFAULT current_timestamp(),
+  `acc_at` timestamp NULL DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
 -- Dumping data for table `permintaan_surat`
 --
 
-INSERT INTO `permintaan_surat` (`id`, `no_urut`, `id_jenis_surat`, `status`, `nik`, `form_data`, `id_admin`, `created_at`, `updated_at`) VALUES
-(1, 1, 14, 'pending', '3511182612000001', '{\"jenis_surat\":\"Surat Keterangan Cacatan Kepolisian\",\"id_jenis_surat\":\"14\"}', 8, '2022-06-10 09:02:01', '2022-06-10 09:02:01'),
-(2, 2, 14, 'selesai', '3511182612000001', '{\"jenis_surat\":\"Surat Keterangan Cacatan Kepolisian\",\"id_jenis_surat\":\"14\"}', 5, '2022-06-10 09:02:38', '2022-06-10 09:02:38'),
-(3, 3, 2, 'pending', '3511182612000001', '{\"jenis_surat\":\"Surat Keterangan Pindah\",\"id_jenis_surat\":\"2\",\"no_kk\":\"1234567891234567\",\"nik_kepala_keluarga\":\"1234567891234569\",\"nama_kepala_keluarga\":\"Subandi\",\"alamat\":\"Probolinggo\",\"rt\":\"1\",\"rw\":\"2\",\"kelurahan\":\"Sukosari\",\"kecamatan\":\"Tamanan\",\"kab\":\"Bondowoso\",\"prov\":\"Jawa Timur\",\"tgl_pindah\":\"2022-06-15\",\"alasan\":\"\",\"alasan_lainnya\":\"Bosen sama tetangga\",\"klasifikasi\":\"\",\"jenis\":\"2\",\"alamat_tujuan_pindah\":\"\",\"rt_tujuan\":\"2\",\"rw_tujuan\":\"\",\"kelurahan_tujuan\":\"Curahdami\",\"kecamatan_tujuan\":\"Tangsel Wetan\",\"kab_tujuan\":\"Jember\",\"prov_tujuan\":\"Jawa Tengah\",\"tgl_kedatangan\":\"2022-06-24\",\"tidak_pindah\":\"1\",\"pindah\":\"1\",\"rencana_tgl_pindah\":\"2022-06-24\",\"nik_keluarga\":[\"2\"],\"nama_keluarga\":[\"Bambang\"],\"shdk\":[\"Test\"]}', 5, '2022-06-10 09:07:11', '2022-06-10 09:07:11'),
-(4, 4, 4, 'diproses', '3511182612000002', '{\"jenis_surat\":\"Surat Tidak Mampu\",\"id_jenis_surat\":\"4\",\"tujuan\":\"Pesyaratan Beasiswa Kabupaten Bondowoso\",\"nama\":\"Bapak Joko\",\"nik\":\"3511182612000001\",\"tempat_lahir\":\"Bondowoso\",\"tanggal_lahir\":\"2022-06-30\",\"nama_instansi\":\"Pemerintah Kabupaten\"}', 5, '2022-06-10 09:10:10', '2022-06-10 09:10:10'),
-(5, 4, 6, 'diproses', '3511182612000001', '{\"jenis_surat\":\"Surat Usaha\",\"id_jenis_surat\":\"6\",\"bidang_usaha\":\"Teknologi\"}', 8, '2022-06-26 01:51:10', '2022-06-26 01:51:10'),
-(6, 0, 6, 'pending', '3511182612000001', '{\"jenis_surat\":\"Surat Usaha\",\"id_jenis_surat\":\"6\",\"bidang_usaha\":\"Jahit-menjahit\"}', NULL, '2022-06-27 08:22:55', '2022-06-27 08:22:55');
+INSERT INTO `permintaan_surat` (`id`, `no_urut`, `id_jenis_surat`, `status`, `nik`, `form_data`, `id_admin`, `created_at`, `updated_at`, `acc_at`) VALUES
+(1, 1, 14, 'diproses', '3511182612000001', '{\"jenis_surat\":\"Surat Keterangan Cacatan Kepolisian\",\"id_jenis_surat\":\"14\"}', 8, '2022-06-10 09:02:01', '2022-06-30 09:02:01', '2022-06-30 09:41:01'),
+(2, 2, 14, 'selesai', '3511182612000001', '{\"jenis_surat\":\"Surat Keterangan Cacatan Kepolisian\",\"id_jenis_surat\":\"14\"}', 5, '2022-06-10 09:02:38', '2022-06-10 09:02:38', NULL),
+(3, 3, 2, 'pending', '3511182612000001', '{\"jenis_surat\":\"Surat Keterangan Pindah\",\"id_jenis_surat\":\"2\",\"no_kk\":\"1234567891234567\",\"nik_kepala_keluarga\":\"1234567891234569\",\"nama_kepala_keluarga\":\"Subandi\",\"alamat\":\"Probolinggo\",\"rt\":\"1\",\"rw\":\"2\",\"kelurahan\":\"Sukosari\",\"kecamatan\":\"Tamanan\",\"kab\":\"Bondowoso\",\"prov\":\"Jawa Timur\",\"tgl_pindah\":\"2022-06-15\",\"alasan\":\"\",\"alasan_lainnya\":\"Bosen sama tetangga\",\"klasifikasi\":\"\",\"jenis\":\"2\",\"alamat_tujuan_pindah\":\"\",\"rt_tujuan\":\"2\",\"rw_tujuan\":\"\",\"kelurahan_tujuan\":\"Curahdami\",\"kecamatan_tujuan\":\"Tangsel Wetan\",\"kab_tujuan\":\"Jember\",\"prov_tujuan\":\"Jawa Tengah\",\"tgl_kedatangan\":\"2022-06-24\",\"tidak_pindah\":\"1\",\"pindah\":\"1\",\"rencana_tgl_pindah\":\"2022-06-24\",\"nik_keluarga\":[\"2\"],\"nama_keluarga\":[\"Bambang\"],\"shdk\":[\"Test\"]}', 5, '2022-06-10 09:07:11', '2022-06-29 14:23:11', NULL),
+(4, 4, 4, 'diproses', '3511182612000002', '{\"jenis_surat\":\"Surat Tidak Mampu\",\"id_jenis_surat\":\"4\",\"tujuan\":\"Pesyaratan Beasiswa Kabupaten Bondowoso\",\"nama\":\"Bapak Joko\",\"nik\":\"3511182612000001\",\"tempat_lahir\":\"Bondowoso\",\"tanggal_lahir\":\"2022-06-30\",\"nama_instansi\":\"Pemerintah Kabupaten\"}', 5, '2022-06-10 09:10:10', '2022-06-30 09:10:10', NULL),
+(5, 4, 6, 'diproses', '3511182612000001', '{\"jenis_surat\":\"Surat Usaha\",\"id_jenis_surat\":\"6\",\"bidang_usaha\":\"Teknologi\"}', 8, '2022-06-26 01:51:10', '2022-06-30 01:51:10', NULL),
+(6, 3, 6, 'pending', '3511182612000001', '{\"jenis_surat\":\"Surat Usaha\",\"id_jenis_surat\":\"6\",\"bidang_usaha\":\"Jahit-menjahit\"}', NULL, '2022-06-27 08:22:55', '2022-06-27 08:22:55', NULL);
 
 -- --------------------------------------------------------
 
@@ -739,7 +747,7 @@ ALTER TABLE `negara`
 -- AUTO_INCREMENT for table `notifikasi`
 --
 ALTER TABLE `notifikasi`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
 -- AUTO_INCREMENT for table `pekerjaan`

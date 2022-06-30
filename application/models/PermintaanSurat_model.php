@@ -22,8 +22,8 @@ class PermintaanSurat_model extends CI_Model
       $this->db->where('permintaan_surat.id_jenis_surat =', $jenis);
 
     $this->db->where('permintaan_surat.status !=', 'selesai');
-    $this->db->order_by('permintaan_surat.updated_at', 'desc');
-    $this->db->order_by("FIELD(permintaan_surat.status, 'pending', 'diproses', 'selesai', 'ditolak')");
+    $this->db->order_by('permintaan_surat.acc_at', 'desc');
+    $this->db->order_by("FIELD(permintaan_surat.status, 'diproses', 'pending', 'selesai', 'ditolak')");
     $query = $this->db->get();
 
     return $query->result_array();
@@ -99,7 +99,7 @@ class PermintaanSurat_model extends CI_Model
 
   public function terima($id, $nik)
   {
-    $data = array('status' => 'diproses', 'id_admin' => $_SESSION['id'], 'updated_at' => date('Y-m-d H:i:s'));
+    $data = array('status' => 'diproses', 'id_admin' => $_SESSION['id'], 'acc_at' => date('Y-m-d H:i:s'));
     $this->db->where('id', $id);
 
     $this->db->update($this->_table, $data);
