@@ -3,8 +3,8 @@
         <div class="col-lg-12 ">
             <nav aria-label="breadcrumb">
                 <ol class="breadcrumb">
-                    <li class="breadcrumb-item active" aria-current="page"><?=ucwords($this->uri->segment(1))?></li>
                     <li class="breadcrumb-item " aria-current="page"><a href="<?=site_url("welcome/index")?>">Dashboard</a></li>
+                    <li class="breadcrumb-item active" aria-current="page"><?=ucwords($this->uri->segment(1))?></li>
                 </ol>
             </nav>
             <?php if ($this->session->flashdata() ) : ?>
@@ -26,7 +26,7 @@
                             <thead>
                             <?php $no = 1; ?>
                                 <tr>
-                                    <th>#</th>
+                                    <th>No</th>
                                     <th>Jenis</th>
                                     <th>Action</th>
                                 </tr>

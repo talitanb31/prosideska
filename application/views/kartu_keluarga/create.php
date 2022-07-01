@@ -51,9 +51,16 @@
                         <div class="row">
                             <div class="col-lg-6">
                                 <div class="form-group">
-                                    <label for="">Ekonomi</label>
-                                    <input type="text" name="ekonomi" class="form-control <?=form_error('ekonomi') != null ? 'is-invalid' : ''; ?>" placeholder="Masukkan ekonomi" id="" required>
-                                    <?php echo form_error('ekonomi', '<small class="text-danger">', '</small>'); ?>
+                                <label for="">Penghasilan</label>
+                                    <select class="form-control" name="penghasilan" id="penghasilan" required>
+                                        <option selected disabled>Pilih penghasilan</option>
+                                        <option value="< Rp. 500.000">< Rp. 500.000</option>
+                                        <option value="Rp. 500.000 - Rp. 1.000.000">< Rp. 500.000 - Rp. 1.000.000</option>
+                                        <option value="Rp. 1.000.000 - 1.500.000">< Rp. 1.000.000 - 1.500.000</option>
+                                        <option value="Rp. 1.500.000 - 2.500.000">< Rp. 1.500.000 - 2.500.000</option>
+                                        <option value="Rp. 2.500.000 - 5.000.000">< Rp. Rp. 2.500.000 - 5.000.000</option>
+                                        <option value="> Rp. 5.000.000">< > Rp. 5.000.000</option>
+                                    </select>
                                 </div>
                             </div>
                             <div class="col-lg-6">

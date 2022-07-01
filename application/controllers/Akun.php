@@ -23,7 +23,7 @@ class Akun extends CI_Controller
   }
   public function create()
   {
-    $this->template->load('template','akun/create');
+    $this->template->load('template','akun/create',$this->data);
   }
   public function store()
   {

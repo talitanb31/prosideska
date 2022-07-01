@@ -24,7 +24,7 @@ class KartuKeluarga extends CI_Controller
 
     public function create()
     {
-        $this->template->load('template', 'kartu_keluarga/create');
+        $this->template->load('template', 'kartu_keluarga/create', $this->data);
     }
 
     function upload_foto()

@@ -48,14 +48,14 @@
             <li class="<?= $this->uri->segment(1) == 'listpermintaan' ? 'active' : '' ?>">
                 <a href="<?= site_url('listpermintaan/index') ?>">
                     <i class="nc-icon nc-email-85"></i>
-                    <p>List Permintaan Surat</p>
+                    <p>Permintaan Surat</p>
                 </a>
             </li>
             <?php if ($_SESSION['level'] == 'admin') : ?>
                 <li class="<?= $this->uri->segment(1) == 'riwayatpermintaansurat' ? 'active' : '' ?>">
                     <a href="<?= site_url('riwayatpermintaansurat/index') ?>">
                         <i class="nc-icon nc-refresh-69"></i>
-                        <p>Riwayat Permintaan Surat</p>
+                        <p>Riwayat Surat</p>
                     </a>
                 </li>
             <?php endif ?>
