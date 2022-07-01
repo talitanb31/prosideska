@@ -8,53 +8,57 @@
 <script src="<?php echo base_url() ?>assets/js/plugins/chartjs.min.js"></script>
 <!--  Notifications Plugin    -->
 <script src="<?php echo base_url() ?>assets/js/plugins/bootstrap-notify.js"></script>
-<!-- Control Center for Now Ui Dashboard: parallax effects, scripts for the example pages etc -->
 <script src="<?php echo base_url() ?>assets/js/paper-dashboard.min.js?v=2.0.1" type="text/javascript"></script>
 <!-- Datatables -->
 <script src="//maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
 <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
 <!------ Include the above in your HEAD tag ---------->
 
+<!-- <script src="<?php echo base_url() ?>assets/summernote/summernote.min.js"></script> -->
+<script src="https://cdn.jsdelivr.net/npm/summernote@0.8.18/dist/summernote-lite.min.js"></script>
+
 <script src="https://cdn.datatables.net/1.10.16/js/jquery.dataTables.min.js"></script>
 <script src="https://cdn.datatables.net/1.10.16/js/dataTables.bootstrap4.min.js"></script>
-<!-- <script src="<?php echo base_url() ?>assets/backup/adminlte/bower_components/datatables.net/js/jquery.dataTables.min.js"></script> -->
-<!-- <script src="<?php echo base_url() ?>assets/backup/adminlte/bower_components/datatables.net-bs/js/dataTables.bootstrap.min.js"></script> -->
-<!-- <script src="https://cdn.datatables.net/1.11.5/js/dataTables.bootstrap4.min.js"></script> -->
-<!-- <script src="https://cdn.datatables.net/1.11.5/js/jquery.dataTables.min.js"></script> -->
-
-<script src="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.3/js/select2.min.js"></script>
-
-<!-- <script src="https://cdn.datatables.net/1.11.5/js/jquery.dataTables.min.js"></script> -->
+<script src="https://cdn.jsdelivr.net/npm/summernote@0.8.18/dist/summernote-bs4.min.js"></script>
 <script>
   $(document).ready(function() {
-    $(document).on('click','.editPermintaan',function(e){
-        e.preventDefault();
-        let id = $(this).attr('data-id');
-        $('#id').val(id);
-        var _html = '';
-        if (id) {
-            $.ajax({
-              type: 'GET',
-              url: "<?php echo base_url()?>ListPermintaan/update/" + id,
-              dataType: 'json',
-              // data: {id: id},
-              success: function(data){
-                $.each(data, function(key, value){
-                  var data = JSON.parse(value.form_data);
-                    for (let [key,value] of Object.entries(data)){
-                        _html += '<div class="form-group">'
-                          _html += '<label for="' + key + '"> ' + capitalizeFirstLetter(key.replaceAll('_', ' ')) + '</label>'
-                            _html += '<input type="text" name="' + key + '" value="' + value + '" class="form-control mb-3" id="' + key + '</input>'
-                        _html += '</div>';
-                    }
-                  })
-    
-                  $('#form_data').append(_html)
-                }
+    $('#summernote').summernote({
+      height: 300, // set editor height
+      tabsize: 1,
+      styleWithSpan: false,
+      minHeight: null, // set minimum height of editor
+      maxHeight: null, // set maximum height of editor
+      focus: true // set focus to editable area after initializing summernote
+    });
+
+    $(document).on('click', '.editPermintaan', function(e) {
+      e.preventDefault();
+      let id = $(this).attr('data-id');
+      $('#id').val(id);
+      var _html = '';
+      if (id) {
+        $.ajax({
+          type: 'GET',
+          url: "<?php echo base_url() ?>ListPermintaan/update/" + id,
+          dataType: 'json',
+          // data: {id: id},
+          success: function(data) {
+            $.each(data, function(key, value) {
+              var data = JSON.parse(value.form_data);
+              for (let [key, value] of Object.entries(data)) {
+                _html += '<div class="form-group">'
+                _html += '<label for="' + key + '"> ' + capitalizeFirstLetter(key.replaceAll('_', ' ')) + '</label>'
+                _html += '<input type="text" name="' + key + '" value="' + value + '" class="form-control mb-3" id="' + key + '</input>'
+                _html += '</div>';
+              }
             })
-        }else{
-          $('#form_data').remove()
-        }
+
+            $('#form_data').append(_html)
+          }
+        })
+      } else {
+        $('#form_data').remove()
+      }
     });
 
     function capitalizeFirstLetter(string) {
@@ -85,11 +89,11 @@
   });
 </script>
 <?php if ($this->uri->segment(1) == 'welcome') : ?>
-<script src="<?php echo base_url() ?>assets/demo/demo.js"></script>
-<script>
-  $(document).ready(function() {
-    // Javascript method's body can be found in assets/assets-for-demo/js/demo.js
-    demo.initChartsPages();
-  });
-  <?php endif ?>
-</script>
+  <script src="<?php echo base_url() ?>assets/demo/demo.js"></script>
+  <script>
+    $(document).ready(function() {
+      // Javascript method's body can be found in assets/assets-for-demo/js/demo.js
+      demo.initChartsPages();
+    });
+    <?php endif ?>
+  </script>
