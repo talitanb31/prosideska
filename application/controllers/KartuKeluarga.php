@@ -75,14 +75,14 @@ class KartuKeluarga extends CI_Controller
                 'required' => 'Data harus dipilih.'
             )
         );
-        $this->form_validation->set_rules(
-            'ekonomi',
-            'Ekonomi',
-            'required',
-            array(
-                'required' => 'Data harus terisi.'
-            )
-        );
+        // $this->form_validation->set_rules(
+        //     'ekonomi',
+        //     'Ekonomi',
+        //     'required',
+        //     array(
+        //         'required' => 'Data harus terisi.'
+        //     )
+        // );
     }
 
     public function store()
@@ -122,8 +122,10 @@ class KartuKeluarga extends CI_Controller
             if ($this->KartuKeluarga_model->updateData($id, $filename)) {
                 $this->session->set_flashdata('pesan', 'data berhasil disimpan');
                 redirect('kartukeluarga/index');
+                // echo 'sukses';
             }
         } else {
+            // echo 'error';
             $this->template->load('template', 'kartu_keluarga/edit');
         }
     }

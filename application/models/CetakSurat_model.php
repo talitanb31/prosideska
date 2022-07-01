@@ -111,24 +111,24 @@ class CetakSurat_model extends CI_Model
         // Arial bold 15
         $this->pdf->SetFont('Arial', 'B', 15);
         // Move to the right
-        $this->pdf->Cell(80);
+        $this->pdf->Cell(90);
         // Title
         $this->pdf->SetFont('Arial', '', 10);
         $this->pdf->Cell(30, 10, 'PEMERINTAH KABUPATEN MAGETAN', 0, 0, 'C');
         // Line break
         $this->pdf->Ln(6);
-        $this->pdf->Cell(80);
+        $this->pdf->Cell(90);
         $this->pdf->Cell(30, 10, 'KECAMATAN MAGETAN', 0, 0, 'C');
         $this->pdf->Ln(6);
-        $this->pdf->Cell(80);
+        $this->pdf->Cell(90);
         $this->pdf->SetFont('Arial', 'B', 15);
         $this->pdf->Cell(30, 10, 'KELURAHAN SUKOWINANGUN', 0, 0, 'C');
         $this->pdf->Ln(6);
-        $this->pdf->Cell(80);
+        $this->pdf->Cell(90);
         $this->pdf->SetFont('Arial', '', 10);
         $this->pdf->Cell(30, 10, 'Jalan Kunti Nomor 03 Telp. (0351) 893440', 0, 0, 'C');
         $this->pdf->Ln(6);
-        $this->pdf->Cell(60);
+        $this->pdf->Cell(65);
         $this->pdf->SetFont('Arial', '', 10);
         $this->pdf->Cell(15, 10, 'e-mail : ');
         $this->pdf->SetFont('Arial', 'UB', 10);
@@ -2311,13 +2311,13 @@ class CetakSurat_model extends CI_Model
         $this->pdf->Ln(6);
 
         $this->pdf->SetFont('Arial', 'U', 14);
-        $this->pdf->Cell(80);
+        $this->pdf->Cell(85);
         $this->pdf->Cell(30, 10, 'SURAT PENGANTAR SKCK', 0, 0, 'C');
 
         $this->pdf->Ln(6); // new line
 
         $this->pdf->SetFont('Arial', '', 12);
-        $this->pdf->Cell(80);
+        $this->pdf->Cell(85);
         $this->pdf->Cell(30, 10, 'Nomor : 474 / ' . $noUrut . ' /403.406.07/' . date('Y'), 0, 0, 'C');
 
         $this->pdf->Ln(10); // new line
@@ -2427,7 +2427,8 @@ class CetakSurat_model extends CI_Model
         $this->pdf->Cell(60, 10, 'Alamat', 0, 0, '');
         $this->pdf->Cell(10, 10, ':', 0, 0, 'C');
         $this->pdf->SetFont('Arial', '', 12);
-        $this->pdf->MultiCell(0, 5, $penduduk['alamat'], 0, 'L', '');
+        $this->pdf->MultiCell(0, 10, $penduduk['alamat'], 0, 'L', false);
+        // $this->pdf->Cell(100, 10, $penduduk['alamat'], 0, 0, 'L', false);
         /* End Row */
 
         $this->pdf->Ln(8); // new line
