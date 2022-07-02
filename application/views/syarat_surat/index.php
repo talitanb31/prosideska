@@ -38,9 +38,9 @@
                                         <td><?= $no++ ?></td>
                                         <td><?= ucfirst($item['jenis']) ?></td>
                                         <td><?= $item['syarat'] ?></td>
-                                        <td>
-                                            <a href="<?= base_url('syaratsurat/edit/') ?><?= $item['id'] ?>" class="btn btn-warning"><i class="fa fa-edit"></i></a>
-                                            <a href="<?= base_url('syaratsurat/delete/') ?><?= $item['id'] ?>" onclick="return confirm('Apakah anda yakin ingin menghapus data ?')" class="btn btn-danger"><i class="fa fa-trash"></i></a>
+                                        <td style="width: 200px;">
+                                            <a href="<?= base_url('syaratsurat/edit/') ?><?= $item['id'] ?>" class="btn btn-sm btn-warning m-sm-1"><i class="fa fa-edit"></i></a>
+                                            <a href="<?= base_url('syaratsurat/delete/') ?><?= $item['id'] ?>" onclick="return confirm('Apakah anda yakin ingin menghapus data ?')" class="btn btn-sm btn-danger m-sm-1"><i class="fa fa-trash"></i></a>
                                         </td>
                                     </tr>
                                 <?php endforeach; ?>
