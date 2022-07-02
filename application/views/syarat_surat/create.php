@@ -16,7 +16,7 @@
                 <div class="card-body p-5">
                     <form action="<?= site_url('syaratsurat/store') ?>" method="post">
                         <div class="row">
-                            <div class="col-lg-6">
+                            <div class="col-lg-12">
                                 <div class="form-group">
                                     <label for="">Jenis</label>
                                     <select id="jenis_surat" name="jenis_surat" class="form-control <?= form_error('jenis_surat') != null ? 'is-invalid' : ''; ?>" required>
@@ -28,10 +28,12 @@
                                     <?php echo form_error('jenis_surat', '<small class="text-danger">', '</small>'); ?>
                                 </div>
                             </div>
-                            <div class="col-lg-6">
+                        </div>
+                        <div class="row">
+                            <div class="col-lg-12">
                                 <div class="form-group">
                                     <label for="">Syarat</label>
-                                    <textarea id="summernote" name="syarat_surat" rows="10" placeholder="Deskripsi Syarat Surat....."  cols="50" rows="10" style="white-space: pre-wrap"></textarea>
+                                    <textarea id="summernote" name="syarat_surat" rows="10" placeholder="Deskripsi Syarat Surat....." cols="50" rows="10" style="white-space: pre-wrap"></textarea>
                                 </div>
                             </div>
                         </div>
