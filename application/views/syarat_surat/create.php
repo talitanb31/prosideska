@@ -31,7 +31,7 @@
                             <div class="col-lg-6">
                                 <div class="form-group">
                                     <label for="">Syarat</label>
-                                    <textarea id="summernote" name="deskripsi_berita" rows="10" placeholder="Deskripsi Berita....." class="form-control" cols="50" rows="10" style="white-space: pre-wrap"></textarea>
+                                    <textarea id="summernote" name="syarat_surat" rows="10" placeholder="Deskripsi Syarat Surat....."  cols="50" rows="10" style="white-space: pre-wrap"></textarea>
                                 </div>
                             </div>
                         </div>

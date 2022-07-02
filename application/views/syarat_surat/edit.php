@@ -31,7 +31,7 @@
                             <div class="col-lg-6">
                                 <div class="form-group">
                                     <label for="">Syarat</label>
-                                    <textarea name="syarat_surat" id="syarat_surat" class="form-control <?=form_error('syarat_surat') != null ? 'is-invalid' : ''; ?>" cols="30" rows="5"><?= $data['syarat'] ?></textarea>
+                                    <textarea id="summernote" name="syarat_surat" class="form-control <?=form_error('syarat_surat') != null ? 'is-invalid' : ''; ?>" rows="10" placeholder="Deskripsi Berita....."  cols="50" rows="10" style="white-space: pre-wrap"><?= $data['syarat'] ?></textarea>
                                     <?php echo form_error('syarat_surat', '<small class="text-danger">', '</small>'); ?>
                                 </div>
                             </div>

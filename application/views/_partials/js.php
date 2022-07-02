@@ -11,25 +11,20 @@
 <script src="<?php echo base_url() ?>assets/js/paper-dashboard.min.js?v=2.0.1" type="text/javascript"></script>
 <!-- Datatables -->
 <script src="//maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
-<script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
 <!------ Include the above in your HEAD tag ---------->
 
 <!-- <script src="<?php echo base_url() ?>assets/summernote/summernote.min.js"></script> -->
-<script src="https://cdn.jsdelivr.net/npm/summernote@0.8.18/dist/summernote-lite.min.js"></script>
 
 <script src="https://cdn.datatables.net/1.10.16/js/jquery.dataTables.min.js"></script>
 <script src="https://cdn.datatables.net/1.10.16/js/dataTables.bootstrap4.min.js"></script>
-<script src="https://cdn.jsdelivr.net/npm/summernote@0.8.18/dist/summernote-bs4.min.js"></script>
+   <script src="https://cdn.jsdelivr.net/npm/summernote@0.8.18/dist/summernote-bs4.min.js"></script>
+
 <script>
   $(document).ready(function() {
     $('#summernote').summernote({
-      height: 300, // set editor height
-      tabsize: 1,
-      styleWithSpan: false,
-      minHeight: null, // set minimum height of editor
-      maxHeight: null, // set maximum height of editor
-      focus: true // set focus to editable area after initializing summernote
-    });
+        tabsize: 2,
+        height: 100
+      });
 
     $(document).on('click', '.editPermintaan', function(e) {
       e.preventDefault();
