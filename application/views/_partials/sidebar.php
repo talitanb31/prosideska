@@ -60,12 +60,12 @@
                 </li>
             <?php endif ?>
             <?php if ($_SESSION['level'] == 'superadmin') : ?>
-                <li class="<?= $this->uri->segment(1) == 'berita' ? 'active' : '' ?>">
+                <!-- <li class="<?= $this->uri->segment(1) == 'berita' ? 'active' : '' ?>">
                     <a href="<?= site_url('berita/index') ?>">
                         <i class="nc-icon nc-alert-circle-i"></i>
                         <p>Berita</p>
                     </a>
-                </li>
+                </li> -->
                 <li class="<?= $this->uri->segment(1) == 'kritiksaran' ? 'active' : '' ?>">
                     <a href="<?= site_url('kritiksaran/index') ?>">
                         <i class="nc-icon nc-headphones"></i>
