@@ -16,7 +16,7 @@ class ListPermintaan extends CI_Controller
         $this->load->model('Jenis_surat_model');
         $this->load->model('CetakSurat_model');
         $this->load->model('Penduduk_model');
-        $this->data['page_title']  = 'Permintaan Surat';
+        $this->data['page_title']  = 'Pengesahan Surat';
     }
 
     public function index()
@@ -70,7 +70,7 @@ class ListPermintaan extends CI_Controller
 
         $this->db->update('permintaan_surat', $this->data);
 
-        if ($this->PermintaanSurat_model->storeNotification($this->input->post('nik'), 'Permintaan surat anda sudah diterima.')) {
+        if ($this->PermintaanSurat_model->storeNotification($this->input->post('nik'), 'Pengesahan Surat anda sudah diterima.')) {
             $this->session->set_flashdata('pesan', 'surat berhasil diterima');
             redirect('listpermintaan/index');
         } else {
