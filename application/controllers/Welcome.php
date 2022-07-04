@@ -15,6 +15,7 @@ class Welcome extends CI_Controller
         $this->load->model('Penduduk_model');
         $this->load->model('Akun_model');
         $this->load->model('PermintaanSurat_model');
+        $this->load->model('NotifikasiPermintaan_model');
         $this->data['page_title'] = 'Dashboard';
     }
 

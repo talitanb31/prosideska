@@ -10,6 +10,7 @@ class JenisSurat extends CI_Controller
     parent::__construct();
     is_login();
     $this->load->model('Jenis_surat_model');
+    $this->load->model('NotifikasiPermintaan_model');
     $this->data['page_title']  = 'Master Jenis Surat';
   }
 

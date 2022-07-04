@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Jun 30, 2022 at 04:44 PM
+-- Generation Time: Jul 04, 2022 at 07:52 PM
 -- Server version: 10.4.22-MariaDB
 -- PHP Version: 7.4.27
 
@@ -94,6 +94,13 @@ CREATE TABLE `feedback` (
   `waktu` timestamp NOT NULL DEFAULT current_timestamp()
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
+--
+-- Dumping data for table `feedback`
+--
+
+INSERT INTO `feedback` (`id`, `nama`, `email`, `subjek`, `pesan`, `waktu`) VALUES
+(1, 'Muhammad Khalil Zhillullah', 'mkhalil26122000@gmail.com', 'asd', 'qw asd', '2022-07-02 12:49:24');
+
 -- --------------------------------------------------------
 
 --
@@ -120,7 +127,8 @@ INSERT INTO `jenis_surat` (`id`, `jenis`) VALUES
 (12, 'Surat Keterangan Belum Menikah'),
 (13, 'Surat Keterangan Perjalanan'),
 (14, 'Surat Keterangan Cacatan Kepolisian'),
-(15, 'Surat Perwalian');
+(15, 'Surat Perwalian'),
+(16, 'tes sss');
 
 -- --------------------------------------------------------
 
@@ -145,7 +153,7 @@ CREATE TABLE `kartu_keluarga` (
 --
 
 INSERT INTO `kartu_keluarga` (`id`, `alamat`, `dusun`, `rt`, `rw`, `ekonomi`, `file_kk`, `created_at`, `updated_at`) VALUES
-(1, 'wwww', 'ads', '1', '2', 'asd', 'asd', '2022-03-23 13:44:22', '2022-03-23 08:40:12'),
+(1, 'wwww', 'ads', '1', '2', NULL, 'asd', '2022-03-23 13:44:22', '2022-07-01 06:27:43'),
 (2, 'Eaque quo temporibus', 'Quia ratione dicta e', '21', '56', 'Nostrum qui voluptat', '', '2022-03-23 08:34:56', '2022-03-23 08:34:56'),
 (3, 'Dolore neque qui qui', 'Id provident hic om', '37', '31', 'Consequuntur reicien', '', '2022-03-23 08:35:21', '2022-03-23 08:35:21'),
 (6, 'Aut voluptates culpa', 'Nobis cupidatat volu', '70', '73', 'Neque sint labore no', '1650304125668.jpg', '2022-04-20 03:08:49', '2022-04-20 03:08:49'),
@@ -161,7 +169,9 @@ INSERT INTO `kartu_keluarga` (`id`, `alamat`, `dusun`, `rt`, `rw`, `ekonomi`, `f
 (16, 'Dolor commodo reicie', 'Officia incidunt ea', '56', '11', 'Illo eiusmod ratione', 'WhatsApp-Image-2022-05-16-at-07.46.30.jpeg', '2022-05-17 07:41:53', '2022-05-17 07:41:53'),
 (17, 'wowow', 'Ex velit quae praes', '99', '14', 'Corporis vel autem e', 'WhatsApp Image 2022-05-16 at 07_46_30.jpeg', '2022-05-17 07:42:38', '2022-05-17 07:42:38'),
 (18, 'akak', 'Iusto quis fuga Nis', '86', '73', 'Accusantium aute sun', 'screenshot-support_google_com-2022_04_23-18_10_30.png', '2022-05-17 07:43:02', '2022-05-17 07:43:02'),
-(19, 'kuku', 'Architecto reprehend', '84', '32', 'Ullam libero dolor n', 'WhatsApp Image 2022-05-16 at 07_42_54.jpeg', '2022-05-17 07:43:46', '2022-05-17 07:43:46');
+(19, 'kuku', 'Architecto reprehend', '84', '32', 'Ullam libero dolor n', 'WhatsApp Image 2022-05-16 at 07_42_54.jpeg', '2022-05-17 07:43:46', '2022-05-17 07:43:46'),
+(20, 'asd', 'asd', '2', '2', NULL, 'arabika.jpg', '2022-07-01 06:35:14', '2022-07-01 06:35:14'),
+(22, 'Surabaya', 'Surabaya', '1', '1', 'Rp. 500.000 - Rp. 1.000.000', 'robusta1.jpg', '2022-07-01 07:01:30', '2022-07-01 07:01:30');
 
 -- --------------------------------------------------------
 
@@ -603,8 +613,22 @@ INSERT INTO `permintaan_surat` (`id`, `no_urut`, `id_jenis_surat`, `status`, `ni
 (2, 2, 14, 'selesai', '3511182612000001', '{\"jenis_surat\":\"Surat Keterangan Cacatan Kepolisian\",\"id_jenis_surat\":\"14\"}', 5, '2022-06-10 09:02:38', '2022-06-10 09:02:38', NULL),
 (3, 3, 2, 'pending', '3511182612000001', '{\"jenis_surat\":\"Surat Keterangan Pindah\",\"id_jenis_surat\":\"2\",\"no_kk\":\"1234567891234567\",\"nik_kepala_keluarga\":\"1234567891234569\",\"nama_kepala_keluarga\":\"Subandi\",\"alamat\":\"Probolinggo\",\"rt\":\"1\",\"rw\":\"2\",\"kelurahan\":\"Sukosari\",\"kecamatan\":\"Tamanan\",\"kab\":\"Bondowoso\",\"prov\":\"Jawa Timur\",\"tgl_pindah\":\"2022-06-15\",\"alasan\":\"\",\"alasan_lainnya\":\"Bosen sama tetangga\",\"klasifikasi\":\"\",\"jenis\":\"2\",\"alamat_tujuan_pindah\":\"\",\"rt_tujuan\":\"2\",\"rw_tujuan\":\"\",\"kelurahan_tujuan\":\"Curahdami\",\"kecamatan_tujuan\":\"Tangsel Wetan\",\"kab_tujuan\":\"Jember\",\"prov_tujuan\":\"Jawa Tengah\",\"tgl_kedatangan\":\"2022-06-24\",\"tidak_pindah\":\"1\",\"pindah\":\"1\",\"rencana_tgl_pindah\":\"2022-06-24\",\"nik_keluarga\":[\"2\"],\"nama_keluarga\":[\"Bambang\"],\"shdk\":[\"Test\"]}', 5, '2022-06-10 09:07:11', '2022-06-29 14:23:11', NULL),
 (4, 4, 4, 'diproses', '3511182612000002', '{\"jenis_surat\":\"Surat Tidak Mampu\",\"id_jenis_surat\":\"4\",\"tujuan\":\"Pesyaratan Beasiswa Kabupaten Bondowoso\",\"nama\":\"Bapak Joko\",\"nik\":\"3511182612000001\",\"tempat_lahir\":\"Bondowoso\",\"tanggal_lahir\":\"2022-06-30\",\"nama_instansi\":\"Pemerintah Kabupaten\"}', 5, '2022-06-10 09:10:10', '2022-06-30 09:10:10', NULL),
-(5, 4, 6, 'diproses', '3511182612000001', '{\"jenis_surat\":\"Surat Usaha\",\"id_jenis_surat\":\"6\",\"bidang_usaha\":\"Teknologi\"}', 8, '2022-06-26 01:51:10', '2022-06-30 01:51:10', NULL),
-(6, 3, 6, 'pending', '3511182612000001', '{\"jenis_surat\":\"Surat Usaha\",\"id_jenis_surat\":\"6\",\"bidang_usaha\":\"Jahit-menjahit\"}', NULL, '2022-06-27 08:22:55', '2022-06-27 08:22:55', NULL);
+(5, 4, 6, 'pending', '3511182612000001', '{\"jenis_surat\":\"Surat Usaha\",\"id_jenis_surat\":\"6\",\"bidang_usaha\":\"Teknologi\"}', 8, '2022-06-26 01:51:10', '2022-06-30 01:51:10', NULL),
+(6, 3, 6, 'pending', '3511182612000001', '{\"jenis_surat\":\"Surat Usaha\",\"id_jenis_surat\":\"6\",\"bidang_usaha\":\"Jahit-menjahit\"}', NULL, '2022-06-27 08:22:55', '2022-06-27 08:22:55', NULL),
+(11, 0, 6, 'diproses', '3511182612000001', '{\"jenis_surat\":\"Surat Usaha\",\"id_jenis_surat\":\"6\",\"bidang_usaha\":\"adwdwq\"}', NULL, '2022-07-01 06:31:40', '2022-07-01 06:31:40', NULL);
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `read_notifikasi_permintaan`
+--
+
+CREATE TABLE `read_notifikasi_permintaan` (
+  `id` int(11) NOT NULL,
+  `id_user` int(11) NOT NULL,
+  `id_permintaan` int(11) NOT NULL,
+  `read_at` timestamp NOT NULL DEFAULT current_timestamp()
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 -- --------------------------------------------------------
 
@@ -617,6 +641,20 @@ CREATE TABLE `syarat_surat` (
   `id_jenis_surat` int(11) NOT NULL,
   `syarat` text NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Dumping data for table `syarat_surat`
+--
+
+INSERT INTO `syarat_surat` (`id`, `id_jenis_surat`, `syarat`) VALUES
+(6, 5, '<p>e</p>'),
+(7, 6, '<p>asd</p>'),
+(8, 12, '<p>sw</p>'),
+(10, 11, '<p>w</p>'),
+(11, 4, '<p>asdas</p>'),
+(12, 2, '<p><span style=\"color: rgb(0, 0, 0); font-family: &quot;Open Sans&quot;, Arial, sans-serif; text-align: justify;\">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla in risus a ligula eleifend convallis eu sed nibh. In eleifend ex quis urna vestibulum facilisis. In hac habitasse platea dictumst. Sed a erat justo. Aliquam tincidunt viverra dui, sed luctus quam. Nullam imperdiet et odio vel fringilla. Phasellus magna orci, aliquam eu malesuada in, egestas sit amet sapien. Nam ultricies nisi eget erat rhoncus semper. Duis nisl dui, condimentum ac nunc id, molestie eleifend erat. Donec id nulla placerat urna aliquet dapibus sed ut dolor. Aliquam ornare mollis tincidunt. Suspendisse ultrices tincidunt risus, id ullamcorper ex placerat et.</span><br></p>'),
+(13, 6, '<p>asdwd</p><p>asdasd</p><p>sadasd</p>'),
+(15, 14, '<p style=\"text-align: center; \">asd</p><p style=\"text-align: center; \"><br></p><hr><p style=\"text-align: center; \">asdasd</p>');
 
 --
 -- Indexes for dumped tables
@@ -697,6 +735,14 @@ ALTER TABLE `permintaan_surat`
   ADD KEY `id_jenis_surat` (`id_jenis_surat`);
 
 --
+-- Indexes for table `read_notifikasi_permintaan`
+--
+ALTER TABLE `read_notifikasi_permintaan`
+  ADD PRIMARY KEY (`id`),
+  ADD KEY `id_user` (`id_user`),
+  ADD KEY `id_notifikasi` (`id_permintaan`);
+
+--
 -- Indexes for table `syarat_surat`
 --
 ALTER TABLE `syarat_surat`
@@ -723,19 +769,19 @@ ALTER TABLE `berita`
 -- AUTO_INCREMENT for table `feedback`
 --
 ALTER TABLE `feedback`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
 -- AUTO_INCREMENT for table `jenis_surat`
 --
 ALTER TABLE `jenis_surat`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=16;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=17;
 
 --
 -- AUTO_INCREMENT for table `kartu_keluarga`
 --
 ALTER TABLE `kartu_keluarga`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=20;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=23;
 
 --
 -- AUTO_INCREMENT for table `negara`
@@ -765,13 +811,19 @@ ALTER TABLE `pendidikan`
 -- AUTO_INCREMENT for table `permintaan_surat`
 --
 ALTER TABLE `permintaan_surat`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=12;
+
+--
+-- AUTO_INCREMENT for table `read_notifikasi_permintaan`
+--
+ALTER TABLE `read_notifikasi_permintaan`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
 
 --
 -- AUTO_INCREMENT for table `syarat_surat`
 --
 ALTER TABLE `syarat_surat`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=16;
 
 --
 -- Constraints for dumped tables
@@ -803,6 +855,13 @@ ALTER TABLE `penduduk`
 ALTER TABLE `permintaan_surat`
   ADD CONSTRAINT `permintaan_surat_id_admin` FOREIGN KEY (`id_admin`) REFERENCES `akun` (`id`) ON DELETE CASCADE ON UPDATE CASCADE,
   ADD CONSTRAINT `permintaan_surat_id_jenis_surat` FOREIGN KEY (`id_jenis_surat`) REFERENCES `jenis_surat` (`id`) ON DELETE CASCADE ON UPDATE CASCADE;
+
+--
+-- Constraints for table `read_notifikasi_permintaan`
+--
+ALTER TABLE `read_notifikasi_permintaan`
+  ADD CONSTRAINT `read_nofitikasi_permintaan_id_permintaan` FOREIGN KEY (`id_permintaan`) REFERENCES `permintaan_surat` (`id`) ON DELETE CASCADE ON UPDATE CASCADE,
+  ADD CONSTRAINT `read_nofitikasi_permintaan_id_user` FOREIGN KEY (`id_user`) REFERENCES `akun` (`id`) ON DELETE CASCADE ON UPDATE CASCADE;
 
 --
 -- Constraints for table `syarat_surat`

@@ -38,7 +38,7 @@
                     <?php
                     $CI = &get_instance();
                     $CI->load->model('PermintaanSurat_model');
-                    $total = count($CI->PermintaanSurat_model->getSuratByStatus('pending'));
+                    $total = count($CI->NotifikasiPermintaan_model->getSuratByStatus('pending', $_SESSION['id']));
                     // foreach ($result as $row) {
                     //     echo $row['column_name'];
                     // }

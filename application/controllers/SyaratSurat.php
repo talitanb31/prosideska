@@ -12,6 +12,7 @@ class SyaratSurat extends CI_Controller
     is_login();
     $this->load->model('SyaratSurat_model');
     $this->load->model('Jenis_surat_model');
+    $this->load->model('NotifikasiPermintaan_model');
     $this->data['page_title']  = 'Master Alur / Syarat Surat';
   }
 

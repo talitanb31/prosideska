@@ -11,14 +11,15 @@ class NotifikasiSurat extends CI_Controller
     {
         parent::__construct();
         is_login();
-        $this->load->model('PermintaanSurat_model');
+        $this->load->model('NotifikasiPermintaan_model');
         $this->load->library('datatables');
         $this->data['page_title']  = 'Notifikasi';
     }
 
     public function index()
     {
-        $this->data['data'] = $this->PermintaanSurat_model->getSuratByStatus('pending');
+        $idUser = $_SESSION['id'];
+        $this->data['data'] = $this->NotifikasiPermintaan_model->getSuratByStatus('pending', $idUser);
         $this->template->load('template', 'notifikasi/index', $this->data);
     }
 }

@@ -28,6 +28,11 @@
                             <tbody>
                                 <?php $no = 1; ?>
                                 <?php foreach ($data as $item) { ?>
+                                    <?php
+                                    $CI = &get_instance();
+                                    $CI->load->model('NotifikasiPermintaan_model');
+                                    $CI->NotifikasiPermintaan_model->isRead($item['id']);
+                                    ?>
                                     <tr>
                                         <td><?= $no++ ?></td>
                                         <td><?= $item['nik'] ?></td>

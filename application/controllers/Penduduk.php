@@ -15,6 +15,7 @@ class Penduduk extends CI_Controller
         $this->load->model('Pendidikan_model');
         $this->load->model('Pekerjaan_model');
         $this->load->model('Negara_model');
+        $this->load->model('NotifikasiPermintaan_model');
         $this->load->library('datatables');
         $this->data['page_title']  = 'Penduduk';
     }

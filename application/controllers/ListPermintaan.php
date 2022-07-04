@@ -16,6 +16,7 @@ class ListPermintaan extends CI_Controller
         $this->load->model('Jenis_surat_model');
         $this->load->model('CetakSurat_model');
         $this->load->model('Penduduk_model');
+        $this->load->model('NotifikasiPermintaan_model');
         $this->data['page_title']  = 'Pengesahan Surat';
     }
 

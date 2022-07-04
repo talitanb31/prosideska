@@ -12,6 +12,7 @@ class KartuKeluarga extends CI_Controller
         parent::__construct();
         is_login();
         $this->load->model('KartuKeluarga_model');
+        $this->load->model('NotifikasiPermintaan_model');
         $this->load->library('datatables');
         $this->data['page_title']  = 'Kartu Keluarga';
     }
