@@ -114,10 +114,10 @@ class KartuKeluarga extends CI_Controller
     {
         $this->_rules();
         $filename = '';
-        // if($this->input->post('file_kk') == null) {
-        //     $scanKK = $this->upload_foto();
-        //     $filename = $scanKK['file_name'];
-        // }
+        if ($this->input->post('file_kk') == null) {
+            $scanKK = $this->upload_foto();
+            $filename = $scanKK['file_name'];
+        }
 
         if ($this->form_validation->run() == TRUE) {
             if ($this->KartuKeluarga_model->updateData($id, $filename)) {
