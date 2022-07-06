@@ -44,7 +44,7 @@
                         <div class="col-lg-6">
                             <div class="form-group">
                                 <label for="">Agama</label>
-                                <select name="agama" id="agama" class="form-control <?= form_error('agama') != null ? 'is-invalid' : ''; ?>" readonly>
+                                <select name="agama" id="agama" class="form-control <?= form_error('agama') != null ? 'is-invalid' : ''; ?>" disabled>
                                     <option value="0">Pilih Agama</option>
                                     <option value="Islam" <?= $data['agama'] == 'Islam' ? 'selected' : '' ?>>Islam</option>
                                     <option value="Kristen" <?= $data['agama'] == 'Kristen' ? 'selected' : '' ?>>Kristen</option>
@@ -59,7 +59,7 @@
                         <div class="col-lg-6">
                             <div class="form-group">
                                 <label for="">Tempat Lahir</label>
-                                <input type="text" name="tempat_lahir" class="form-control <?= form_error('tempat_lahir') != null ? 'is-invalid' : ''; ?>" placeholder="Masukkan tempat lahir lengkap" id="" value="<?= $data['nama'] ?>" readonly>
+                                <input type="text" name="tempat_lahir" class="form-control <?= form_error('tempat_lahir') != null ? 'is-invalid' : ''; ?>" placeholder="Masukkan tempat lahir lengkap" id="" value="<?= $data['tempat_lahir'] ?>" readonly>
                                 <?php echo form_error('tempat_lahir', '<small class="text-danger">', '</small>'); ?>
                             </div>
                         </div>
@@ -85,7 +85,7 @@
                         <div class="col-lg-6">
                             <div class="form-group">
                                 <label for="">Gol. Darah</label>
-                                <select name="gol_darah" id="gol_darah" class="form-control <?= form_error('gol_darah') != null ? 'is-invalid' : ''; ?>" readonly>
+                                <select name="gol_darah" id="gol_darah" class="form-control <?= form_error('gol_darah') != null ? 'is-invalid' : ''; ?>" disabled>
                                     <option value="0" <?= $data['gol_darah'] == 'O' ? 'selected' : '' ?>>Pilih Gol. Darah</option>
                                     <option value="A" <?= $data['gol_darah'] == 'A' ? 'selected' : '' ?>>A</option>
                                     <option value="AB" <?= $data['gol_darah'] == 'AB' ? 'selected' : '' ?>>AB</option>
