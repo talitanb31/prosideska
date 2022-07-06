@@ -53,15 +53,15 @@
                                 <div class="form-group">
                                     <select class="form-control" name="ekonomi" id="ekonomi" required>
                                         <option selected disabled>Pilih penghasilan</option>
-                                        <option value="< Rp. 500.000">
+                                        <option value="< Rp. 500.000" <?= $data['ekonomi'] == '< Rp. 500.000' ? 'selected' : '' ?>>
                                             < Rp. 500.000</option>
-                                        <option value="Rp. 500.000 - Rp. 1.000.000">
+                                        <option value="Rp. 500.000 - Rp. 1.000.000" <?= $data['ekonomi'] == '< Rp. 500.000' ? 'selected' : '' ?>>
                                             < Rp. 500.000 - Rp. 1.000.000</option>
-                                        <option value="Rp. 1.000.000 - 1.500.000">
+                                        <option value="Rp. 1.000.000 - 1.500.000" <?= $data['ekonomi'] == 'Rp. 1.000.000 - 1.500.000' ? 'selected' : '' ?>>
                                             < Rp. 1.000.000 - 1.500.000</option>
-                                        <option value="Rp. 1.500.000 - 2.500.000">
+                                        <option value="Rp. 1.500.000 - 2.500.000" <?= $data['ekonomi'] == 'Rp. 1.500.000 - 2.500.000' ? 'selected' : '' ?>>
                                             < Rp. 1.500.000 - 2.500.000</option>
-                                        <option value="Rp. 2.500.000 - 5.000.000">
+                                        <option value="Rp. 2.500.000 - 5.000.000" <?= $data['ekonomi'] == 'Rp. 2.500.000 - 5.000.000' ? 'selected' : '' ?>>
                                             < Rp. Rp. 2.500.000 - 5.000.000</option>
                                         <option value="> Rp. 5.000.000">
                                             <> Rp. 5.000.000
