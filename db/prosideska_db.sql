@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Jul 04, 2022 at 07:52 PM
+-- Generation Time: Jul 06, 2022 at 07:47 PM
 -- Server version: 10.4.22-MariaDB
 -- PHP Version: 7.4.27
 
@@ -153,7 +153,7 @@ CREATE TABLE `kartu_keluarga` (
 --
 
 INSERT INTO `kartu_keluarga` (`id`, `alamat`, `dusun`, `rt`, `rw`, `ekonomi`, `file_kk`, `created_at`, `updated_at`) VALUES
-(1, 'wwww', 'ads', '1', '2', NULL, 'asd', '2022-03-23 13:44:22', '2022-07-01 06:27:43'),
+(1, 'wwww', 'ads', '1', '2', 'Rp. 1.000.000 - 1.500.000', 'asd', '2022-03-23 13:44:22', '2022-07-06 12:46:29'),
 (2, 'Eaque quo temporibus', 'Quia ratione dicta e', '21', '56', 'Nostrum qui voluptat', '', '2022-03-23 08:34:56', '2022-03-23 08:34:56'),
 (3, 'Dolore neque qui qui', 'Id provident hic om', '37', '31', 'Consequuntur reicien', '', '2022-03-23 08:35:21', '2022-03-23 08:35:21'),
 (6, 'Aut voluptates culpa', 'Nobis cupidatat volu', '70', '73', 'Neque sint labore no', '1650304125668.jpg', '2022-04-20 03:08:49', '2022-04-20 03:08:49'),
@@ -583,7 +583,7 @@ CREATE TABLE `penduduk` (
 INSERT INTO `penduduk` (`nik`, `nama`, `agama`, `tempat_lahir`, `tanggal_lahir`, `jenis_kelamin`, `alamat`, `gol_darah`, `id_negara`, `id_pendidikan`, `id_pekerjaan`, `status_pernikahan`) VALUES
 ('3511182612000001', 'Muhammad Khalil Zhillullah', 'Islam', 'Muhammad Khalil Zhillullah', '2022-04-13', 'Laki-laki', 'Bondowoso', 'O', 152, 6, 3, 'BELUM KAWIN'),
 ('3511182612000002', 'Amelia Kamila', 'Islam', 'Bondowoso', '2006-09-16', 'Perempuan', NULL, 'O', 152, 3, 3, 'BELUM KAWIN'),
-('3511182612000004', 'Rifjan Jundilla', 'Islam', 'Bondowoso', '2022-04-13', 'Laki-laki', 'Probolinggo', 'AB', 152, 8, 3, 'BELUM KAWIN');
+('3511182612000004', 'Rifjan Jundilla', 'Islam', 'Probolinggo', '2022-04-13', 'Laki-laki', 'Probolinggo', 'AB', 152, 8, 3, 'BELUM KAWIN');
 
 -- --------------------------------------------------------
 
@@ -609,13 +609,7 @@ CREATE TABLE `permintaan_surat` (
 --
 
 INSERT INTO `permintaan_surat` (`id`, `no_urut`, `id_jenis_surat`, `status`, `nik`, `form_data`, `id_admin`, `created_at`, `updated_at`, `acc_at`) VALUES
-(1, 1, 14, 'diproses', '3511182612000001', '{\"jenis_surat\":\"Surat Keterangan Cacatan Kepolisian\",\"id_jenis_surat\":\"14\"}', 8, '2022-06-10 09:02:01', '2022-06-30 09:02:01', '2022-06-30 09:41:01'),
-(2, 2, 14, 'selesai', '3511182612000001', '{\"jenis_surat\":\"Surat Keterangan Cacatan Kepolisian\",\"id_jenis_surat\":\"14\"}', 5, '2022-06-10 09:02:38', '2022-06-10 09:02:38', NULL),
-(3, 3, 2, 'pending', '3511182612000001', '{\"jenis_surat\":\"Surat Keterangan Pindah\",\"id_jenis_surat\":\"2\",\"no_kk\":\"1234567891234567\",\"nik_kepala_keluarga\":\"1234567891234569\",\"nama_kepala_keluarga\":\"Subandi\",\"alamat\":\"Probolinggo\",\"rt\":\"1\",\"rw\":\"2\",\"kelurahan\":\"Sukosari\",\"kecamatan\":\"Tamanan\",\"kab\":\"Bondowoso\",\"prov\":\"Jawa Timur\",\"tgl_pindah\":\"2022-06-15\",\"alasan\":\"\",\"alasan_lainnya\":\"Bosen sama tetangga\",\"klasifikasi\":\"\",\"jenis\":\"2\",\"alamat_tujuan_pindah\":\"\",\"rt_tujuan\":\"2\",\"rw_tujuan\":\"\",\"kelurahan_tujuan\":\"Curahdami\",\"kecamatan_tujuan\":\"Tangsel Wetan\",\"kab_tujuan\":\"Jember\",\"prov_tujuan\":\"Jawa Tengah\",\"tgl_kedatangan\":\"2022-06-24\",\"tidak_pindah\":\"1\",\"pindah\":\"1\",\"rencana_tgl_pindah\":\"2022-06-24\",\"nik_keluarga\":[\"2\"],\"nama_keluarga\":[\"Bambang\"],\"shdk\":[\"Test\"]}', 5, '2022-06-10 09:07:11', '2022-06-29 14:23:11', NULL),
-(4, 4, 4, 'diproses', '3511182612000002', '{\"jenis_surat\":\"Surat Tidak Mampu\",\"id_jenis_surat\":\"4\",\"tujuan\":\"Pesyaratan Beasiswa Kabupaten Bondowoso\",\"nama\":\"Bapak Joko\",\"nik\":\"3511182612000001\",\"tempat_lahir\":\"Bondowoso\",\"tanggal_lahir\":\"2022-06-30\",\"nama_instansi\":\"Pemerintah Kabupaten\"}', 5, '2022-06-10 09:10:10', '2022-06-30 09:10:10', NULL),
-(5, 4, 6, 'pending', '3511182612000001', '{\"jenis_surat\":\"Surat Usaha\",\"id_jenis_surat\":\"6\",\"bidang_usaha\":\"Teknologi\"}', 8, '2022-06-26 01:51:10', '2022-06-30 01:51:10', NULL),
-(6, 3, 6, 'pending', '3511182612000001', '{\"jenis_surat\":\"Surat Usaha\",\"id_jenis_surat\":\"6\",\"bidang_usaha\":\"Jahit-menjahit\"}', NULL, '2022-06-27 08:22:55', '2022-06-27 08:22:55', NULL),
-(11, 0, 6, 'diproses', '3511182612000001', '{\"jenis_surat\":\"Surat Usaha\",\"id_jenis_surat\":\"6\",\"bidang_usaha\":\"adwdwq\"}', NULL, '2022-07-01 06:31:40', '2022-07-01 06:31:40', NULL);
+(1, 0, 6, 'diproses', '3511182612000001', '{\"jenis_surat\":\"Surat Usaha\",\"id_jenis_surat\":\"6\",\"bidang_usaha\":\"Teknologi\"}', 8, '2022-07-06 12:29:39', '2022-07-06 12:29:39', '2022-07-06 12:36:05');
 
 -- --------------------------------------------------------
 
@@ -625,10 +619,19 @@ INSERT INTO `permintaan_surat` (`id`, `no_urut`, `id_jenis_surat`, `status`, `ni
 
 CREATE TABLE `read_notifikasi_permintaan` (
   `id` int(11) NOT NULL,
-  `id_user` int(11) NOT NULL,
+  `id_user` int(11) DEFAULT NULL,
+  `nik` varchar(16) DEFAULT NULL,
   `id_permintaan` int(11) NOT NULL,
   `read_at` timestamp NOT NULL DEFAULT current_timestamp()
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Dumping data for table `read_notifikasi_permintaan`
+--
+
+INSERT INTO `read_notifikasi_permintaan` (`id`, `id_user`, `nik`, `id_permintaan`, `read_at`) VALUES
+(1, 5, NULL, 1, '2022-07-06 17:35:46'),
+(2, NULL, '3511182612000001', 1, '2022-07-06 17:39:19');
 
 -- --------------------------------------------------------
 
@@ -740,7 +743,8 @@ ALTER TABLE `permintaan_surat`
 ALTER TABLE `read_notifikasi_permintaan`
   ADD PRIMARY KEY (`id`),
   ADD KEY `id_user` (`id_user`),
-  ADD KEY `id_notifikasi` (`id_permintaan`);
+  ADD KEY `id_notifikasi` (`id_permintaan`),
+  ADD KEY `nik` (`nik`);
 
 --
 -- Indexes for table `syarat_surat`
@@ -811,13 +815,13 @@ ALTER TABLE `pendidikan`
 -- AUTO_INCREMENT for table `permintaan_surat`
 --
 ALTER TABLE `permintaan_surat`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=12;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
 -- AUTO_INCREMENT for table `read_notifikasi_permintaan`
 --
 ALTER TABLE `read_notifikasi_permintaan`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
 -- AUTO_INCREMENT for table `syarat_surat`
@@ -861,7 +865,8 @@ ALTER TABLE `permintaan_surat`
 --
 ALTER TABLE `read_notifikasi_permintaan`
   ADD CONSTRAINT `read_nofitikasi_permintaan_id_permintaan` FOREIGN KEY (`id_permintaan`) REFERENCES `permintaan_surat` (`id`) ON DELETE CASCADE ON UPDATE CASCADE,
-  ADD CONSTRAINT `read_nofitikasi_permintaan_id_user` FOREIGN KEY (`id_user`) REFERENCES `akun` (`id`) ON DELETE CASCADE ON UPDATE CASCADE;
+  ADD CONSTRAINT `read_nofitikasi_permintaan_id_user` FOREIGN KEY (`id_user`) REFERENCES `akun` (`id`) ON DELETE CASCADE ON UPDATE CASCADE,
+  ADD CONSTRAINT `read_nofitikasi_permintaan_nik` FOREIGN KEY (`nik`) REFERENCES `penduduk` (`nik`) ON DELETE CASCADE ON UPDATE CASCADE;
 
 --
 -- Constraints for table `syarat_surat`
