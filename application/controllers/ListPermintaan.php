@@ -17,7 +17,7 @@ class ListPermintaan extends CI_Controller
         $this->load->model('CetakSurat_model');
         $this->load->model('Penduduk_model');
         $this->load->model('NotifikasiPermintaan_model');
-        $this->data['page_title']  = 'Pengesahan Surat';
+        $this->data['page_title']  = $_SESSION['level'] == 'kepaladesa' ? 'Pengesahan Surat' : 'Permintaan Surat';
     }
 
     public function index()

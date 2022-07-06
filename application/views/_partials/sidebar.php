@@ -48,7 +48,7 @@
             <li class="<?= $this->uri->segment(1) == 'listpermintaan' ? 'active' : '' ?>">
                 <a href="<?= site_url('listpermintaan/index') ?>">
                     <i class="nc-icon nc-email-85"></i>
-                    <p>Pengesahan Surat</p>
+                    <p><?= $_SESSION['level'] == 'kepaladesa' ? 'Pengesahan Surat' : 'Permintaan Surat' ?></p>
                 </a>
             </li>
             <?php if ($_SESSION['level'] == 'admin') : ?>
