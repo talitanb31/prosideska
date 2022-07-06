@@ -22,7 +22,7 @@
                         <a href="<?= site_url('penduduk/create') ?>" class="btn btn-primary p-3">Tambah Data</a>
                     </div>
                     <div class="table-responsive">
-                        <table class="table">
+                        <table class="table" id="example">
                             <thead>
                                 <tr>
                                     <th>No</th>
